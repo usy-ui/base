@@ -1,6 +1,6 @@
 {
-  "name": "@usy-ui/components",
-  "version": "1.0.1",
+  "name": "@usy-ui/base",
+  "version": "1.0.0",
   "description": "A lightweight UI components for ReactJS and NextJS",
   "module": "dist",
   "main": "index.js",
@@ -12,13 +12,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://github.com/usy-ui/components#readme",
+  "homepage": "https://github.com/usy-ui/base#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/usy-ui/components.git"
+    "url": "git+https://github.com/usy-ui/base.git"
   },
   "bugs": {
-    "url": "https://github.com/usy-ui/components/issues"
+    "url": "https://github.com/usy-ui/base/issues"
   },
   "keywords": [
     "react",
