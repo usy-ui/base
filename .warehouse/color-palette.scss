@@ -1,0 +1,92 @@
+/* Primary */
+
+$primary: #16a085;
+$primary-light: lighten($primary, 10%);
+$primary-dark: darken($primary, 10%);
+
+.primary {
+  color: $primary;
+  color: $primary-light;
+  color: $primary-dark;
+}
+
+/* Light */
+
+$light-base: #ffffff;
+$light-0: darken($light-base, 4%);
+$light-1: darken($light-base, 8%);
+$light-2: darken($light-base, 12%);
+$light-3: darken($light-base, 16%);
+$light-4: darken($light-base, 20%);
+$light-5: darken($light-base, 24%);
+$light-6: darken($light-base, 28%);
+$light-7: darken($light-base, 32%);
+$light-8: darken($light-base, 36%);
+$light-9: darken($light-base, 40%);
+
+.light {
+  color: $light-0;
+  color: $light-1;
+  color: $light-2;
+  color: $light-3;
+  color: $light-4;
+  color: $light-5;
+  color: $light-6;
+  color: $light-7;
+  color: $light-8;
+  color: $light-9;
+}
+
+/* Dark */
+
+$dark-base: #000000;
+$dark-0: lighten($dark-base, 40%);
+$dark-1: lighten($dark-base, 36%);
+$dark-2: lighten($dark-base, 32%);
+$dark-3: lighten($dark-base, 28%);
+$dark-4: lighten($dark-base, 24%);
+$dark-5: lighten($dark-base, 20%);
+$dark-6: lighten($dark-base, 16%);
+$dark-7: lighten($dark-base, 12%);
+$dark-8: lighten($dark-base, 8%);
+$dark-9: lighten($dark-base, 4%);
+
+.dark {
+  color: $dark-0;
+  color: $dark-1;
+  color: $dark-2;
+  color: $dark-3;
+  color: $dark-4;
+  color: $dark-5;
+  color: $dark-6;
+  color: $dark-7;
+  color: $dark-8;
+  color: $dark-9;
+}
+
+/* Red */
+
+$red-base: #e5484d;
+$red-0: lighten($red-base, 10%);
+$red-1: lighten($red-base, 5%);
+$red-2: $red-base;
+$red-3: darken($red-base, 5%);
+$red-4: darken($red-base, 10%);
+$red-5: darken($red-base, 15%);
+$red-6: darken($red-base, 20%);
+$red-7: darken($red-base, 25%);
+$red-8: darken($red-base, 30%);
+$red-9: darken($red-base, 35%);
+
+.red {
+  color: $red-0;
+  color: $red-1;
+  color: $red-2;
+  color: $red-3;
+  color: $red-4;
+  color: $red-5;
+  color: $red-6;
+  color: $red-7;
+  color: $red-8;
+  color: $red-9;
+}
