@@ -50,8 +50,6 @@ jobs:
           git add package.json
           git commit -m "RELEASE_$RELEASE_TYPE: publish version $RELEASE_VERSION"
           git push origin main
-          git checkout -b chore/sync-main-to-dev
-          git push origin chore/sync-main-to-dev -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -59,7 +57,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create --base dev --head chore/sync-main-to-dev --title "[Release Sync]: main to dev" --body "This PR syncs changes from the `main` branch to the `dev` branch."
+          gh pr create --base dev --head main --title "[Release Sync]: main to dev" --body "This PR syncs changes from the `main` branch to the `dev` branch."
 
       - name: Build library
         run: |
