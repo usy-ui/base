@@ -1,0 +1,11 @@
+.usy-dropdown-trigger-container {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+
+  &.has-border {
+    border: 1px solid var(--usy-element-border-color);
+    border-radius: var(--usy-element-border-radius);
+  }
+}

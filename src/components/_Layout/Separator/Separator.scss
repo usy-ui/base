@@ -1,0 +1,30 @@
+.usy-separator-container {
+  position: relative;
+
+  &.direction-horizontal {
+    width: 100%;
+    height: 0;
+    border-top: 1px solid var(--usy-separator-color);
+
+    .title {
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  &.direction-vertical {
+    width: 0;
+    height: 100%;
+    border-left: 1px solid var(--usy-separator-color);
+
+    .title {
+      transform: translateX(-50%) translateY(-50%) rotate(90deg);
+    }
+  }
+
+  .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--usy-color-white);
+  }
+}

@@ -1,0 +1,40 @@
+.usy-image-gallery {
+  display: grid;
+  grid-gap: var(--usy-spacing-10px);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-flow: dense;
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--usy-spacing-4px);
+    overflow: hidden;
+
+    &.wide {
+      grid-column: span 2;
+    }
+
+    &.tall {
+      grid-row: span 2;
+    }
+
+    &.big {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .image {
+      max-width: 100%;
+      height: 100%;
+      vertical-align: middle;
+      display: inline-block;
+      object-fit: cover;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.usy-drawer-overlay {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  &.pos-left {
+    justify-content: flex-start;
+  }
+
+  &.pos-right {
+    justify-content: flex-end;
+  }
+}
+
+.usy-drawer-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--usy-color-white);
+  border-left: 1px solid var(--usy-color-light-4);
+  border-right: 1px solid var(--usy-color-light-4);
+  position: relative;
+  overflow: hidden;
+}

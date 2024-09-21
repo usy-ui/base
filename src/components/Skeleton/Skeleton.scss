@@ -1,0 +1,23 @@
+@keyframes usy-skeleton-animation {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.usy-base-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--usy-color-light-0, 25%),
+    var(--usy-color-light-2, 37%),
+    var(--usy-color-light-0, 63%)
+  );
+  background-size: 400% 100%;
+  animation-name: usy-skeleton-animation;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}

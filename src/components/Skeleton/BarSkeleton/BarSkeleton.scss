@@ -1,0 +1,19 @@
+.usy-bar-skeleton-container {
+  width: 100%;
+  padding: 0 var(--usy-spacing-14px);
+
+  .bar-skeleton {
+    width: 100%;
+    height: var(--usy-spacing-16px);
+    border-radius: var(--usy-spacing-4px);
+    margin: var(--usy-spacing-16px) 0;
+
+    &:first-child {
+      margin-top: var(--usy-spacing-8px);
+    }
+
+    &:last-child {
+      margin-bottom: var(--usy-spacing-8px);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.usy-drawer-header-container {
+  height: 66px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--usy-spacing-4px) var(--usy-layout-horizontal-padding);
+  border-bottom: 1px solid var(--usy-color-light-2);
+  background-color: var(--usy-color-white);
+  filter: drop-shadow(0px 4px 0px var(--usy-color-primary-light));
+
+  .close-icon {
+    cursor: pointer;
+
+    &:hover {
+      path {
+        stroke: var(--usy-color-dark-1);
+      }
+    }
+
+    path {
+      stroke: var(--usy-color-light-9);
+    }
+  }
+}

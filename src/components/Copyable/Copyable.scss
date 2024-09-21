@@ -1,0 +1,48 @@
+.usy-copyable-container {
+  min-height: var(--usy-element-height-medium);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--usy-copyable-color);
+  padding-left: var(--usy-spacing-16px);
+  padding-right: var(--usy-spacing-48px);
+  border-radius: var(--usy-spacing-4px);
+
+  .text {
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: var(--usy-color-white);
+    margin: 0;
+  }
+
+  .status-icon {
+    position: absolute;
+    top: var(--usy-spacing-6px);
+    right: var(--usy-spacing-8px);
+    padding: var(--usy-spacing-6px);
+    background-color: transparent;
+    border-radius: var(--usy-spacing-4px);
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .copy-icon {
+      width: var(--usy-spacing-16px);
+      height: var(--usy-spacing-16px);
+      fill: var(--usy-color-light-0);
+    }
+
+    .copied-icon {
+      width: var(--usy-spacing-16px);
+      height: var(--usy-spacing-16px);
+
+      path {
+        stroke: var(--usy-color-light-0);
+      }
+    }
+  }
+}

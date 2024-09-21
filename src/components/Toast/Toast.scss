@@ -1,0 +1,108 @@
+.usy-toast-container {
+  position: fixed;
+
+  &.position-top-right {
+    top: var(--usy-spacing-32px);
+    right: var(--usy-spacing-20px);
+  }
+
+  .toast-container {
+    max-width: 400px;
+    position: relative;
+    padding: var(--usy-spacing-12px) var(--usy-spacing-16px);
+    color: var(--usy-color-white);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    animation: showToast 0.2s ease-in-out forwards;
+    overflow: hidden;
+    user-select: none;
+    z-index: var(--usy-zIndex-latest);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      animation: timeoutToast 5s ease-out forwards;
+    }
+
+    &.success {
+      background-color: var(--usy-color-green-5);
+
+      &::before {
+        background-color: var(--usy-color-green-3);
+        box-shadow: 0 0 10px var(--usy-color-green-3);
+      }
+    }
+
+    &.info {
+      background-color: var(--usy-color-blue-5);
+
+      &::before {
+        background-color: var(--usy-color-blue-3);
+        box-shadow: 0 0 10px var(--usy-color-blue-3);
+      }
+    }
+
+    &.warning {
+      background-color: var(--usy-color-amber-7);
+
+      &::before {
+        background-color: var(--usy-color-amber-3);
+        box-shadow: 0 0 10px var(--usy-color-amber-7);
+      }
+    }
+
+    &.error {
+      background-color: var(--usy-color-red-5);
+
+      &::before {
+        background-color: var(--usy-color-red-3);
+        box-shadow: 0 0 10px var(--usy-color-red-3);
+      }
+    }
+
+    .status-icon {
+      width: var(--usy-spacing-24px);
+      height: var(--usy-spacing-24px);
+      margin-right: var(--usy-spacing-20px);
+    }
+
+    .close-icon {
+      margin-left: var(--usy-spacing-32px);
+      color: var(--usy-color-light-3);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--usy-color-white);
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+}
+
+@keyframes showToast {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes timeoutToast {
+  to {
+    width: 0;
+  }
+}

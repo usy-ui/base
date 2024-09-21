@@ -1,0 +1,64 @@
+.usy-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &.disabled {
+    opacity: var(--usy-element-disabled-opacity);
+    pointer-events: none;
+  }
+
+  .input-container {
+    border: 1px solid var(--usy-element-border-color);
+    border-radius: var(--usy-element-border-radius);
+    background-color: var(--usy-color-white);
+    padding: 0 var(--usy-spacing-10px);
+    display: flex;
+    align-items: center;
+
+    &.size-small {
+      height: var(--usy-element-height-small);
+
+      .input {
+        font-size: var(--usy-fontsize-small);
+      }
+    }
+
+    &.size-medium {
+      height: var(--usy-element-height-medium);
+
+      .input {
+        font-size: var(--usy-fontsize-medium);
+      }
+    }
+
+    &.size-large {
+      height: var(--usy-element-height-large);
+
+      .input {
+        font-size: var(--usy-fontsize-medium);
+      }
+    }
+
+    &:not(.has-error):has(.input:focus) {
+      border: 1px solid var(--usy-color-primary);
+    }
+
+    &.has-error,
+    &.has-error:hover {
+      border: 1px solid var(--usy-color-red-4);
+    }
+
+    .input {
+      flex-grow: 1;
+      height: calc(var(--usy-element-height-medium) - 4px);
+      background-color: transparent;
+      border: none;
+      outline: none;
+
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+      }
+    }
+  }
+}

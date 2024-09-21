@@ -1,0 +1,22 @@
+.usy-paragraph-heading-container {
+  &.mt-medium {
+    margin-bottom: var(--usy-spacing-20px);
+  }
+
+  &.mt-large {
+    margin-bottom: var(--usy-spacing-28px);
+  }
+
+  &.mt-huge {
+    margin-bottom: var(--usy-spacing-32px);
+  }
+
+  &.mt-gigant-1,
+  &.mt-gigant-2 {
+    margin-bottom: var(--usy-spacing-40px);
+  }
+
+  .description {
+    margin: var(--usy-spacing-4px) 0 0;
+  }
+}

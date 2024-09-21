@@ -1,0 +1,37 @@
+.usy-accordion-item-container {
+  width: 100%;
+  border-bottom: 1px solid var(--usy-color-light-2);
+
+  .title-container {
+    width: 100%;
+    min-width: 200px;
+    height: var(--usy-spacing-56px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    user-select: none;
+
+    .arrow-icon {
+      width: var(--usy-spacing-18px);
+      height: var(--usy-spacing-18px);
+      color: var(--usy-element-icon-color-dark);
+      transition-duration: 0.3s;
+
+      &.expanded {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .content-container {
+    display: block;
+    padding-bottom: var(--usy-spacing-18px);
+    font-size: var(--usy-fontsize-medium);
+
+    &.hidden {
+      display: none;
+    }
+  }
+}

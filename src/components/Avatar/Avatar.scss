@@ -1,0 +1,65 @@
+.usy-avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  /*
+   * Sizes 
+   */
+
+  &.size-tiny {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.size-small {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.size-medium {
+    width: 48px;
+    height: 48px;
+  }
+
+  &.size-large {
+    width: 64px;
+    height: 64px;
+  }
+
+  &.size-huge {
+    width: 80px;
+    height: 80px;
+  }
+
+  /*
+   * Radius 
+   */
+
+  &.radius-none {
+    border-radius: 0;
+  }
+
+  &.radius-small {
+    border-radius: 10%;
+  }
+
+  &.radius-medium {
+    border-radius: 20%;
+  }
+
+  &.radius-large {
+    border-radius: 30%;
+  }
+
+  &.radius-full {
+    border-radius: 50%;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

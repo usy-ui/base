@@ -1,0 +1,39 @@
+.usy-tags-container {
+  display: flex;
+  flex-direction: column;
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--usy-spacing-6px);
+    min-height: var(--usy-element-height-medium);
+    padding: var(--usy-spacing-8px) var(--usy-spacing-10px);
+    border: 1px solid var(--usy-element-border-color);
+    border-radius: var(--usy-element-border-radius);
+
+    .tag-item {
+      height: var(--usy-spacing-28px);
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--usy-fontsize-small);
+      border: 1px solid var(--usy-color-primary);
+      border-radius: var(--usy-spacing-14px);
+      margin-right: var(--usy-spacing-4px);
+      padding: 0 var(--usy-spacing-6px) 0 var(--usy-spacing-10px);
+
+      svg {
+        fill: var(--usy-color-primary);
+        margin-left: var(--usy-spacing-4px);
+        margin-right: calc(var(--usy-spacing-2px) * -1);
+        cursor: pointer;
+      }
+    }
+
+    .tag-input {
+      border: none;
+      outline: none;
+      font-size: var(--usy-fontsize-small);
+    }
+  }
+}

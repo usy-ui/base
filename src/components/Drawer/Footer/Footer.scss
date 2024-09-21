@@ -1,0 +1,25 @@
+.usy-drawer-footer-container {
+  height: 66px;
+  border-top: 1px solid var(--usy-color-light-2);
+  padding: var(--usy-spacing-4px) var(--usy-layout-horizontal-padding);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--usy-spacing-16px);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &.align-content-left {
+    justify-content: flex-start;
+  }
+
+  &.align-content-center {
+    justify-content: center;
+  }
+
+  &.align-content-right {
+    justify-content: right;
+  }
+}

@@ -1,0 +1,14 @@
+.usy-dropdown-menu-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--usy-spacing-10px) var(--usy-spacing-16px);
+  font-size: var(--usy-fontsize-medium);
+  border-radius: var(--usy-spacing-4px);
+  text-wrap: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--usy-color-light-0);
+  }
+}

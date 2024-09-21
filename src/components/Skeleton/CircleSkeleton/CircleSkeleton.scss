@@ -1,0 +1,11 @@
+.usy-circle-skeleton-container {
+  padding: var(--usy-spacing-8px);
+
+  .circle-skeleton {
+    min-width: 80px;
+    max-width: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    border-radius: 50%;
+  }
+}
