@@ -35,7 +35,6 @@ type SelectProps = PureSelectProps &
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   {
-    name = "select",
     items = [],
     isOpen: initOpen,
     label,
@@ -45,6 +44,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
     widthProps,
     onChange,
     className,
+    name = "select",
     testId = name,
   },
   ref

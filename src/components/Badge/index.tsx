@@ -6,30 +6,30 @@ import clsx from "clsx";
 import { useUsyColor } from "@src/hooks";
 
 import {
-  BaseColor,
-  BaseRadius,
-  BaseSize,
-  BaseVariant,
+  BaseColorUnion,
+  BaseRadiusUnion,
+  BaseSizeUnion,
+  BaseVariantUnion,
   CommonCompProps,
 } from "../../@types";
 
 type BadgeProps = {
-  variant?: BaseVariant;
-  size?: BaseSize;
-  color?: BaseColor | "random";
-  radius?: BaseRadius;
+  variant?: BaseVariantUnion;
+  size?: BaseSizeUnion;
+  color?: BaseColorUnion | "random";
+  radius?: BaseRadiusUnion;
   children: ReactNode;
 } & CommonCompProps;
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Badge(
   {
-    name = "badge",
     variant = "outline",
     size = "medium",
     color = "primary",
     radius = "small",
     children,
     className,
+    name = "badge",
     testId = name,
   },
   ref

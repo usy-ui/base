@@ -3,15 +3,15 @@ import { useMemo } from "react";
 import { usyColor, usyHexColors } from "@src/styles";
 import { camelCase } from "@src/utils";
 
-import { BaseColor } from "../@types";
+import { BaseColorUnion } from "../@types";
 
 /**
  *
- * @param colorName can be random or color name from BaseColor
+ * @param colorName can be random or color name from BaseColorUnion
  * @returns Return corresponding color in hex
  */
 
-export const useUsyColor = (colorName: BaseColor | "random") => {
+export const useUsyColor = (colorName: BaseColorUnion | "random") => {
   const colorInHex = useMemo(() => {
     if (colorName === "random") {
       return usyHexColors[

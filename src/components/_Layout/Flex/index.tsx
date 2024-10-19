@@ -8,13 +8,13 @@ import {
   MarginProps,
   PaddingProps,
   WidthProps,
-  BaseSemanticTag,
+  BaseSemanticTagUnion,
   CommonCompProps,
 } from "../../../@types";
 import { CommonBoxFlexProps } from "../Box";
 
 type PureFlexProps = {
-  tag?: BaseSemanticTag;
+  tag?: BaseSemanticTagUnion;
   display?: "flex" | "inline-flex";
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
   justifyContent?: "flex-start" | "center" | "flex-end" | "space-between";

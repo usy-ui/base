@@ -8,12 +8,12 @@ import {
   WidthProps,
   MarginProps,
   PaddingProps,
-  BaseSemanticTag,
+  BaseSemanticTagUnion,
   CommonCompProps,
 } from "../../../@types";
 
 type PureScrollableProps = {
-  tag?: BaseSemanticTag;
+  tag?: BaseSemanticTagUnion;
   scrollType?: "vertical" | "horizontal" | "both";
   showScrollOnHover?: boolean;
   children?: ReactNode;

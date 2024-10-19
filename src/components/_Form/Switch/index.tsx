@@ -5,7 +5,7 @@ import { ChangeEvent, FC, useState } from "react";
 import clsx from "clsx";
 
 import {
-  BaseSize,
+  BaseSizeUnion,
   CommonCompProps,
   FieldLabelProps,
   FormFieldProps,
@@ -13,7 +13,7 @@ import {
 import { FieldLabel } from "../FieldLabel";
 
 type SwitchProps = {
-  size?: BaseSize;
+  size?: BaseSizeUnion;
 } & FieldLabelProps &
   Omit<FormFieldProps<boolean, HTMLInputElement>, "hasError"> &
   CommonCompProps;

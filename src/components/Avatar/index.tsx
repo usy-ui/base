@@ -8,17 +8,17 @@ import { usyColor } from "@src/styles";
 
 import {
   CommonCompProps,
-  BaseColor,
-  BaseSizeExtra,
-  BaseRadius,
-  BaseSize,
+  BaseColorUnion,
+  BaseSizeExtraUnion,
+  BaseRadiusUnion,
+  BaseSizeUnion,
 } from "../../@types";
 
 type AvatarProps = {
   url: string;
-  size?: BaseSize | BaseSizeExtra;
-  color?: BaseColor | "random";
-  radius?: BaseRadius;
+  size?: BaseSizeUnion | BaseSizeExtraUnion;
+  color?: BaseColorUnion | "random";
+  radius?: BaseRadiusUnion;
   fallback?: ReactNode;
   imgAlt?: string;
   onClick?: () => void;

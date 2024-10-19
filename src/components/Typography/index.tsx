@@ -6,22 +6,25 @@ import clsx from "clsx";
 import { useUsyColor } from "@src/hooks";
 
 import {
-  BaseColor,
-  BaseSizeExtra,
-  BaseSizeGigant,
-  BaseSize,
-  BaseTypographyTag,
-  BaseTypographyWeight,
+  BaseColorUnion,
+  BaseSizeExtraUnion,
+  BaseSizeGigantUnion,
+  BaseSizeUnion,
+  BaseTypoTagUnion,
+  BaseTypoWeightUnion,
   CommonCompProps,
 } from "../../@types";
 
-export type TypographySize = BaseSize | BaseSizeExtra | BaseSizeGigant;
+export type TypographySize =
+  | BaseSizeUnion
+  | BaseSizeExtraUnion
+  | BaseSizeGigantUnion;
 type TypographyAlign = "left" | "center" | "right" | "justify";
 
 type TypographyProps = {
-  tag?: BaseTypographyTag;
-  weight?: BaseTypographyWeight;
-  color?: BaseColor | "random";
+  tag?: BaseTypoTagUnion;
+  weight?: BaseTypoWeightUnion;
+  color?: BaseColorUnion | "random";
   size?: TypographySize;
   align?: TypographyAlign;
   wrap?: "wrap" | "nowrap";

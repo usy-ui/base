@@ -38,7 +38,7 @@
     "icon:build": "rimraf src/components/Icon/* --glob && pnpm icon:gen",
     "css:merge": "find src/styles src/components -type f -name '*.scss' -exec cat {} + > src/styles.scss",
     "css:build": "pnpm css:merge && postcss src/styles.scss -o dist/styles.css",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "pnpm css:merge && storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "rimraf dist && pnpm css:build && rollup -c --bundleConfigAsCjs --silent",
     "build:pack": "pnpm build && pnpm pack",

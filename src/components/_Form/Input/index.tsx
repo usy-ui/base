@@ -13,7 +13,7 @@ import clsx from "clsx";
 import { useNameMemo } from "@src/hooks";
 
 import {
-  BaseSize,
+  BaseSizeUnion,
   CommonCompProps,
   FieldLabelProps,
   WidthProps,
@@ -27,7 +27,7 @@ import { InputIconRight } from "./components/InputIconRight";
 export type PureInputProps = {
   value?: string;
   type?: "text" | "number";
-  size?: BaseSize;
+  size?: BaseSizeUnion;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   placeholder?: string;

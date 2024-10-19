@@ -36,8 +36,10 @@
           content: "";
           display: inline-block;
           background-color: var(--usy-color-white);
-          width: var(--usy-spacing-20px);
-          height: var(--usy-spacing-20px);
+          min-width: var(--usy-spacing-20px);
+          max-width: var(--usy-spacing-20px);
+          min-height: var(--usy-spacing-20px);
+          max-height: var(--usy-spacing-20px);
           border-radius: 50%;
           margin-right: var(--usy-spacing-6px);
           transition: 0.25s ease;

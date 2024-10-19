@@ -3,7 +3,7 @@ import { FC } from "react";
 
 import clsx from "clsx";
 
-import { BaseSemanticTag, CommonCompProps } from "../../@types";
+import { BaseSemanticTagUnion, CommonCompProps } from "../../@types";
 
 type Image = {
   url: string;
@@ -12,7 +12,7 @@ type Image = {
 };
 
 type ImageGalleryProps = {
-  tag?: BaseSemanticTag;
+  tag?: BaseSemanticTagUnion;
   images: Image[];
 } & CommonCompProps;
 
