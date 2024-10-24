@@ -6,6 +6,7 @@
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .input-container {
@@ -36,7 +37,7 @@
       height: var(--usy-element-height-large);
 
       .input {
-        font-size: var(--usy-fontsize-medium);
+        font-size: var(--usy-fontsize-large);
       }
     }
 
@@ -57,7 +58,8 @@
       outline: none;
 
       &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        -webkit-box-shadow: 0 0 0px 1000px var(--usy-color-white) inset;
+        box-shadow: 0 0 0px 1000px var(--usy-color-white) inset;
       }
     }
   }

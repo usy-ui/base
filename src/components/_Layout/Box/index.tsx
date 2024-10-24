@@ -14,8 +14,8 @@ import {
 
 export type CommonBoxFlexProps = {
   tag?: BaseSemanticTagUnion;
-  children: ReactNode;
   id?: string;
+  children: ReactNode;
 };
 
 export type PureBoxProps = {

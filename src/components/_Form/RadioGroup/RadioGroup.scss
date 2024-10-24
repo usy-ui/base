@@ -2,6 +2,7 @@
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .radio-group-container {

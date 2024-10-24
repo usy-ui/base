@@ -22,15 +22,18 @@ type PureRadioGroupProps = {
 };
 
 type RadioGroupProps = PureRadioGroupProps &
-  FieldLabelProps &
-  Omit<FormFieldProps<RadioType, HTMLInputElement>, "hasError"> &
+  Pick<FieldLabelProps, "label"> &
+  Pick<
+    FormFieldProps<RadioType, HTMLInputElement>,
+    "value" | "disabled" | "onChange"
+  > &
   CommonCompProps;
 
 export const RadioGroup: FC<RadioGroupProps> = ({
-  label,
   value,
   items,
   direction = "horizontal",
+  label,
   disabled,
   onChange,
   className,

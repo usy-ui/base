@@ -26,6 +26,12 @@ export const Types: Story = {
           rootToast.basic({
             statusIcon: LockTimeIcon,
             content: <span>Do not forget to checkout on time</span>,
+            timeout: 10000,
+            styles: {
+              backgroundColor: "#000",
+              border: "none",
+              color: "#fff",
+            },
           });
         }}
       >

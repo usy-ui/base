@@ -36,8 +36,8 @@ export type PureInputProps = {
   disabled?: boolean;
   onChange?: (value: string, e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (value: string, e: FocusEvent<HTMLInputElement>) => void;
-  formatOnChange?: (value: string) => string;
-  formatOnBlur?: (value: string) => string;
+  transformOnChange?: (value: string) => string;
+  transformOnBlur?: (value: string) => string;
 } & FieldLabelProps &
   WidthProps;
 
@@ -45,24 +45,24 @@ export type InputProps = PureInputProps & CommonCompProps;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
-    name = "input",
     value = "",
-    size = "medium",
-    label,
     type = "text",
+    size = "medium",
     iconLeft,
     iconRight,
     placeholder,
     description,
-    hasAsterisk = false,
     hasError = false,
     disabled = false,
-    widthProps,
     onChange,
     onBlur,
-    formatOnChange = (value) => value,
-    formatOnBlur = (value) => value,
+    transformOnChange = (value) => value,
+    transformOnBlur = (value) => value,
+    label,
+    hasAsterisk = false,
+    widthProps,
     className,
+    name = "input",
     testId = name,
   },
   ref
@@ -79,7 +79,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       return;
     }
 
-    const formattedValue = formatOnChange(e.target.value);
+    const formattedValue = transformOnChange(e.target.value);
     setInputValue(formattedValue);
     onChange?.(formattedValue, e);
   };
@@ -89,7 +89,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       return;
     }
 
-    const formattedValue = formatOnBlur(e.target.value);
+    const formattedValue = transformOnBlur(e.target.value);
     setInputValue(formattedValue);
     onBlur?.(formattedValue, e);
   };
@@ -134,16 +134,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         />
       )}
       <div
-        className={clsx("input-container", {
-          [`size-${size}`]: Boolean(size),
+        className={clsx("input-container", `size-${size}`, {
           "has-error": hasError,
         })}
         style={{ ...(widthProps || { width: "100%" }) }}
         data-testid={testId}
       >
-        <InputIconLeft iconLeft={iconLeft} testId={testId} />
+        <InputIconLeft size={size} iconLeft={iconLeft} testId={testId} />
         {renderInput()}
-        <InputIconRight iconRight={iconRight} testId={testId} />
+        <InputIconRight size={size} iconRight={iconRight} testId={testId} />
       </div>
       <InputDescription description={description} testId={testId} />
     </div>

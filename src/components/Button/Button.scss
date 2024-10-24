@@ -8,6 +8,10 @@
   user-select: none;
   cursor: pointer;
 
+  &:focus-visible {
+    outline: none;
+  }
+
   &:hover {
     opacity: 0.9;
   }

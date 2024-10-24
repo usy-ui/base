@@ -44,7 +44,9 @@
       bottom: 0;
       width: 100%;
       height: 4px;
-      animation: timeoutToast 5s ease-out forwards;
+      animation-name: timeoutToast;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
     }
 
     &.basic {

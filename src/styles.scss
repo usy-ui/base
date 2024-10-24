@@ -410,6 +410,10 @@ a {
   user-select: none;
   cursor: pointer;
 
+  &:focus-visible {
+    outline: none;
+  }
+
   &:hover {
     opacity: 0.9;
   }
@@ -1145,7 +1149,9 @@ a {
       bottom: 0;
       width: 100%;
       height: 4px;
-      animation: timeoutToast 5s ease-out forwards;
+      animation-name: timeoutToast;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
     }
 
     &.basic {
@@ -1424,6 +1430,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .input {
@@ -1473,10 +1480,52 @@ a {
 .usy-input-icon-left {
   font-size: 0;
   padding: 0 var(--usy-spacing-8px) 0 0;
+
+  &.input-size-small {
+    svg {
+      width: var(--usy-spacing-18px);
+      height: var(--usy-spacing-18px);
+    }
+  }
+
+  &.input-size-medium {
+    svg {
+      width: var(--usy-spacing-20px);
+      height: var(--usy-spacing-20px);
+    }
+  }
+
+  &.input-size-large {
+    svg {
+      width: var(--usy-spacing-24px);
+      height: var(--usy-spacing-24px);
+    }
+  }
 }
 .usy-input-icon-right {
   font-size: 0;
   padding: 0 0 0 var(--usy-spacing-8px);
+
+  &.input-size-small {
+    svg {
+      width: var(--usy-spacing-18px);
+      height: var(--usy-spacing-18px);
+    }
+  }
+
+  &.input-size-medium {
+    svg {
+      width: var(--usy-spacing-20px);
+      height: var(--usy-spacing-20px);
+    }
+  }
+
+  &.input-size-large {
+    svg {
+      width: var(--usy-spacing-24px);
+      height: var(--usy-spacing-24px);
+    }
+  }
 }
 .usy-input-container {
   width: 100%;
@@ -1486,6 +1535,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .input-container {
@@ -1516,7 +1566,7 @@ a {
       height: var(--usy-element-height-large);
 
       .input {
-        font-size: var(--usy-fontsize-medium);
+        font-size: var(--usy-fontsize-large);
       }
     }
 
@@ -1537,7 +1587,8 @@ a {
       outline: none;
 
       &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        -webkit-box-shadow: 0 0 0px 1000px var(--usy-color-white) inset;
+        box-shadow: 0 0 0px 1000px var(--usy-color-white) inset;
       }
     }
   }
@@ -1546,6 +1597,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .radio-group-container {
@@ -1606,6 +1658,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .display-field {
@@ -1677,6 +1730,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .switch {
@@ -1787,6 +1841,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .textarea {

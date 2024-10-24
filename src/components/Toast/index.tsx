@@ -1,5 +1,12 @@
 "use client";
-import { FC, FunctionComponent, ReactNode, createRef, useEffect } from "react";
+import {
+  CSSProperties,
+  FC,
+  FunctionComponent,
+  ReactNode,
+  createRef,
+  useEffect,
+} from "react";
 
 import clsx from "clsx";
 import { createPortal } from "react-dom";
@@ -26,7 +33,7 @@ type PushToastParams = {
   title?: string | ReactNode;
   content: string | ReactNode;
   timeout?: number;
-  className?: string;
+  styles?: CSSProperties;
   onClose?: () => void;
 };
 type ToastParams = Omit<PushToastParams, "type">;
@@ -86,7 +93,7 @@ export const Toast: FC<ToastProps> = ({
   const normalizeParams = (params: ToastParams): ToastParams => {
     return {
       ...params,
-      timeout: params.timeout || 500000,
+      timeout: params.timeout || 5000,
     };
   };
 
@@ -139,16 +146,27 @@ export const Toast: FC<ToastProps> = ({
     title,
     content,
     statusIcon: StatusIcon,
-    timeout,
-    className,
+    timeout = 5000,
+    styles,
     onClose,
   }: PushToastParams) => {
     const toastId = `toast-${getUniqueTime()}`;
     const toastContainer = document.createElement("div");
+    const styleSheet =
+      document.styleSheets[0] || document.createElement("style").sheet;
 
     toastContainer.id = toastId;
-    toastContainer.className = `toast-container ${type} ${className}`;
+    toastContainer.className = `toast-container ${type}`;
     toastContainer.setAttribute("data-testid", testId || `toast-${type}`);
+    Object.assign(toastContainer.style, styles);
+    styleSheet.insertRule(
+      `
+      #${toastId}.toast-container::before {
+        animation-duration: ${timeout / 1000}s;
+      }
+    `,
+      styleSheet.cssRules.length
+    );
 
     const statusIconElement = StatusIcon ? (
       <StatusIcon

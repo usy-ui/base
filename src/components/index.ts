@@ -48,7 +48,7 @@ export { Popover } from "./Popover";
 export { BarSkeleton, CircleSkeleton } from "./Skeleton";
 export { Table, TableColumnType } from "./Table";
 export { Tabs, TabItemType } from "./Tabs";
-export { Toast, toastIns } from "./Toast";
+export { Toast, rootToast } from "./Toast";
 export { TogglePanel } from "./TogglePanel";
 export { Tooltip } from "./Tooltip";
 export { Typography } from "./Typography";

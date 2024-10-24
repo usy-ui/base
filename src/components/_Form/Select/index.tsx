@@ -29,7 +29,10 @@ type PureSelectProps = {
 
 type SelectProps = PureSelectProps &
   FieldLabelProps &
-  Omit<FormFieldProps<SelectItemType>, "hasError"> &
+  Pick<
+    FormFieldProps<SelectItemType>,
+    "value" | "disabled" | "onChange" | "onBlur"
+  > &
   WidthProps &
   CommonCompProps;
 
