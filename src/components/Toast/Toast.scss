@@ -1,16 +1,31 @@
 .usy-toast-container {
   position: fixed;
+  z-index: var(--usy-zIndex-latest);
 
-  &.position-top-right {
+  &.position-top-start {
+    top: var(--usy-spacing-32px);
+    left: var(--usy-spacing-20px);
+  }
+
+  &.position-top-end {
     top: var(--usy-spacing-32px);
     right: var(--usy-spacing-20px);
+  }
+
+  &.position-bottom-start {
+    left: var(--usy-spacing-20px);
+    bottom: var(--usy-spacing-32px);
+  }
+
+  &.position-bottom-end {
+    right: var(--usy-spacing-20px);
+    bottom: var(--usy-spacing-32px);
   }
 
   .toast-container {
     max-width: 400px;
     position: relative;
     padding: var(--usy-spacing-12px) var(--usy-spacing-16px);
-    color: var(--usy-color-white);
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
@@ -29,7 +44,19 @@
       bottom: 0;
       width: 100%;
       height: 4px;
-      animation: timeoutToast 5s ease-out forwards;
+      animation-name: timeoutToast;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+    }
+
+    &.basic {
+      background-color: var(--usy-color-white);
+      border: 2px solid var(--usy-color-primary);
+
+      &::before {
+        background-color: var(--usy-color-primary);
+        box-shadow: 0 0 10px var(--usy-color-primary);
+      }
     }
 
     &.success {
@@ -76,12 +103,7 @@
 
     .close-icon {
       margin-left: var(--usy-spacing-32px);
-      color: var(--usy-color-light-3);
       cursor: pointer;
-
-      &:hover {
-        color: var(--usy-color-white);
-      }
     }
 
     .content {

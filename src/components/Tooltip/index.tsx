@@ -3,11 +3,11 @@ import { FC, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { BasePosition, CommonCompProps } from "../../@types";
+import { BasePositionUnion, CommonCompProps } from "../../@types";
 
 type TooltipProps = {
-  content: string;
-  position?: BasePosition;
+  content: string | ReactNode;
+  position?: BasePositionUnion;
   children: ReactNode;
 } & CommonCompProps;
 
@@ -23,9 +23,7 @@ export const Tooltip: FC<TooltipProps> = ({
     <div
       className={clsx(
         "usy-tooltip-container",
-        {
-          [`position-${position}`]: Boolean(position),
-        },
+        `position-${position}`,
         className
       )}
       data-testid={testId}

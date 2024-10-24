@@ -6,7 +6,7 @@ import { useUsyColor } from "@src/hooks";
 import { usySpacing } from "@src/styles";
 
 import {
-  BaseColor,
+  BaseColorUnion,
   CommonCompProps,
   HeightProps,
   MarginProps,
@@ -16,7 +16,7 @@ import {
 type SeparatorProps = {
   title?: string;
   direction?: "horizontal" | "vertical";
-  color?: BaseColor | "random";
+  color?: BaseColorUnion | "random";
 } & WidthProps &
   HeightProps &
   MarginProps &

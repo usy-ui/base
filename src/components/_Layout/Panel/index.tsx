@@ -10,13 +10,13 @@ import {
   WidthProps,
   MarginProps,
   PaddingProps,
-  BaseSemanticTag,
+  BaseSemanticTagUnion,
   CommonCompProps,
 } from "../../../@types";
 import { Typography } from "../../Typography";
 
 type PurePanelProps = {
-  tag?: BaseSemanticTag;
+  tag?: BaseSemanticTagUnion;
   title?: ReactNode;
   borderRadius?: string;
   children: string | ReactNode;

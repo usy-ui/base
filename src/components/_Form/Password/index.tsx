@@ -21,7 +21,6 @@ import { InputIconRight } from "../Input/components/InputIconRight";
 
 type PickedInputProps = Pick<
   PureInputProps,
-  | "name"
   | "value"
   | "size"
   | "label"
@@ -41,20 +40,20 @@ type PasswordProps = PickedInputProps & CommonCompProps;
 export const Password = forwardRef<HTMLInputElement, PasswordProps>(
   function Password(
     {
-      name = "password",
       value = "",
       size = "medium",
-      label,
       iconLeft,
       placeholder,
       description,
-      hasAsterisk = false,
       hasError = false,
       disabled = false,
-      widthProps,
       onChange,
       onBlur,
+      label,
+      hasAsterisk = false,
+      widthProps,
       className,
+      name = "password",
       testId = name,
     },
     ref
@@ -125,16 +124,16 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
           />
         )}
         <div
-          className={clsx("input-container", {
-            [`size-${size}`]: Boolean(size),
+          className={clsx("input-container", `size-${size}`, {
             "has-error": hasError,
           })}
           style={{ ...(widthProps || { width: "100%" }) }}
           data-testid={testId}
         >
-          <InputIconLeft iconLeft={iconLeft} testId={testId} />
+          <InputIconLeft size={size} iconLeft={iconLeft} testId={testId} />
           {renderInput()}
           <InputIconRight
+            size={size}
             iconRight={
               hidePassword ? (
                 <EyeIcon

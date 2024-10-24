@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { useUsyColor } from "@src/hooks";
 
 import {
-  BaseColor,
+  BaseColorUnion,
   CommonCompProps,
   MarginProps,
   WidthProps,
@@ -15,7 +15,7 @@ import { CheckIcon, CopyIcon } from "../Icon";
 
 type CopyableProps = {
   text: string;
-  color?: BaseColor;
+  color?: BaseColorUnion;
 } & WidthProps &
   MarginProps &
   CommonCompProps;

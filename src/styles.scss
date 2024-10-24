@@ -410,6 +410,10 @@ a {
   user-select: none;
   cursor: pointer;
 
+  &:focus-visible {
+    outline: none;
+  }
+
   &:hover {
     opacity: 0.9;
   }
@@ -1101,17 +1105,32 @@ a {
 }
 .usy-toast-container {
   position: fixed;
+  z-index: var(--usy-zIndex-latest);
 
-  &.position-top-right {
+  &.position-top-start {
+    top: var(--usy-spacing-32px);
+    left: var(--usy-spacing-20px);
+  }
+
+  &.position-top-end {
     top: var(--usy-spacing-32px);
     right: var(--usy-spacing-20px);
+  }
+
+  &.position-bottom-start {
+    left: var(--usy-spacing-20px);
+    bottom: var(--usy-spacing-32px);
+  }
+
+  &.position-bottom-end {
+    right: var(--usy-spacing-20px);
+    bottom: var(--usy-spacing-32px);
   }
 
   .toast-container {
     max-width: 400px;
     position: relative;
     padding: var(--usy-spacing-12px) var(--usy-spacing-16px);
-    color: var(--usy-color-white);
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
@@ -1130,7 +1149,19 @@ a {
       bottom: 0;
       width: 100%;
       height: 4px;
-      animation: timeoutToast 5s ease-out forwards;
+      animation-name: timeoutToast;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+    }
+
+    &.basic {
+      background-color: var(--usy-color-white);
+      border: 2px solid var(--usy-color-primary);
+
+      &::before {
+        background-color: var(--usy-color-primary);
+        box-shadow: 0 0 10px var(--usy-color-primary);
+      }
     }
 
     &.success {
@@ -1177,12 +1208,7 @@ a {
 
     .close-icon {
       margin-left: var(--usy-spacing-32px);
-      color: var(--usy-color-light-3);
       cursor: pointer;
-
-      &:hover {
-        color: var(--usy-color-white);
-      }
     }
 
     .content {
@@ -1263,14 +1289,14 @@ a {
   &.position-top {
     &:hover {
       .tooltip-overlay {
-        top: calc(-100% - var(--usy-spacing-10px));
+        top: calc(-1 * var(--usy-spacing-10px));
       }
     }
 
     .tooltip-overlay {
       top: 0;
       left: 50%;
-      transform: translateX(-50%) translateY(0);
+      transform: translateX(-50%) translateY(-100%);
 
       &::before {
         left: 50%;
@@ -1404,6 +1430,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .input {
@@ -1453,10 +1480,52 @@ a {
 .usy-input-icon-left {
   font-size: 0;
   padding: 0 var(--usy-spacing-8px) 0 0;
+
+  &.input-size-small {
+    svg {
+      width: var(--usy-spacing-18px);
+      height: var(--usy-spacing-18px);
+    }
+  }
+
+  &.input-size-medium {
+    svg {
+      width: var(--usy-spacing-20px);
+      height: var(--usy-spacing-20px);
+    }
+  }
+
+  &.input-size-large {
+    svg {
+      width: var(--usy-spacing-24px);
+      height: var(--usy-spacing-24px);
+    }
+  }
 }
 .usy-input-icon-right {
   font-size: 0;
   padding: 0 0 0 var(--usy-spacing-8px);
+
+  &.input-size-small {
+    svg {
+      width: var(--usy-spacing-18px);
+      height: var(--usy-spacing-18px);
+    }
+  }
+
+  &.input-size-medium {
+    svg {
+      width: var(--usy-spacing-20px);
+      height: var(--usy-spacing-20px);
+    }
+  }
+
+  &.input-size-large {
+    svg {
+      width: var(--usy-spacing-24px);
+      height: var(--usy-spacing-24px);
+    }
+  }
 }
 .usy-input-container {
   width: 100%;
@@ -1466,6 +1535,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .input-container {
@@ -1496,7 +1566,7 @@ a {
       height: var(--usy-element-height-large);
 
       .input {
-        font-size: var(--usy-fontsize-medium);
+        font-size: var(--usy-fontsize-large);
       }
     }
 
@@ -1517,7 +1587,8 @@ a {
       outline: none;
 
       &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        -webkit-box-shadow: 0 0 0px 1000px var(--usy-color-white) inset;
+        box-shadow: 0 0 0px 1000px var(--usy-color-white) inset;
       }
     }
   }
@@ -1526,6 +1597,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .radio-group-container {
@@ -1560,8 +1632,10 @@ a {
           content: "";
           display: inline-block;
           background-color: var(--usy-color-white);
-          width: var(--usy-spacing-20px);
-          height: var(--usy-spacing-20px);
+          min-width: var(--usy-spacing-20px);
+          max-width: var(--usy-spacing-20px);
+          min-height: var(--usy-spacing-20px);
+          max-height: var(--usy-spacing-20px);
           border-radius: 50%;
           margin-right: var(--usy-spacing-6px);
           transition: 0.25s ease;
@@ -1584,6 +1658,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .display-field {
@@ -1655,6 +1730,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .switch {
@@ -1765,6 +1841,7 @@ a {
   &.disabled {
     opacity: var(--usy-element-disabled-opacity);
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   .textarea {

@@ -24,6 +24,8 @@ export const Types: Story = {
       <Input
         label="Email"
         placeholder="Enter your email"
+        onChange={(value) => console.log(value)}
+        transformOnChange={(value) => value.toUpperCase()}
         iconLeft={<EnvelopeIcon width="18px" height="18px" />}
         hasAsterisk
       />

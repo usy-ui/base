@@ -9,13 +9,13 @@ import {
   MarginProps,
   PaddingProps,
   CommonCompProps,
-  BaseSemanticTag,
+  BaseSemanticTagUnion,
 } from "../../../@types";
 
 export type CommonBoxFlexProps = {
-  tag?: BaseSemanticTag;
-  children: ReactNode;
+  tag?: BaseSemanticTagUnion;
   id?: string;
+  children: ReactNode;
 };
 
 export type PureBoxProps = {

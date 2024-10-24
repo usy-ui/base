@@ -1,14 +1,22 @@
 "use client";
-import { FC, FunctionComponent, ReactNode, createRef, useEffect } from "react";
+import {
+  CSSProperties,
+  FC,
+  FunctionComponent,
+  ReactNode,
+  createRef,
+  useEffect,
+} from "react";
 
 import clsx from "clsx";
 import { createPortal } from "react-dom";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { useMounted } from "@src/hooks";
+import { usyColor } from "@src/styles";
 import { getUniqueTime } from "@src/utils";
 
-import { CommonCompProps } from "../../@types";
+import { BasePositionExtraUnion, CommonCompProps } from "../../@types";
 import {
   CheckCircleIcon,
   CloseIcon,
@@ -18,45 +26,57 @@ import {
 } from "../Icon";
 import { Typography } from "../Typography";
 
-type ToastType = "success" | "info" | "warning" | "error";
-type PushToastProps = {
+type ToastType = "success" | "info" | "warning" | "error" | "basic";
+type PushToastParams = {
   type: ToastType;
-  title: string | ReactNode;
-  description: string | ReactNode;
-  statusIcon: FunctionComponent<{ className: string }>;
+  statusIcon?: FunctionComponent<{ className: string; color?: string }>;
+  title?: string | ReactNode;
+  content: string | ReactNode;
   timeout?: number;
+  styles?: CSSProperties;
   onClose?: () => void;
 };
+type ToastParams = Omit<PushToastParams, "type">;
 
-type ToastParams =
-  | string
-  | Pick<PushToastProps, "title" | "description" | "timeout">;
+/**
+ * Toast Instance
+ */
 
 interface ToastInstance {
+  basic: (params: ToastParams) => void;
   success: (params: ToastParams) => void;
   info: (params: ToastParams) => void;
   warning: (params: ToastParams) => void;
   error: (params: ToastParams) => void;
 }
 
+export let rootToast: ToastInstance;
+
+/**
+ * Toast Component
+ */
+
 type ToastProps = {
+  position?: BasePositionExtraUnion;
   containerElement?: HTMLElement;
+  children?: (props: { selfToast: ToastInstance }) => ReactNode;
 } & CommonCompProps;
 
-export let toastIns: ToastInstance;
-
 export const Toast: FC<ToastProps> = ({
+  position = "top-end",
   containerElement,
+  children,
   className,
   testId,
 }) => {
   const toastList: Record<string, number | undefined> = {};
-  const toastQueueRef = createRef<HTMLDivElement>();
+  const toastListContainerRef = createRef<HTMLDivElement>();
   const { isMounted } = useMounted();
 
   useEffect(() => {
-    if (!toastIns && isMounted) {
-      toastIns = {
+    if (!rootToast && !children && isMounted) {
+      rootToast = {
+        basic,
         success,
         info,
         warning,
@@ -70,43 +90,50 @@ export const Toast: FC<ToastProps> = ({
    * Notify functions
    */
 
-  const getPushToastRestProps = (params: ToastParams) => {
+  const normalizeParams = (params: ToastParams): ToastParams => {
     return {
-      title: typeof params === "object" ? params.title : undefined,
-      description: typeof params === "object" ? params.description : params,
-      timeout: typeof params === "object" ? params.timeout : 5000,
+      ...params,
+      timeout: params.timeout || 5000,
     };
+  };
+
+  const basic = (params: ToastParams) => {
+    pushToast({
+      ...normalizeParams(params),
+      statusIcon: params.statusIcon,
+      type: "basic",
+    });
   };
 
   const success = (params: ToastParams) => {
     pushToast({
+      ...normalizeParams(params),
+      statusIcon: params.statusIcon || CheckCircleIcon,
       type: "success",
-      statusIcon: CheckCircleIcon,
-      ...getPushToastRestProps(params),
     });
   };
 
   const info = (params: ToastParams) => {
     pushToast({
+      ...normalizeParams(params),
+      statusIcon: params.statusIcon || InfoCircleIcon,
       type: "info",
-      statusIcon: InfoCircleIcon,
-      ...getPushToastRestProps(params),
     });
   };
 
   const warning = (params: ToastParams) => {
     pushToast({
+      ...normalizeParams(params),
+      statusIcon: params.statusIcon || ExclamationCircleIcon,
       type: "warning",
-      statusIcon: ExclamationCircleIcon,
-      ...getPushToastRestProps(params),
     });
   };
 
   const error = (params: ToastParams) => {
     pushToast({
+      ...normalizeParams(params),
+      statusIcon: params.statusIcon || BanIcon,
       type: "error",
-      statusIcon: BanIcon,
-      ...getPushToastRestProps(params),
     });
   };
 
@@ -117,68 +144,118 @@ export const Toast: FC<ToastProps> = ({
   const pushToast = ({
     type,
     title,
-    description,
+    content,
     statusIcon: StatusIcon,
-    timeout,
-  }: PushToastProps) => {
-    const toastContainer = document.createElement("div");
-
+    timeout = 5000,
+    styles,
+    onClose,
+  }: PushToastParams) => {
     const toastId = `toast-${getUniqueTime()}`;
+    const toastContainer = document.createElement("div");
+    const styleSheet =
+      document.styleSheets[0] || document.createElement("style").sheet;
+
     toastContainer.id = toastId;
     toastContainer.className = `toast-container ${type}`;
+    toastContainer.setAttribute("data-testid", testId || `toast-${type}`);
+    Object.assign(toastContainer.style, styles);
+    styleSheet.insertRule(
+      `
+      #${toastId}.toast-container::before {
+        animation-duration: ${timeout / 1000}s;
+      }
+    `,
+      styleSheet.cssRules.length
+    );
 
-    if (testId) {
-      toastContainer.setAttribute("data-testid", testId);
-    }
+    const statusIconElement = StatusIcon ? (
+      <StatusIcon
+        className="status-icon"
+        color={type === "basic" ? "dark-6" : "white"}
+      />
+    ) : null;
+    const titleElement =
+      typeof title === "string" ? (
+        <Typography
+          tag="h4"
+          weight="semibold"
+          color={type === "basic" ? "dark-9" : "white"}
+        >
+          {title}
+        </Typography>
+      ) : (
+        title
+      );
+    const contentElement =
+      typeof content === "string" ? (
+        <Typography
+          tag="small"
+          size="small"
+          color={type === "basic" ? "dark-9" : "white"}
+        >
+          {content}
+        </Typography>
+      ) : (
+        content
+      );
 
     toastContainer.innerHTML = renderToStaticMarkup(
       <>
-        <StatusIcon className="status-icon" />
+        {statusIconElement}
         <div className="content">
-          {typeof title === "string" ? (
-            <Typography tag="h4" weight="semibold" color="white">
-              {title}
-            </Typography>
-          ) : (
-            title
-          )}
-          {typeof description === "string" ? (
-            <Typography tag="small" size="small" color="white">
-              {description}
-            </Typography>
-          ) : (
-            description
-          )}
+          {titleElement}
+          {contentElement}
         </div>
-        <CloseIcon className="close-icon" />
+        <CloseIcon
+          className="close-icon"
+          color={type === "basic" ? usyColor.light6 : usyColor.light3}
+        />
       </>
     );
+    toastListContainerRef.current?.appendChild(toastContainer);
 
-    toastQueueRef.current?.appendChild(toastContainer);
     const closeToast = () => {
       clearTimeout(toastList[toastId]);
       toastList[toastId] = undefined;
       toastContainer.remove();
+      onClose?.();
     };
-
     const closeIcon = toastContainer.getElementsByClassName(
       "close-icon"
     )[0] as HTMLElement;
 
     closeIcon.onclick = closeToast;
-    toastList[toastId] = setTimeout(closeToast, timeout || 5000);
+    toastList[toastId] = setTimeout(closeToast, timeout);
   };
 
-  const renderToast = () => {
+  const renderToastListContainer = () => {
     return (
       <div
-        ref={toastQueueRef}
-        className={clsx("usy-toast-container position-top-right", className)}
+        ref={toastListContainerRef}
+        className={clsx(
+          "usy-toast-container",
+          `position-${position}`,
+          className
+        )}
       />
     );
   };
 
-  return isMounted
-    ? createPortal(renderToast(), containerElement || document.body)
-    : null;
+  return isMounted ? (
+    <>
+      {createPortal(
+        renderToastListContainer(),
+        containerElement || document.body
+      )}
+      {children?.({
+        selfToast: {
+          basic,
+          success,
+          info,
+          warning,
+          error,
+        },
+      })}
+    </>
+  ) : null;
 };

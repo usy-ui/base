@@ -3,7 +3,7 @@ import { FC, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { BaseTypographyTag, CommonCompProps, MarginProps } from "../../@types";
+import { BaseTypoTagUnion, CommonCompProps, MarginProps } from "../../@types";
 import { Typography, TypographySize } from "../Typography";
 
 type ParagraphHeadingProps = {
@@ -14,7 +14,7 @@ type ParagraphHeadingProps = {
 } & MarginProps &
   CommonCompProps;
 
-const MappingHeadingTag: Record<TypographySize, BaseTypographyTag> = {
+const MappingHeadingTag: Record<TypographySize, BaseTypoTagUnion> = {
   tiny: "small",
   small: "small",
   medium: "p",

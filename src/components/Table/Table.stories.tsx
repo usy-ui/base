@@ -45,14 +45,14 @@ const columns: TableColumnType<RowType>[] = [
     title: "Age",
   },
   {
-    key: "action",
+    key: "action-1",
     title: "",
     widthProps: {
       width: "160px",
     },
     renderRow: () => (
       <Flex gap={usySpacing.px12}>
-        <Button variant="filled" size="small" noSole>
+        <Button variant="primary" size="small" noSole>
           Update
         </Button>
         <Button variant="outline" size="small" noSole>

@@ -2,7 +2,7 @@
 import { usyColor } from "@src/styles";
 import { camelCase, toCssVariable } from "@src/utils/format";
 
-import { BaseRadius } from "../../@types";
+import { BaseRadiusUnion } from "../../@types";
 
 type ColorModify = {
   colorPrimary: string;
@@ -14,7 +14,7 @@ type ElementModify = {
   elementHeightSmall: string;
   elementHeightMedium: string;
   elementHeightLarge: string;
-  elementRadius: BaseRadius;
+  elementRadius: BaseRadiusUnion;
 };
 
 type LayoutModify = {

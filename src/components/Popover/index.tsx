@@ -5,12 +5,16 @@ import clsx from "clsx";
 
 import { useOutsideClick } from "@src/hooks";
 
-import { BasePosition, BasePositionExtra, CommonCompProps } from "../../@types";
+import {
+  BasePositionUnion,
+  BasePositionExtraUnion,
+  CommonCompProps,
+} from "../../@types";
 import { Typography } from "../Typography";
 
 type PopoverProps = {
   content: string | ReactNode;
-  position?: BasePosition | BasePositionExtra;
+  position?: BasePositionUnion | BasePositionExtraUnion;
   children: ReactNode;
 } & CommonCompProps;
 

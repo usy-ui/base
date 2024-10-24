@@ -1,19 +1,15 @@
 "use client";
-import { ChangeEvent, forwardRef, useEffect, useState } from "react";
+import { ChangeEvent, forwardRef, ReactNode, useEffect, useState } from "react";
 
 import clsx from "clsx";
 
-import {
-  CommonCompProps,
-  FieldLabelProps,
-  FormFieldProps,
-} from "../../../@types";
+import { CommonCompProps, FormFieldProps } from "../../../@types";
 import { Typography } from "../../Typography";
 
 type CheckboxProps = {
+  label?: string | ReactNode;
   checked?: boolean;
-} & FieldLabelProps &
-  Omit<FormFieldProps<boolean, HTMLInputElement>, "hasError" | "value"> &
+} & Pick<FormFieldProps<boolean, HTMLInputElement>, "disabled" | "onChange"> &
   CommonCompProps;
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -65,7 +61,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           })}
           data-testid={`${testId}-input`}
         />
-        <Typography size="medium">{label}</Typography>
+        {typeof label === "string" ? (
+          <Typography size="medium">{label}</Typography>
+        ) : (
+          label
+        )}
       </label>
     );
   }

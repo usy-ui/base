@@ -1,4 +1,25 @@
 .usy-input-icon-left {
   font-size: 0;
   padding: 0 var(--usy-spacing-8px) 0 0;
+
+  &.input-size-small {
+    svg {
+      width: var(--usy-spacing-18px);
+      height: var(--usy-spacing-18px);
+    }
+  }
+
+  &.input-size-medium {
+    svg {
+      width: var(--usy-spacing-20px);
+      height: var(--usy-spacing-20px);
+    }
+  }
+
+  &.input-size-large {
+    svg {
+      width: var(--usy-spacing-24px);
+      height: var(--usy-spacing-24px);
+    }
+  }
 }

@@ -1,7 +1,7 @@
-export type BaseVariant = "filled" | "outline";
-export type BaseRadius = "none" | "small" | "medium" | "large" | "full";
-export type BasePosition = "top" | "right" | "bottom" | "left";
-export type BasePositionExtra =
+export type BaseVariantUnion = "filled" | "outline";
+export type BaseRadiusUnion = "none" | "small" | "medium" | "large" | "full";
+export type BasePositionUnion = "top" | "right" | "bottom" | "left";
+export type BasePositionExtraUnion =
   | "top-start"
   | "top-end"
   | "bottom-start"
@@ -11,7 +11,7 @@ export type BasePositionExtra =
  * Semantic Tag
  */
 
-export type BaseSemanticTag =
+export type BaseSemanticTagUnion =
   | "header"
   | "footer"
   | "main"
@@ -31,16 +31,19 @@ export type BaseSemanticTag =
  * Size
  */
 
-export type BaseSize = "small" | "medium" | "large";
-export type BaseSizeExtra = "tiny" | "huge";
-export type BaseSizeGigant = "gigant-1" | "gigant-2";
+export type BaseSizeUnion = "small" | "medium" | "large";
+export type BaseSizeExtraUnion = "tiny" | "huge";
+export type BaseSizeGigantUnion = "gigant-1" | "gigant-2";
 
 /**
  * Color
  */
 
-export type BasePrimaryPalette = "primary" | "primary-light" | "primary-dark";
-export type BaseLightPalette =
+export type BasePrimaryPaletteUnion =
+  | "primary"
+  | "primary-light"
+  | "primary-dark";
+export type BaseLightPaletteUnion =
   | "light-0"
   | "light-1"
   | "light-2"
@@ -51,7 +54,7 @@ export type BaseLightPalette =
   | "light-7"
   | "light-8"
   | "light-9";
-export type BaseDarkPalette =
+export type BaseDarkPaletteUnion =
   | "dark-0"
   | "dark-1"
   | "dark-2"
@@ -62,7 +65,7 @@ export type BaseDarkPalette =
   | "dark-7"
   | "dark-8"
   | "dark-9";
-export type BaseColorPalette =
+export type BaseColorPaletteUnion =
   | "white"
   | "black"
   | "gray"
@@ -91,19 +94,19 @@ export type BaseColorPalette =
   | "lime"
   | "mint"
   | "sky";
-export type BaseColor =
-  | BasePrimaryPalette
-  | BaseLightPalette
-  | BaseDarkPalette
-  | BaseColorPalette;
+export type BaseColorUnion =
+  | BasePrimaryPaletteUnion
+  | BaseLightPaletteUnion
+  | BaseDarkPaletteUnion
+  | BaseColorPaletteUnion;
 
 /**
  * Typography
  */
 
-export type BaseTypographyNormal = "small" | "label" | "span" | "p";
-export type BaseTypographyHeading = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-export type BaseTypographyFormat =
+export type BaseTypoNormalUnion = "small" | "label" | "span" | "p";
+export type BaseTypoHeadingUnion = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export type BaseTypoFormatUnion =
   | "mark"
   | "ins"
   | "del"
@@ -111,11 +114,11 @@ export type BaseTypographyFormat =
   | "sup"
   | "em"
   | "strong";
-export type BaseTypographyTag =
-  | BaseTypographyNormal
-  | BaseTypographyHeading
-  | BaseTypographyFormat;
-export type BaseTypographyWeight =
+export type BaseTypoTagUnion =
+  | BaseTypoNormalUnion
+  | BaseTypoHeadingUnion
+  | BaseTypoFormatUnion;
+export type BaseTypoWeightUnion =
   | "thin"
   | "light"
   | "semilight"

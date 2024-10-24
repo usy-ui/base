@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { usySpacing } from "@src/styles";
 
-import { BaseRadius, BaseSize, CommonCompProps } from "../../@types";
+import { BaseRadiusUnion, BaseSizeUnion, CommonCompProps } from "../../@types";
 import SvgLoadingCircle from "../Icon/LoadingCircle";
 
 export type ButtonType = "button" | "submit";
@@ -15,14 +15,14 @@ export type ButtonVariant =
   | "normal"
   | "danger"
   | "invisible";
-export type ButtonSize = BaseSize | "tiny";
+export type ButtonSize = BaseSizeUnion | "tiny";
 
 export type ButtonProps = {
   type?: ButtonType;
   width?: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
-  radius?: BaseRadius;
+  radius?: BaseRadiusUnion;
 
   iconLeft?: ReactNode;
   iconRight?: ReactNode;

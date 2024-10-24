@@ -15,14 +15,14 @@
   &.position-top {
     &:hover {
       .tooltip-overlay {
-        top: calc(-100% - var(--usy-spacing-10px));
+        top: calc(-1 * var(--usy-spacing-10px));
       }
     }
 
     .tooltip-overlay {
       top: 0;
       left: 50%;
-      transform: translateX(-50%) translateY(0);
+      transform: translateX(-50%) translateY(-100%);
 
       &::before {
         left: 50%;

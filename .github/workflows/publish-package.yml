@@ -2,16 +2,9 @@ name: Publish package
 run-name: Publish package triggered by ${{ github.actor }}
 
 on:
-  workflow_dispatch:
-    inputs:
-      releaseType:
-        description: "Release Type"
-        required: true
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -19,8 +12,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  release:
-    name: Create a release workflow
+  publish-package:
+    name: Publish package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -38,28 +31,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Bump version and create trigger commit
-        run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config advice.ignoredHook false
-          npm version --no-git-tag-version ${{ github.event.inputs.releaseType }}
-          RELEASE_TYPE=$(echo "${{ github.event.inputs.releaseType }}" | tr '[:lower:]' '[:upper:]')
-          RELEASE_VERSION=$(node -p "require('./package.json').version")
-          git add package.json
-          git commit -m "RELEASE_$RELEASE_TYPE: publish version $RELEASE_VERSION"
-          git push origin main
-          git checkout -b chore/sync-main-to-dev
-          git push origin chore/sync-main-to-dev -f
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create sync pull request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create --base dev --head chore/sync-main-to-dev --title "[Release Sync]: main to dev" --body "This PR syncs changes from the `main` branch to the `dev` branch."
 
       - name: Build library
         run: |
