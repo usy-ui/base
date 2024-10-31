@@ -20,7 +20,7 @@ type TableStyles = {
   hideOuterBorder?: boolean;
 };
 
-type TableProps<R extends FallbackRow> = {
+export type TableProps<R extends FallbackRow> = {
   rowKey: Extract<keyof R, string>;
   columns: TableColumnType<R>[];
   dataRows: R[];

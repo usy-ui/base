@@ -1,2 +1,2 @@
-export { BarSkeleton } from "./BarSkeleton";
-export { CircleSkeleton } from "./CircleSkeleton";
+export { BarSkeleton, BarSkeletonProps } from "./BarSkeleton";
+export { CircleSkeleton, CircleSkeletonProps } from "./CircleSkeleton";

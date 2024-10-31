@@ -27,7 +27,7 @@ type PureSelectProps = {
   isOpen?: boolean;
 };
 
-type SelectProps = PureSelectProps &
+export type SelectProps = PureSelectProps &
   FieldLabelProps &
   Pick<
     FormFieldProps<SelectItemType>,

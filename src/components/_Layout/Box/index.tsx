@@ -13,17 +13,17 @@ import {
 } from "../../../@types";
 
 export type CommonBoxFlexProps = {
+  children: ReactNode;
   tag?: BaseSemanticTagUnion;
   id?: string;
-  children: ReactNode;
 };
 
 export type PureBoxProps = {
   display?: "block" | "inline-block";
 };
 
-type BoxProps = CommonBoxFlexProps &
-  PureBoxProps &
+export type BoxProps = PureBoxProps &
+  CommonBoxFlexProps &
   WidthProps &
   HeightProps &
   MarginProps &
@@ -32,7 +32,7 @@ type BoxProps = CommonBoxFlexProps &
 
 export const Box: FC<BoxProps> = ({
   tag: Tag = "div",
-  display,
+  display = "block",
   widthProps,
   heightProps,
   paddingProps,

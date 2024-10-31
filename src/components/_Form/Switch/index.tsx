@@ -12,9 +12,12 @@ import {
 } from "../../../@types";
 import { FieldLabel } from "../FieldLabel";
 
-type SwitchProps = {
+type PureSwitchProps = {
   size?: BaseSizeUnion;
-} & FieldLabelProps &
+};
+
+export type SwitchProps = PureSwitchProps &
+  FieldLabelProps &
   Omit<FormFieldProps<boolean, HTMLInputElement>, "hasError"> &
   CommonCompProps;
 

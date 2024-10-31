@@ -7,16 +7,16 @@ import { Typography } from "@src/components/Typography";
 
 import { CommonCompProps } from "../../../@types";
 
-type DrawerHeaderProps = {
+export type DrawerHeaderProps = {
   title: string | ReactNode;
   onClose?: () => void;
 } & CommonCompProps;
 
 export const DrawerHeader: FC<DrawerHeaderProps> = ({
-  name = "drawer-header",
   title,
   onClose,
   className,
+  name = "drawer-header",
   testId = name,
 }) => {
   return (

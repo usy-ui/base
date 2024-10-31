@@ -13,10 +13,13 @@ import {
 } from "../../@types";
 import { CheckIcon, CopyIcon } from "../Icon";
 
-type CopyableProps = {
+type PureCopyableProps = {
   text: string;
   color?: BaseColorUnion;
-} & WidthProps &
+};
+
+export type CopyableProps = PureCopyableProps &
+  WidthProps &
   MarginProps &
   CommonCompProps;
 

@@ -36,7 +36,9 @@ type MoreTextAreaProps = {
   onBlur?: (e: FocusEvent<HTMLTextAreaElement>, value: string) => void;
 };
 
-type TextAreaProps = PickedInputProps & MoreTextAreaProps & CommonCompProps;
+export type TextAreaProps = PickedInputProps &
+  MoreTextAreaProps &
+  CommonCompProps;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   function TextArea(

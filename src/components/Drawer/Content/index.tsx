@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 import { CommonCompProps } from "../../../@types";
 
-type DrawerContentProps = {
+export type DrawerContentProps = {
   children: ReactNode;
 } & CommonCompProps;
 

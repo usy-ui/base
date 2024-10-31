@@ -13,16 +13,16 @@ import { useOutsideClick } from "@src/hooks";
 import { CommonCompProps } from "../../@types";
 
 import { MenuOverlay } from "./MenuOverlay";
-import { MenuItem } from "./MenuOverlay/MenuItem";
+import { MenuItem, MenuItemProps } from "./MenuOverlay/MenuItem";
 import { MenuSeparator } from "./MenuOverlay/MenuSeparator";
-import { Trigger } from "./Trigger";
+import { Trigger, TriggerProps } from "./Trigger";
 
 type PureDropdownMenuProps = {
   isOpen?: boolean;
   children: ReactElement[];
 };
 
-type DropdownMenuProps = PureDropdownMenuProps & CommonCompProps;
+export type DropdownMenuProps = PureDropdownMenuProps & CommonCompProps;
 
 const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   function DropdownMenu(
@@ -82,7 +82,9 @@ const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
 export {
   DropdownMenu,
   Trigger as DropdownMenuTrigger,
+  TriggerProps as DropdownTriggerProps,
   MenuOverlay as DropdownMenuOverlay,
   MenuSeparator as DropdownMenuSeparator,
   MenuItem as DropdownMenuItem,
+  MenuItemProps as DropdownMenuItemProps,
 };

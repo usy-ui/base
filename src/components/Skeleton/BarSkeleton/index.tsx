@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { CommonCompProps } from "../../../@types";
 import { MarginProps, PaddingProps, WidthProps } from "../../../@types";
 
-type BarSkeletonProps = {
+export type BarSkeletonProps = {
   rows?: number;
 } & WidthProps &
   MarginProps &

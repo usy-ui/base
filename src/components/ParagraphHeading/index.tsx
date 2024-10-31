@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { BaseTypoTagUnion, CommonCompProps, MarginProps } from "../../@types";
 import { Typography, TypographySize } from "../Typography";
 
-type ParagraphHeadingProps = {
+export type ParagraphHeadingProps = {
   title: string;
   titleSize?: TypographySize;
   description?: string | ReactNode;

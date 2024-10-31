@@ -1603,6 +1603,7 @@ a {
   .radio-group-container {
     display: flex;
     padding: var(--usy-spacing-10px) 0;
+    flex-wrap: wrap;
 
     &.direction-horizontal {
       align-items: center;

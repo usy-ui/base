@@ -11,7 +11,7 @@ type Image = {
   alt?: string;
 };
 
-type ImageGalleryProps = {
+export type ImageGalleryProps = {
   tag?: BaseSemanticTagUnion;
   images: Image[];
 } & CommonCompProps;

@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { CommonCompProps, MarginProps } from "../../../@types";
 
-type CircleSkeletonProps = {
+export type CircleSkeletonProps = {
   width: string;
   height: string;
 } & MarginProps &

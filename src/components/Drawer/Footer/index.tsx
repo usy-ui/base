@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { CommonCompProps } from "../../../@types";
 import { Button, ButtonProps } from "../../../components/Button";
 
-type DrawerFooterProps = {
+export type DrawerFooterProps = {
   alignContent?: "left" | "center" | "right";
   buttons: ButtonProps[];
 } & CommonCompProps;

@@ -16,7 +16,10 @@ type PureTagsProps = {
   onRemove?: (tags: string[], tag: string) => void;
 };
 
-type TagsProps = PureTagsProps & FieldLabelProps & WidthProps & CommonCompProps;
+export type TagsProps = PureTagsProps &
+  FieldLabelProps &
+  WidthProps &
+  CommonCompProps;
 
 export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
   {

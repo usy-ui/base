@@ -19,7 +19,7 @@ type PureScrollableProps = {
   children?: ReactNode;
 };
 
-type ScrollableProps = PureScrollableProps &
+export type ScrollableProps = PureScrollableProps &
   WidthProps &
   HeightProps &
   MarginProps &

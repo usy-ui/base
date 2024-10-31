@@ -21,7 +21,7 @@ export type TypographySize =
   | BaseSizeGigantUnion;
 type TypographyAlign = "left" | "center" | "right" | "justify";
 
-type TypographyProps = {
+export type TypographyProps = {
   tag?: BaseTypoTagUnion;
   weight?: BaseTypoWeightUnion;
   color?: BaseColorUnion | "random";

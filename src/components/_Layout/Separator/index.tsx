@@ -13,11 +13,14 @@ import {
   WidthProps,
 } from "../../../@types";
 
-type SeparatorProps = {
+type PureSeparatorProps = {
   title?: string;
   direction?: "horizontal" | "vertical";
   color?: BaseColorUnion | "random";
-} & WidthProps &
+};
+
+export type SeparatorProps = PureSeparatorProps &
+  WidthProps &
   HeightProps &
   MarginProps &
   CommonCompProps;

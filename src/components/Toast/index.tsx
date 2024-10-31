@@ -56,7 +56,7 @@ export let rootToast: ToastInstance;
  * Toast Component
  */
 
-type ToastProps = {
+export type ToastProps = {
   position?: BasePositionExtraUnion;
   containerElement?: HTMLElement;
   children?: (props: { selfToast: ToastInstance }) => ReactNode;

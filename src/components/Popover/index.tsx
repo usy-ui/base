@@ -12,7 +12,7 @@ import {
 } from "../../@types";
 import { Typography } from "../Typography";
 
-type PopoverProps = {
+export type PopoverProps = {
   content: string | ReactNode;
   position?: BasePositionUnion | BasePositionExtraUnion;
   children: ReactNode;

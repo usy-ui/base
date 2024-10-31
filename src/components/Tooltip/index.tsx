@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { BasePositionUnion, CommonCompProps } from "../../@types";
 
-type TooltipProps = {
+export type TooltipProps = {
   content: string | ReactNode;
   position?: BasePositionUnion;
   children: ReactNode;

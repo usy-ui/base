@@ -13,9 +13,12 @@ import {
 import { AccordionItem, AccordionItemType } from "./AccordionItem";
 export { AccordionItemType } from "./AccordionItem";
 
-type AccordionProps = {
+type PureAccordionProps = {
   items: AccordionItemType[];
-} & WidthProps &
+};
+
+export type AccordionProps = PureAccordionProps &
+  WidthProps &
   MarginProps &
   PaddingProps &
   CommonCompProps;

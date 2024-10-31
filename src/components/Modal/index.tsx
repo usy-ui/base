@@ -11,15 +11,16 @@ import { CommonCompProps, WidthProps } from "../../@types";
 import { CloseIcon } from "../Icon";
 import { ParagraphHeading } from "../ParagraphHeading";
 
-type ModalProps = {
+type PureModalProps = {
   title?: string | ReactNode;
   preventOutsideClose?: boolean;
   containerElement?: HTMLElement;
   children: ReactNode;
   onClose?: () => void;
   zIndex?: number;
-} & WidthProps &
-  CommonCompProps;
+};
+
+export type ModalProps = PureModalProps & WidthProps & CommonCompProps;
 
 export const Modal: FC<ModalProps> = ({
   title,

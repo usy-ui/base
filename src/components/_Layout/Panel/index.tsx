@@ -21,7 +21,8 @@ type PurePanelProps = {
   borderRadius?: string;
   children: string | ReactNode;
 };
-type PanelProps = PurePanelProps &
+
+export type PanelProps = PurePanelProps &
   WidthProps &
   HeightProps &
   MarginProps &

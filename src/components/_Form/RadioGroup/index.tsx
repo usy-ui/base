@@ -21,7 +21,7 @@ type PureRadioGroupProps = {
   direction?: "vertical" | "horizontal";
 };
 
-type RadioGroupProps = PureRadioGroupProps &
+export type RadioGroupProps = PureRadioGroupProps &
   Pick<FieldLabelProps, "label"> &
   Pick<
     FormFieldProps<RadioType, HTMLInputElement>,

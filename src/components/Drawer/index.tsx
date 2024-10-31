@@ -11,19 +11,20 @@ import { CommonCompProps, WidthProps } from "../../@types";
 
 import { disableScroll } from "./Drawer.utils";
 
-export { DrawerHeader } from "./Header";
-export { DrawerContent } from "./Content";
-export { DrawerFooter } from "./Footer";
+export { DrawerHeader, DrawerHeaderProps } from "./Header";
+export { DrawerContent, DrawerContentProps } from "./Content";
+export { DrawerFooter, DrawerFooterProps } from "./Footer";
 
-type DrawerProps = {
+type PureDrawerProps = {
   side?: "left" | "right";
   header?: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
   containerElement?: HTMLElement;
   zIndex?: number;
-} & WidthProps &
-  CommonCompProps;
+};
+
+export type DrawerProps = PureDrawerProps & WidthProps & CommonCompProps;
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
   {

@@ -11,7 +11,7 @@ export type TabItemType = {
   content: ReactNode;
 };
 
-type TabsProps = {
+export type TabsProps = {
   tabs: TabItemType[];
   tabId?: string;
   willMounted?: boolean;

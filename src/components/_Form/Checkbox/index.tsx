@@ -6,10 +6,13 @@ import clsx from "clsx";
 import { CommonCompProps, FormFieldProps } from "../../../@types";
 import { Typography } from "../../Typography";
 
-type CheckboxProps = {
+type PureCheckboxProps = {
   label?: string | ReactNode;
   checked?: boolean;
-} & Pick<FormFieldProps<boolean, HTMLInputElement>, "disabled" | "onChange"> &
+};
+
+export type CheckboxProps = PureCheckboxProps &
+  Pick<FormFieldProps<boolean, HTMLInputElement>, "disabled" | "onChange"> &
   CommonCompProps;
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

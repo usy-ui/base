@@ -14,7 +14,7 @@ import {
   BaseSizeUnion,
 } from "../../@types";
 
-type AvatarProps = {
+export type AvatarProps = {
   url: string;
   size?: BaseSizeUnion | BaseSizeExtraUnion;
   color?: BaseColorUnion | "random";
