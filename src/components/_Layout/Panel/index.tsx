@@ -18,8 +18,7 @@ import { Typography } from "../../Typography";
 type PurePanelProps = {
   tag?: BaseSemanticTagUnion;
   title?: ReactNode;
-  borderRadius?: string;
-  children: string | ReactNode;
+  children: ReactNode;
 };
 
 export type PanelProps = PurePanelProps &
@@ -31,15 +30,14 @@ export type PanelProps = PurePanelProps &
 
 export const Panel = forwardRef<HTMLDivElement, PanelProps>(function Panel(
   {
-    name = "panel",
     title,
-    borderRadius = usySpacing.px14,
     widthProps,
     heightProps,
     paddingProps,
     marginProps,
     children,
     className,
+    name = "panel",
     testId = name,
   },
   ref
@@ -55,7 +53,6 @@ export const Panel = forwardRef<HTMLDivElement, PanelProps>(function Panel(
           padding: `${usySpacing.px20} ${usySpacing.px24} ${usySpacing.px24}`,
         }),
         ...marginProps,
-        borderRadius,
       }}
       data-testid={testId}
     >

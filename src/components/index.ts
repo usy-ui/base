@@ -7,6 +7,7 @@ export { setUsyTheme } from "./_Theme";
 
 export { Box, BoxProps } from "./_Layout/Box";
 export { Flex, FlexProps } from "./_Layout/Flex";
+export { FlexChild, FlexChildProps } from "./_Layout/FlexChild";
 export { Panel, PanelProps } from "./_Layout/Panel";
 export { Scrollable, ScrollableProps } from "./_Layout/Scrollable";
 export { Separator, SeparatorProps } from "./_Layout/Separator";

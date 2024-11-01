@@ -1,20 +1,6 @@
 .usy-scrollable-container {
   overflow: hidden;
 
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 12px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 3px;
-  }
-
   &.scroll-vertical {
     overflow-x: hidden;
     overflow-y: auto;
@@ -28,20 +14,53 @@
   }
 
   &.scroll-both {
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
   }
 
-  &.scroll-vertical:hover,
-  &.scroll-horizontal:hover,
-  &.scroll-both:hover {
+  /* default */
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--usy-color-light-1);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--usy-color-light-3);
+    border-radius: 6px;
+  }
+
+  /* show scroll on hover */
+
+  &.show-scroll-on-hover {
     &::-webkit-scrollbar-track {
-      background-color: var(--usy-color-light-1);
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 12px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--usy-color-light-3);
+      background-color: transparent;
       border-radius: 6px;
+    }
+
+    &.scroll-vertical:hover,
+    &.scroll-horizontal:hover,
+    &.scroll-both:hover {
+      &::-webkit-scrollbar-track {
+        background-color: var(--usy-color-light-1);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--usy-color-light-3);
+      }
     }
   }
 }

@@ -339,7 +339,6 @@ a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  user-select: none;
 
   /*
    * Variant
@@ -661,6 +660,27 @@ a {
   border-right: 1px solid var(--usy-color-light-4);
   position: relative;
   overflow: hidden;
+
+  .header-close {
+    width: var(--usy-spacing-24px);
+    height: var(--usy-spacing-24px);
+    padding: var(--usy-spacing-2px);
+    position: absolute;
+    top: var(--usy-spacing-12px);
+    right: var(--usy-spacing-12px);
+    border-radius: var(--usy-spacing-2px);
+    cursor: pointer;
+
+    &:hover {
+      path {
+        stroke: var(--usy-color-dark-1);
+      }
+    }
+
+    path {
+      stroke: var(--usy-color-light-9);
+    }
+  }
 }
 .usy-drawer-footer-container {
   height: 66px;
@@ -1874,23 +1894,10 @@ a {
   width: 100%;
   background-color: var(--usy-color-white);
   border: 2px solid var(--usy-color-light-1);
+  border-radius: var(--usy-spacing-14px);
 }
 .usy-scrollable-container {
   overflow: hidden;
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 12px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 3px;
-  }
 
   &.scroll-vertical {
     overflow-x: hidden;
@@ -1905,20 +1912,53 @@ a {
   }
 
   &.scroll-both {
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
   }
 
-  &.scroll-vertical:hover,
-  &.scroll-horizontal:hover,
-  &.scroll-both:hover {
+  /* default */
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--usy-color-light-1);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--usy-color-light-3);
+    border-radius: 6px;
+  }
+
+  /* show scroll on hover */
+
+  &.show-scroll-on-hover {
     &::-webkit-scrollbar-track {
-      background-color: var(--usy-color-light-1);
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 12px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--usy-color-light-3);
+      background-color: transparent;
       border-radius: 6px;
+    }
+
+    &.scroll-vertical:hover,
+    &.scroll-horizontal:hover,
+    &.scroll-both:hover {
+      &::-webkit-scrollbar-track {
+        background-color: var(--usy-color-light-1);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--usy-color-light-3);
+      }
     }
   }
 }

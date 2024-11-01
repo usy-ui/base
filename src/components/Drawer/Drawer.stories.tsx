@@ -32,6 +32,8 @@ const TriggerDrawer = () => {
       <Button onClick={openModal}>Open Drawer</Button>
       {isOpen && (
         <Drawer
+          preventOutsideClose
+          onClose={closeModal}
           header={<DrawerHeader title="Drawer" onClose={closeModal} />}
           footer={
             <DrawerFooter
@@ -39,12 +41,12 @@ const TriggerDrawer = () => {
               buttons={[
                 {
                   variant: "primary",
-                  label: "Confirm",
+                  children: "Confirm",
                   onClick: () => alert("Confirmed"),
                 },
                 {
                   variant: "normal",
-                  label: "Cancel",
+                  children: "Cancel",
                   onClick: () => alert("Canceled"),
                 },
               ]}
