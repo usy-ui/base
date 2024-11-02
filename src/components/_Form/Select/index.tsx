@@ -29,10 +29,7 @@ type PureSelectProps = {
 
 export type SelectProps = PureSelectProps &
   FieldLabelProps &
-  Pick<
-    FormFieldProps<SelectItemType>,
-    "value" | "disabled" | "onChange" | "onBlur"
-  > &
+  Pick<FormFieldProps<SelectItemType>, "value" | "disabled" | "onChange"> &
   WidthProps &
   CommonCompProps;
 
@@ -41,11 +38,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
     items = [],
     isOpen: initOpen,
     label,
-    value,
     hasAsterisk,
+    value,
     disabled,
-    widthProps,
     onChange,
+    widthProps,
     className,
     name = "select",
     testId = name,

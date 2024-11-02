@@ -12,49 +12,47 @@ import clsx from "clsx";
 import { useNameMemo } from "@src/hooks";
 import { usyElement } from "@src/styles";
 
-import { HeightProps, type CommonCompProps } from "../../../@types";
+import {
+  FormFieldProps,
+  HeightProps,
+  type CommonCompProps,
+} from "../../../@types";
 import { FieldLabel } from "../FieldLabel";
 import { PureInputProps } from "../Input";
 import { InputDescription } from "../Input/components/InputDescription";
 
 type PickedInputProps = Pick<
   PureInputProps,
-  | "name"
-  | "value"
-  | "label"
   | "placeholder"
   | "description"
+  | "label"
   | "hasAsterisk"
-  | "hasError"
+  | "value"
   | "disabled"
+  | "hasError"
   | "widthProps"
 > &
   HeightProps;
 
-type MoreTextAreaProps = {
-  onChange?: (e: ChangeEvent<HTMLTextAreaElement>, value: string) => void;
-  onBlur?: (e: FocusEvent<HTMLTextAreaElement>, value: string) => void;
-};
-
 export type TextAreaProps = PickedInputProps &
-  MoreTextAreaProps &
+  Pick<FormFieldProps<string, HTMLTextAreaElement>, "onChange" | "onBlur"> &
   CommonCompProps;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   function TextArea(
     {
-      name,
-      value = "",
-      label,
       placeholder,
       description,
+      label,
       hasAsterisk = false,
-      hasError = false,
+      value = "",
       disabled = false,
-      widthProps,
-      heightProps,
+      hasError = false,
       onChange,
       onBlur,
+      widthProps,
+      heightProps,
+      name = "textarea",
       className,
       testId,
     },
@@ -73,7 +71,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       }
 
       setInputValue(e.target.value);
-      onChange?.(e, e.target.value);
+      onChange?.(e.target.value, e);
     };
 
     const handleOnBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
@@ -82,7 +80,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       }
 
       setInputValue(e.target.value);
-      onBlur?.(e, e.target.value);
+      onBlur?.(e.target.value, e);
     };
 
     /**
@@ -104,7 +102,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             "has-error": hasError,
           })}
           style={{
-            ...(widthProps || { width: "100%" }),
             height: heightProps?.height,
             minHeight: heightProps?.minHeight || usyElement.heightMedium,
             maxHeight: heightProps?.maxHeight || "200px",
@@ -122,6 +119,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           },
           className
         )}
+        style={{ ...(widthProps || { width: "100%" }) }}
       >
         {label && (
           <FieldLabel

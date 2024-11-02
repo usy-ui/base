@@ -30,11 +30,11 @@ export type RadioGroupProps = PureRadioGroupProps &
   CommonCompProps;
 
 export const RadioGroup: FC<RadioGroupProps> = ({
-  value,
   items,
   direction = "horizontal",
   label,
   disabled,
+  value,
   onChange,
   className,
   name = "radio-group",

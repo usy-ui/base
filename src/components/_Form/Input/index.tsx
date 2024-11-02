@@ -16,6 +16,7 @@ import {
   BaseSizeUnion,
   CommonCompProps,
   FieldLabelProps,
+  FormFieldProps,
   WidthProps,
 } from "../../../@types";
 import { FieldLabel } from "../FieldLabel";
@@ -25,41 +26,37 @@ import { InputIconLeft } from "./components/InputIconLeft";
 import { InputIconRight } from "./components/InputIconRight";
 
 export type PureInputProps = {
-  value?: string;
   type?: "text" | "number";
   size?: BaseSizeUnion;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   placeholder?: string;
   description?: ReactNode;
-  hasError?: boolean;
-  disabled?: boolean;
-  onChange?: (value: string, e: ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (value: string, e: FocusEvent<HTMLInputElement>) => void;
   transformOnChange?: (value: string) => string;
   transformOnBlur?: (value: string) => string;
 } & FieldLabelProps &
+  FormFieldProps<string, HTMLInputElement> &
   WidthProps;
 
 export type InputProps = PureInputProps & CommonCompProps;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
-    value = "",
     type = "text",
     size = "medium",
     iconLeft,
     iconRight,
     placeholder,
     description,
-    hasError = false,
-    disabled = false,
-    onChange,
-    onBlur,
     transformOnChange = (value) => value,
     transformOnBlur = (value) => value,
     label,
     hasAsterisk = false,
+    value = "",
+    hasError = false,
+    disabled = false,
+    onChange,
+    onBlur,
     widthProps,
     className,
     name = "input",
