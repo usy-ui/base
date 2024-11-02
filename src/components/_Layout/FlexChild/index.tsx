@@ -7,8 +7,7 @@ import {
   MarginProps,
   PaddingProps,
   WidthProps,
-} from "@src/@types";
-
+} from "../../../@types";
 import { CommonBoxFlexProps } from "../Box";
 
 type PureFlexChild = {

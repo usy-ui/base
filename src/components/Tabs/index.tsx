@@ -11,14 +11,16 @@ export type TabItemType = {
   content: ReactNode;
 };
 
-export type TabsProps = {
+type PureTabsProps = {
   tabs: TabItemType[];
   tabId?: string;
   willMounted?: boolean;
-} & CommonCompProps;
+};
+
+export type TabsProps = PureTabsProps & CommonCompProps;
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
-  { name = "tabs", tabs, tabId, willMounted = true, className, testId = name },
+  { tabs, tabId, willMounted = true, className, name = "tabs", testId = name },
   ref
 ) {
   const [activeTabId, setActiveTabId] = useState(tabId || tabs[0].id);

@@ -5,10 +5,10 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProviderDecorator } from "../../../.storybook/decorators";
 import { Flex } from "../_Layout/Flex";
 
-import { BarSkeleton, CircleSkeleton } from "./index";
+import { Skeleton } from "./index";
 
-const meta: Meta<typeof BarSkeleton> = {
-  component: BarSkeleton,
+const meta: Meta<typeof Skeleton> = {
+  component: Skeleton,
   decorators: [ThemeProviderDecorator],
   argTypes: {},
   parameters: {
@@ -20,10 +20,10 @@ export const Types: Story = {
   render: () => {
     return (
       <Flex>
-        <CircleSkeleton />
+        <Skeleton type="circle" />
         <Flex direction="column">
-          <BarSkeleton rows={4} />
-          <BarSkeleton rows={2} widthProps={{ width: "200px" }} />
+          <Skeleton type="bars" numOfBars={4} />
+          <Skeleton type="bars" numOfBars={2} widthProps={{ width: "200px" }} />
         </Flex>
       </Flex>
     );
@@ -31,4 +31,4 @@ export const Types: Story = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BarSkeleton>;
+type Story = StoryObj<typeof Skeleton>;

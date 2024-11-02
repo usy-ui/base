@@ -58,12 +58,7 @@ export { ImageGallery, ImageGalleryProps } from "./ImageGallery";
 export { Modal, ModalProps } from "./Modal";
 export { ParagraphHeading, ParagraphHeadingProps } from "./ParagraphHeading";
 export { Popover, PopoverProps } from "./Popover";
-export {
-  BarSkeleton,
-  BarSkeletonProps,
-  CircleSkeleton,
-  CircleSkeletonProps,
-} from "./Skeleton";
+export { Skeleton, SkeletonProps } from "./Skeleton";
 export { Table, TableProps, TableColumnType } from "./Table";
 export { Tabs, TabsProps, TabItemType } from "./Tabs";
 export { Toast, ToastProps, rootToast } from "./Toast";
