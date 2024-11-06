@@ -5,8 +5,15 @@ import clsx from "clsx";
 
 import { usySpacing } from "@src/styles";
 
-import { BaseRadiusUnion, BaseSizeUnion, CommonCompProps } from "../../@types";
+import {
+  BaseRadiusUnion,
+  BaseSizeUnion,
+  CommonCompProps,
+  WidthProps,
+} from "../../@types";
 import SvgLoadingCircle from "../Icon/LoadingCircle";
+
+import { SoleSizeMappingConst } from "./Button.constants";
 
 export type ButtonType = "button" | "submit";
 export type ButtonVariant =
@@ -17,35 +24,26 @@ export type ButtonVariant =
   | "invisible";
 export type ButtonSize = BaseSizeUnion | "tiny";
 
-export type ButtonProps = {
+type PureButtonProps = {
+  children: ReactNode;
   type?: ButtonType;
-  width?: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
   radius?: BaseRadiusUnion;
-
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   loading?: boolean;
   disabled?: boolean;
   noSole?: boolean;
-  children: ReactNode;
   onClick?: () => void;
-} & CommonCompProps;
-
-const SoleSizeMappingConst: Record<ButtonSize, string> = {
-  tiny: "2px",
-  small: "3px",
-  medium: "4px",
-  large: "4px",
 };
+export type ButtonProps = PureButtonProps & WidthProps & CommonCompProps;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
-      name = "button",
+      children,
       type = "button",
-      width = "unset",
       variant = "normal",
       size = "medium",
       radius = "small",
@@ -54,9 +52,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       noSole = false,
       iconLeft,
       iconRight,
-      children,
       onClick,
+      widthProps,
       className,
+      name = "button",
       testId = name,
     },
     ref
@@ -117,7 +116,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           },
           className
         )}
-        style={{ width, ...cssVariables }}
+        style={{ ...widthProps, ...cssVariables }}
         disabled={isDisabled}
         onClick={handleClick}
         data-testid={testId}

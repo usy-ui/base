@@ -32,7 +32,6 @@ export type TypographyProps = {
 } & CommonCompProps;
 
 export const Typography: FC<TypographyProps> = ({
-  name = "typography",
   tag: Tag = "p",
   weight = "medium",
   color = "dark-9",
@@ -41,6 +40,7 @@ export const Typography: FC<TypographyProps> = ({
   wrap,
   children,
   className,
+  name = "typography",
   testId = name,
 }) => {
   const colorInHex = useUsyColor(color);

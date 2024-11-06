@@ -6,12 +6,15 @@ import clsx from "clsx";
 import { BaseTypoTagUnion, CommonCompProps, MarginProps } from "../../@types";
 import { Typography, TypographySize } from "../Typography";
 
-export type ParagraphHeadingProps = {
-  title: string;
+type PureParagraphHeadingProps = {
+  title: string | ReactNode;
   titleSize?: TypographySize;
   description?: string | ReactNode;
   descriptionSize?: TypographySize;
-} & MarginProps &
+};
+
+export type ParagraphHeadingProps = PureParagraphHeadingProps &
+  MarginProps &
   CommonCompProps;
 
 const MappingHeadingTag: Record<TypographySize, BaseTypoTagUnion> = {
@@ -25,12 +28,12 @@ const MappingHeadingTag: Record<TypographySize, BaseTypoTagUnion> = {
 };
 
 export const ParagraphHeading: FC<ParagraphHeadingProps> = ({
-  name = "paragraph-heading",
   title,
   description,
   titleSize = "large",
   descriptionSize = "small",
   marginProps,
+  name = "paragraph-heading",
   className,
   testId = name,
 }) => {

@@ -6,15 +6,15 @@ import clsx from "clsx";
 import { BasePositionUnion, CommonCompProps } from "../../@types";
 
 export type TooltipProps = {
+  children: ReactNode;
   content: string | ReactNode;
   position?: BasePositionUnion;
-  children: ReactNode;
 } & CommonCompProps;
 
 export const Tooltip: FC<TooltipProps> = ({
+  children,
   content,
   position = "top",
-  children,
   className,
   name = "tooltip",
   testId = name,

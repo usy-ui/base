@@ -1313,19 +1313,32 @@ a {
     &:hover {
       .tooltip-overlay {
         top: calc(-1 * var(--usy-spacing-10px));
+        left: 50%;
+        transform: translateX(-50%) translateY(-100%);
+
+        &::before {
+          left: 50%;
+          top: calc(100% - 1px);
+          transform: translateX(-50%);
+          border-color: #000 #0000 #0000 #0000;
+        }
       }
     }
+  }
 
-    .tooltip-overlay {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(-100%);
+  &.position-right {
+    &:hover {
+      .tooltip-overlay {
+        top: 50%;
+        right: calc(-1 * var(--usy-spacing-10px));
+        transform: translateX(100%) translateY(-50%);
 
-      &::before {
-        left: 50%;
-        top: calc(100% - 1px);
-        transform: translateX(-50%);
-        border-color: #000 #0000 #0000 #0000;
+        &::before {
+          left: calc(-1 * var(--usy-spacing-10px));
+          top: 50%;
+          transform: translateY(-50%);
+          border-color: #0000 #000 #0000 #0000;
+        }
       }
     }
   }
@@ -1334,19 +1347,32 @@ a {
     &:hover {
       .tooltip-overlay {
         top: calc(100% + var(--usy-spacing-10px));
+        left: 50%;
+        transform: translateX(-50%) translateY(0%);
+
+        &::before {
+          left: 50%;
+          top: -11px;
+          transform: translateX(-50%);
+          border-color: #0000 #0000 #000 #0000;
+        }
       }
     }
+  }
 
-    .tooltip-overlay {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(0%);
+  &.position-left {
+    &:hover {
+      .tooltip-overlay {
+        top: 50%;
+        left: calc(-1 * var(--usy-spacing-10px));
+        transform: translateX(-100%) translateY(-50%);
 
-      &::before {
-        left: 50%;
-        top: -11px;
-        transform: translateX(-50%);
-        border-color: #0000 #0000 #000 #0000;
+        &::before {
+          right: calc(-1 * var(--usy-spacing-10px));
+          top: 50%;
+          transform: translateY(-50%);
+          border-color: #0000 #0000 #0000 #000;
+        }
       }
     }
   }

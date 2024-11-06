@@ -54,7 +54,11 @@ export {
   DropdownMenuItemProps,
   DropdownMenuSeparator,
 } from "./DropdownMenu";
-export { ImageGallery, ImageGalleryProps } from "./ImageGallery";
+export {
+  ImageGallery,
+  ImageGalleryProps,
+  ImageGalleryType,
+} from "./ImageGallery";
 export { Modal, ModalProps } from "./Modal";
 export { ParagraphHeading, ParagraphHeadingProps } from "./ParagraphHeading";
 export { Popover, PopoverProps } from "./Popover";
