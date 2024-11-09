@@ -12,16 +12,18 @@ import {
 } from "../../@types";
 import { Typography } from "../Typography";
 
-export type PopoverProps = {
+type PurePopoverProps = {
+  children: ReactNode;
   content: string | ReactNode;
   position?: BasePositionUnion | BasePositionExtraUnion;
-  children: ReactNode;
-} & CommonCompProps;
+};
+
+export type PopoverProps = PurePopoverProps & CommonCompProps;
 
 export const Popover: FC<PopoverProps> = ({
+  children,
   content,
   position = "bottom",
-  children,
   className,
   name = "popover",
   testId = name,

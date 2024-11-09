@@ -12,24 +12,24 @@ import { CloseIcon } from "../Icon";
 import { ParagraphHeading } from "../ParagraphHeading";
 
 type PureModalProps = {
+  children: ReactNode;
   title?: string | ReactNode;
   preventOutsideClose?: boolean;
   containerElement?: HTMLElement;
-  children: ReactNode;
-  onClose?: () => void;
   zIndex?: number;
+  onClose?: () => void;
 };
 
 export type ModalProps = PureModalProps & WidthProps & CommonCompProps;
 
 export const Modal: FC<ModalProps> = ({
+  children,
   title,
   widthProps,
   preventOutsideClose = false,
   containerElement,
-  children,
-  onClose,
   zIndex = usyZIndex.medium,
+  onClose,
   className,
   name = "modal",
   testId = name,

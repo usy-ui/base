@@ -4,22 +4,23 @@ import clsx from "clsx";
 
 import { usyZIndex } from "@src/styles";
 
-import { CommonCompProps } from "../../../@types";
+import { CommonCompProps, WidthProps } from "../../../@types";
 
 type PureMenuOverlayProps = {
-  zIndex?: number;
-  position?: "top" | "bottom";
   children: ReactElement | ReactElement[];
+  position?: "top" | "bottom";
+  zIndex?: number;
 };
 
-type MenuOverlayProps = PureMenuOverlayProps & CommonCompProps;
+type MenuOverlayProps = PureMenuOverlayProps & WidthProps & CommonCompProps;
 
 export const MenuOverlay = forwardRef<HTMLDivElement, MenuOverlayProps>(
   function MenuOverlay(
     {
-      position = "bottom",
       children,
+      position = "bottom",
       zIndex = usyZIndex.latest,
+      widthProps,
       className,
       name = "dropdown-menu-overlay",
       testId = name,
@@ -33,7 +34,7 @@ export const MenuOverlay = forwardRef<HTMLDivElement, MenuOverlayProps>(
           `position-${position}`,
           className
         )}
-        style={{ zIndex }}
+        style={{ ...widthProps, zIndex }}
         data-testid={testId}
         ref={ref}
       >

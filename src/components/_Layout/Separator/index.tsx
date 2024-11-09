@@ -40,6 +40,10 @@ export const Separator: FC<SeparatorProps> = ({
   const cssVariables = {
     "--usy-separator-color": colorInHex,
   } as CSSProperties;
+  const defaultMarginProps =
+    direction === "vertical"
+      ? { margin: `0 ${usySpacing.px20}` }
+      : { margin: `${usySpacing.px20} 0` };
 
   return (
     <div
@@ -51,9 +55,7 @@ export const Separator: FC<SeparatorProps> = ({
       style={{
         ...widthProps,
         ...heightProps,
-        ...(marginProps || direction === "vertical"
-          ? { margin: `0 ${usySpacing.px20}` }
-          : { margin: `${usySpacing.px20} 0` }),
+        ...(marginProps || defaultMarginProps),
         ...cssVariables,
       }}
       data-testid={testId}

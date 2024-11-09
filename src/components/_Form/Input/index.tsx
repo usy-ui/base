@@ -68,8 +68,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const { nameMemo } = useNameMemo(name, "input");
 
   useEffect(() => {
-    setInputValue(value);
-  }, [value]);
+    if (value !== inputValue) {
+      setInputValue(value);
+    }
+  }, [value, inputValue]);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) {

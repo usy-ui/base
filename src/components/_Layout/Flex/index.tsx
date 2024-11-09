@@ -48,9 +48,9 @@ export type FlexProps = CommonBoxFlexProps &
 export const Flex: FC<FlexProps> = ({
   tag: Tag = "div",
   display = "flex",
-  direction = "row",
-  justifyContent = "flex-start",
-  alignItems = "flex-start",
+  direction,
+  justifyContent,
+  alignItems,
   alignContent,
   wrap,
   gap,

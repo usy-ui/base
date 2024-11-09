@@ -10,37 +10,37 @@ import { usyZIndex } from "@src/styles";
 import { CommonCompProps, WidthProps } from "../../@types";
 import { CloseIcon } from "../Icon";
 
+import { DrawerContent } from "./Content";
 import { disableScroll } from "./Drawer.utils";
 
 export { DrawerHeader, DrawerHeaderProps } from "./Header";
-export { DrawerContent, DrawerContentProps } from "./Content";
 export { DrawerFooter, DrawerFooterProps } from "./Footer";
 
 type PureDrawerProps = {
+  children: ReactNode;
   side?: "left" | "right";
   header?: ReactNode;
-  children: ReactNode;
   footer?: ReactNode;
   preventOutsideClose?: boolean;
   containerElement?: HTMLElement;
-  onClose?: () => void;
   zIndex?: number;
+  onClose?: () => void;
 };
 
 export type DrawerProps = PureDrawerProps & WidthProps & CommonCompProps;
 
 export const Drawer: FC<DrawerProps> = ({
-  name = "drawer",
-  side = "right",
-  widthProps,
-  header,
   children,
+  side = "right",
+  header,
   footer,
-  preventOutsideClose,
+  preventOutsideClose = false,
   containerElement,
-  onClose,
   zIndex = usyZIndex.medium,
+  onClose,
+  widthProps,
   className,
+  name = "drawer",
   testId = name,
 }) => {
   const { isMounted } = useMounted();
@@ -94,7 +94,7 @@ export const Drawer: FC<DrawerProps> = ({
         >
           {renderCloseIcon()}
           {header}
-          {children}
+          <DrawerContent>{children}</DrawerContent>
           {footer}
         </div>
       </div>

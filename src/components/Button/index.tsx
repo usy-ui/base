@@ -44,7 +44,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       children,
       type = "button",
-      variant = "normal",
+      variant = "primary",
       size = "medium",
       radius = "small",
       loading: isLoading = false,

@@ -39,8 +39,6 @@ export {
   DrawerProps,
   DrawerHeader,
   DrawerHeaderProps,
-  DrawerContent,
-  DrawerContentProps,
   DrawerFooter,
   DrawerFooterProps,
 } from "./Drawer";

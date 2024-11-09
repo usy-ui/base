@@ -2,11 +2,13 @@
 import {
   Children,
   cloneElement,
-  forwardRef,
+  FC,
   ReactElement,
   ReactNode,
   useState,
 } from "react";
+
+import { clsx } from "clsx";
 
 import { useOutsideClick } from "@src/hooks";
 
@@ -18,66 +20,70 @@ import { MenuSeparator } from "./MenuOverlay/MenuSeparator";
 import { Trigger, TriggerProps } from "./Trigger";
 
 type PureDropdownMenuProps = {
-  isOpen?: boolean;
   children: ReactElement[];
+  open?: boolean;
 };
 
 export type DropdownMenuProps = PureDropdownMenuProps & CommonCompProps;
 
-const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
-  function DropdownMenu(
-    { name = "dropdown-menu", isOpen: initOpen, children, testId = name },
-    ref
-  ) {
-    const [isOpen, setIsOpen] = useState(initOpen || false);
+const DropdownMenu: FC<DropdownMenuProps> = ({
+  children,
+  open: initOpen = false,
+  className,
+  name = "dropdown-menu",
+  testId = name,
+}) => {
+  const [isOpen, setIsOpen] = useState(initOpen || false);
 
-    const handleOutsideClick = () => {
-      setIsOpen(false);
-    };
+  const handleOutsideClick = () => {
+    setIsOpen(false);
+  };
 
-    const { elementRef, triggerRef } = useOutsideClick(handleOutsideClick);
-    const toggleMenu = () => setIsOpen(!isOpen);
+  const { elementRef, triggerRef } = useOutsideClick(handleOutsideClick);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-    const renderChildren = () => {
-      const enhancedChildren: ReactNode[] = [];
-      Children.forEach(children, (child) => {
-        if (child.type === Trigger) {
-          enhancedChildren.push(
-            <div
-              key="trigger"
-              onClick={toggleMenu}
-              ref={triggerRef}
-              aria-hidden="true"
-            >
-              {child}
-            </div>
-          );
-        }
+  /**
+   * Render
+   */
 
-        if (child.type === MenuOverlay && isOpen) {
-          enhancedChildren.push(
-            cloneElement(child, {
-              key: "menu-overlay",
-              ref: elementRef,
-            })
-          );
-        }
-      });
+  const renderChildren = () => {
+    const enhancedChildren: ReactNode[] = [];
+    Children.forEach(children, (child) => {
+      if (child.type === Trigger) {
+        enhancedChildren.push(
+          <div
+            key="trigger"
+            onClick={toggleMenu}
+            ref={triggerRef}
+            aria-hidden="true"
+          >
+            {child}
+          </div>
+        );
+      }
 
-      return enhancedChildren;
-    };
+      if (child.type === MenuOverlay && isOpen) {
+        enhancedChildren.push(
+          cloneElement(child, {
+            key: "menu-overlay",
+            ref: elementRef,
+          })
+        );
+      }
+    });
 
-    return (
-      <div
-        ref={ref}
-        className="usy-dropdown-menu-container"
-        data-testid={testId}
-      >
-        {renderChildren()}
-      </div>
-    );
-  }
-);
+    return enhancedChildren;
+  };
+
+  return (
+    <div
+      className={clsx("usy-dropdown-menu-container", className)}
+      data-testid={testId}
+    >
+      {renderChildren()}
+    </div>
+  );
+};
 
 export {
   DropdownMenu,

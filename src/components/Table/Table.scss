@@ -2,7 +2,7 @@
   width: 100%;
 
   .table-container {
-    .has-outer-border {
+    &.has-outer-border {
       border: 1px solid var(--usy-color-light-2);
       border-radius: var(--usy-spacing-6px);
     }

@@ -6,15 +6,15 @@ import { CommonCompProps } from "../../../@types";
 import { Button, ButtonProps } from "../../../components/Button";
 
 export type DrawerFooterProps = {
-  alignContent?: "left" | "center" | "right";
   buttons: ButtonProps[];
+  alignContent?: "left" | "center" | "right";
 } & CommonCompProps;
 
 export const DrawerFooter: FC<DrawerFooterProps> = ({
-  name = "drawer-footer",
-  alignContent = "center",
   buttons,
+  alignContent = "center",
   className,
+  name = "drawer-footer",
   testId = name,
 }) => {
   return (
