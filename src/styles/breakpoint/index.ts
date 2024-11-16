@@ -1,4 +1,4 @@
-export const usyBreakpoints = Object.freeze({
+export const usyBreakpoint = Object.freeze({
   phone: "480px",
   tablet: "720px",
   laptop: "970px",

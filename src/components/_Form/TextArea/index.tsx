@@ -18,11 +18,12 @@ import {
   type CommonCompProps,
 } from "../../../@types";
 import { FieldLabel } from "../FieldLabel";
-import { PureInputProps } from "../Input";
+import { InputProps } from "../Input";
 import { InputDescription } from "../Input/components/InputDescription";
 
 type PickedInputProps = Pick<
-  PureInputProps,
+  InputProps,
+  | "size"
   | "placeholder"
   | "description"
   | "label"
@@ -41,6 +42,7 @@ export type TextAreaProps = PickedInputProps &
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   function TextArea(
     {
+      size = "medium",
       placeholder,
       description,
       label,
@@ -114,6 +116,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       <div
         className={clsx(
           "usy-textarea-container",
+          `size-${size}`,
           {
             disabled: Boolean(disabled),
           },

@@ -35,9 +35,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const [innerChecked, setInnerChecked] = useState(Boolean(checked));
 
     useEffect(() => {
-      if (checked !== innerChecked) {
-        setInnerChecked(Boolean(checked));
-      }
+      setInnerChecked(Boolean(checked));
     }, [checked, innerChecked]);
 
     const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {

@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 
 import clsx from "clsx";
 
@@ -15,7 +15,7 @@ import {
 } from "../../@types";
 
 export type AvatarProps = {
-  url: string;
+  src: string;
   size?: BaseSizeUnion | BaseSizeExtraUnion;
   color?: BaseColorUnion | "random";
   radius?: BaseRadiusUnion;
@@ -24,26 +24,22 @@ export type AvatarProps = {
   onClick?: () => void;
 } & CommonCompProps;
 
-export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
-  {
-    url,
-    size = "medium",
-    color = "black",
-    radius = "small",
-    fallback = "A",
-    imgAlt = "avatar",
-    onClick,
-    name = "avatar",
-    className,
-    testId = name,
-  },
-  ref
-) {
+export const Avatar: FC<AvatarProps> = ({
+  src,
+  size = "medium",
+  color = "black",
+  radius = "small",
+  fallback = "A",
+  imgAlt = "avatar",
+  onClick,
+  name = "avatar",
+  className,
+  testId = name,
+}) => {
   const bgColor = useUsyColor(color);
 
   return (
     <div
-      ref={ref}
       aria-hidden="true"
       title={imgAlt}
       onClick={onClick}
@@ -57,12 +53,12 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
       )}
       style={{
         color: usyColor.white,
-        backgroundColor: bgColor,
+        backgroundColor: src ? undefined : bgColor,
         cursor: onClick ? "pointer" : undefined,
       }}
       data-testid={testId}
     >
-      {url ? <img src={url} alt={imgAlt} className="image" /> : fallback}
+      {src ? <img src={src} alt={imgAlt} className="image" /> : fallback}
     </div>
   );
-});
+};

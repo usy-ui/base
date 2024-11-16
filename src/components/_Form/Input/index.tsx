@@ -34,11 +34,13 @@ export type PureInputProps = {
   description?: ReactNode;
   transformOnChange?: (value: string) => string;
   transformOnBlur?: (value: string) => string;
-} & FieldLabelProps &
-  FormFieldProps<string, HTMLInputElement> &
-  WidthProps;
+};
 
-export type InputProps = PureInputProps & CommonCompProps;
+export type InputProps = PureInputProps &
+  FieldLabelProps &
+  FormFieldProps<string, HTMLInputElement> &
+  WidthProps &
+  CommonCompProps;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
@@ -68,9 +70,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const { nameMemo } = useNameMemo(name, "input");
 
   useEffect(() => {
-    if (value !== inputValue) {
-      setInputValue(value);
-    }
+    setInputValue(value);
   }, [value, inputValue]);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {

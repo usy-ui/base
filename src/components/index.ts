@@ -63,7 +63,7 @@ export { Popover, PopoverProps } from "./Popover";
 export { Skeleton, SkeletonProps } from "./Skeleton";
 export { Table, TableProps, TableColumnType } from "./Table";
 export { Tabs, TabsProps, TabItemType } from "./Tabs";
-export { Toast, ToastProps, rootToast } from "./Toast";
+export { Toast, globalToast, ToastProps, ToastInstance } from "./Toast";
 export { TogglePanel, TogglePanelProps } from "./TogglePanel";
 export { Tooltip, TooltipProps } from "./Tooltip";
 export { Typography, TypographyProps } from "./Typography";

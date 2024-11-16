@@ -1,4 +1,4 @@
-export { usyBreakpoints } from "./breakpoints";
+export { usyBreakpoint } from "./breakpoint";
 export { usyColor, usyHexColors } from "./colors";
 export { usyElement } from "./element/element";
 export { usyFontSize } from "./font-size/font-size";

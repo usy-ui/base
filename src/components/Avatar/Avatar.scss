@@ -9,28 +9,38 @@
    */
 
   &.size-tiny {
-    width: 32px;
-    height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    min-height: 32px;
+    max-height: 32px;
   }
 
   &.size-small {
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    max-height: 40px;
   }
 
   &.size-medium {
-    width: 48px;
-    height: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 48px;
+    max-height: 48px;
   }
 
   &.size-large {
-    width: 64px;
-    height: 64px;
+    min-width: 64px;
+    max-width: 64px;
+    min-height: 64px;
+    max-height: 64px;
   }
 
   &.size-huge {
-    width: 80px;
-    height: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    min-height: 80px;
+    max-height: 80px;
   }
 
   /*

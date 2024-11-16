@@ -9,6 +9,30 @@
     cursor: not-allowed;
   }
 
+  &.size-small {
+    height: var(--usy-element-height-small);
+
+    .textarea {
+      font-size: var(--usy-fontsize-small);
+    }
+  }
+
+  &.size-medium {
+    height: var(--usy-element-height-medium);
+
+    .textarea {
+      font-size: var(--usy-fontsize-medium);
+    }
+  }
+
+  &.size-large {
+    height: var(--usy-element-height-large);
+
+    .textarea {
+      font-size: var(--usy-fontsize-large);
+    }
+  }
+
   .textarea {
     width: 100%;
     resize: vertical;
@@ -16,6 +40,7 @@
     border: 1px solid var(--usy-element-border-color);
     border-radius: var(--usy-element-border-radius);
     background-color: var(--usy-color-white);
+    font-size: var(--usy-fontsize-medium);
     outline: none;
 
     &:not(.has-error):focus,
