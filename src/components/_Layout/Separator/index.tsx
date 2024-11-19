@@ -2,6 +2,7 @@ import { CSSProperties, FC } from "react";
 
 import clsx from "clsx";
 
+import { Typography } from "@src/components/Typography";
 import { useUsyColor } from "@src/hooks";
 import { usySpacing } from "@src/styles";
 
@@ -12,9 +13,11 @@ import {
   MarginProps,
   WidthProps,
 } from "../../../@types";
+import { PureTypographyProps } from "../../Typography";
 
 type PureSeparatorProps = {
   title?: string;
+  titleProps?: Omit<PureTypographyProps, "children">;
   direction?: "horizontal" | "vertical";
   color?: BaseColorUnion | "random";
 };
@@ -27,6 +30,7 @@ export type SeparatorProps = PureSeparatorProps &
 
 export const Separator: FC<SeparatorProps> = ({
   title,
+  titleProps,
   direction = "horizontal",
   color,
   widthProps,
@@ -60,7 +64,11 @@ export const Separator: FC<SeparatorProps> = ({
       }}
       data-testid={testId}
     >
-      {title && <span className="title">{title}</span>}
+      {title && (
+        <Typography {...titleProps} className="title">
+          {title}
+        </Typography>
+      )}
     </div>
   );
 };

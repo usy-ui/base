@@ -7,7 +7,7 @@
     background-color: var(--usy-color-white);
     padding: var(--usy-spacing-10px) var(--usy-spacing-14px);
     border: 1px solid var(--usy-element-border-color);
-    border-radius: var(--usy-element-border-radius);
+    border-radius: var(--usy-spacing-10px);
     filter: drop-shadow(0px 0px 6px var(--usy-color-light-2));
     transition: all 0.5s ease;
     z-index: var(--usy-zIndex-high);

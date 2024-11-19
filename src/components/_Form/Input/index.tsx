@@ -26,7 +26,7 @@ import { InputIconLeft } from "./components/InputIconLeft";
 import { InputIconRight } from "./components/InputIconRight";
 
 export type PureInputProps = {
-  type?: "text" | "number";
+  type?: "text" | "number" | "date" | "datetime";
   size?: BaseSizeUnion;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
@@ -123,6 +123,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         },
         className
       )}
+      style={{ ...(widthProps || { width: "100%" }) }}
     >
       {label && (
         <FieldLabel
@@ -136,7 +137,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         className={clsx("input-container", `size-${size}`, {
           "has-error": hasError,
         })}
-        style={{ ...(widthProps || { width: "100%" }) }}
         data-testid={testId}
       >
         <InputIconLeft size={size} iconLeft={iconLeft} testId={testId} />

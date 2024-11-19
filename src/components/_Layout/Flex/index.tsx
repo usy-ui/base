@@ -1,5 +1,5 @@
 "use client";
-import { FC } from "react";
+import { forwardRef } from "react";
 
 import clsx from "clsx";
 
@@ -45,27 +45,31 @@ export type FlexProps = CommonBoxFlexProps &
   PaddingProps &
   CommonCompProps;
 
-export const Flex: FC<FlexProps> = ({
-  tag: Tag = "div",
-  display = "flex",
-  direction,
-  justifyContent,
-  alignItems,
-  alignContent,
-  wrap,
-  gap,
-  widthProps,
-  heightProps,
-  paddingProps,
-  marginProps,
-  children,
-  id,
-  className,
-  name = "flex",
-  testId = name,
-}) => {
+export const Flex = forwardRef<HTMLDivElement, FlexProps>(function Flex(
+  {
+    tag: Tag = "div",
+    display = "flex",
+    direction,
+    justifyContent,
+    alignItems,
+    alignContent,
+    wrap,
+    gap,
+    widthProps,
+    heightProps,
+    paddingProps,
+    marginProps,
+    children,
+    id,
+    className,
+    name = "flex",
+    testId = name,
+  },
+  ref
+) {
   return (
     <Tag
+      ref={ref as any}
       style={{
         display,
         flexDirection: direction,
@@ -86,4 +90,4 @@ export const Flex: FC<FlexProps> = ({
       {children}
     </Tag>
   );
-};
+});

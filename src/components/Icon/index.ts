@@ -2,6 +2,7 @@ export { default as AddressBookIcon } from "./AddressBook";
 export { default as AdjustmentsHorizontalIcon } from "./AdjustmentsHorizontal";
 export { default as AdjustmentsVerticalIcon } from "./AdjustmentsVertical";
 export { default as AlignCenterIcon } from "./AlignCenter";
+export { default as AlignJustifyIcon } from "./AlignJustify";
 export { default as AlignLeftIcon } from "./AlignLeft";
 export { default as AlignRightIcon } from "./AlignRight";
 export { default as AngleDownIcon } from "./AngleDown";

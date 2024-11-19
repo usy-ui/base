@@ -12,9 +12,16 @@ import {
 } from "../../@types";
 import { Typography } from "../Typography";
 
+export type PopoverContentFnParams = {
+  openPopover: () => void;
+  closePopover: () => void;
+};
+
+export type PopoverContentFnType = (props: PopoverContentFnParams) => ReactNode;
+
 type PurePopoverProps = {
   children: ReactNode;
-  content: string | ReactNode;
+  content: string | ReactNode | PopoverContentFnType;
   position?: BasePositionUnion | BasePositionExtraUnion;
 };
 
@@ -40,6 +47,25 @@ export const Popover: FC<PopoverProps> = ({
     setIsOpen(!isOpen);
   };
 
+  /**
+   * Render
+   */
+
+  const renderContent = () => {
+    if (typeof content === "function") {
+      return content({
+        openPopover: () => setIsOpen(true),
+        closePopover: () => setIsOpen(false),
+      });
+    }
+
+    if (typeof content === "string") {
+      return <Typography wrap="nowrap">{content}</Typography>;
+    }
+
+    return content;
+  };
+
   return (
     <div className={clsx("usy-popover-container", className)}>
       {isOpen && (
@@ -50,11 +76,7 @@ export const Popover: FC<PopoverProps> = ({
           })}
           data-testid={`${testId}-content`}
         >
-          {typeof content === "string" ? (
-            <Typography wrap="nowrap">{content}</Typography>
-          ) : (
-            content
-          )}
+          {renderContent()}
         </div>
       )}
       <div

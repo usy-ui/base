@@ -75,8 +75,10 @@
     cursor: unset;
 
     svg {
-      width: var(--usy-spacing-28px) !important;
-      width: var(--usy-spacing-28px) !important;
+      min-width: var(--usy-spacing-28px);
+      max-width: var(--usy-spacing-28px);
+      min-height: var(--usy-spacing-28px);
+      max-height: var(--usy-spacing-28px);
     }
   }
 
@@ -95,8 +97,10 @@
     font-size: calc(var(--usy-fontsize-tiny) + 0.1rem);
 
     svg {
-      width: var(--usy-spacing-16px);
-      height: var(--usy-spacing-16px);
+      min-width: var(--usy-spacing-16px);
+      max-width: var(--usy-spacing-16px);
+      min-height: var(--usy-spacing-16px);
+      max-height: var(--usy-spacing-16px);
     }
   }
 
@@ -106,8 +110,10 @@
     font-size: calc(var(--usy-fontsize-tiny) + 0.1rem);
 
     svg {
-      width: var(--usy-spacing-16px);
-      height: var(--usy-spacing-16px);
+      min-width: var(--usy-spacing-16px);
+      max-width: var(--usy-spacing-16px);
+      min-height: var(--usy-spacing-16px);
+      max-height: var(--usy-spacing-16px);
     }
   }
 
@@ -117,8 +123,10 @@
     font-size: var(--usy-fontsize-medium);
 
     svg {
-      width: var(--usy-spacing-18px);
-      height: var(--usy-spacing-18px);
+      min-width: var(--usy-spacing-18px);
+      max-width: var(--usy-spacing-18px);
+      min-height: var(--usy-spacing-18px);
+      max-height: var(--usy-spacing-18px);
     }
   }
 
@@ -128,8 +136,10 @@
     font-size: var(--usy-fontsize-medium);
 
     svg {
-      width: var(--usy-spacing-20px);
-      height: var(--usy-spacing-20px);
+      min-width: var(--usy-spacing-20px);
+      max-width: var(--usy-spacing-20px);
+      min-height: var(--usy-spacing-20px);
+      max-height: var(--usy-spacing-20px);
     }
   }
 

@@ -11,10 +11,12 @@
 
   &.pos-left {
     justify-content: flex-start;
+    animation: fadeRight 0.3s ease-out forwards;
   }
 
   &.pos-right {
     justify-content: flex-end;
+    animation: fadeLeft 0.3s ease-out forwards;
   }
 }
 

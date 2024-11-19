@@ -21,6 +21,7 @@
   padding: var(--usy-spacing-20px) var(--usy-spacing-20px)
     var(--usy-spacing-32px);
   position: relative;
+  animation: fadeUp 0.5s ease-out forwards;
 
   .header-close {
     width: var(--usy-spacing-24px);

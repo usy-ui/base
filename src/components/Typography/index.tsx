@@ -21,7 +21,7 @@ export type TypographySize =
   | BaseSizeGigantUnion;
 export type TypographyAlign = "left" | "center" | "right" | "justify";
 
-type PureTypographyProps = {
+export type PureTypographyProps = {
   children: ReactNode;
   tag?: BaseTypoTagUnion;
   weight?: BaseTypoWeightUnion;

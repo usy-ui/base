@@ -10,24 +10,18 @@
   }
 
   &.size-small {
-    height: var(--usy-element-height-small);
-
     .textarea {
       font-size: var(--usy-fontsize-small);
     }
   }
 
   &.size-medium {
-    height: var(--usy-element-height-medium);
-
     .textarea {
       font-size: var(--usy-fontsize-medium);
     }
   }
 
   &.size-large {
-    height: var(--usy-element-height-large);
-
     .textarea {
       font-size: var(--usy-fontsize-large);
     }
@@ -37,10 +31,10 @@
     width: 100%;
     resize: vertical;
     padding: var(--usy-spacing-10px);
+    line-height: calc(var(--usy-fontsize-small) * 1.6);
     border: 1px solid var(--usy-element-border-color);
     border-radius: var(--usy-element-border-radius);
     background-color: var(--usy-color-white);
-    font-size: var(--usy-fontsize-medium);
     outline: none;
 
     &:not(.has-error):focus,
@@ -51,6 +45,20 @@
     &.has-error,
     &.has-error:hover {
       border: 1px solid var(--usy-color-red-4);
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--usy-color-light-1);
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--usy-color-light-5);
+      border-radius: 6px;
     }
   }
 }

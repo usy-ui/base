@@ -59,7 +59,12 @@ export {
 } from "./ImageGallery";
 export { Modal, ModalProps } from "./Modal";
 export { ParagraphHeading, ParagraphHeadingProps } from "./ParagraphHeading";
-export { Popover, PopoverProps } from "./Popover";
+export {
+  Popover,
+  PopoverProps,
+  PopoverContentFnType,
+  PopoverContentFnParams,
+} from "./Popover";
 export { Skeleton, SkeletonProps } from "./Skeleton";
 export { Table, TableProps, TableColumnType } from "./Table";
 export { Tabs, TabsProps, TabItemType } from "./Tabs";
