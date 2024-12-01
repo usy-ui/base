@@ -61,8 +61,8 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
       return;
     }
 
-    if (inputTag && !tags.includes(inputTag)) {
-      const updatedTags = [...tags, inputTag];
+    if (inputTag) {
+      const updatedTags = [...new Set([...tags, ...inputTag.split(",")])];
       onAdd?.(updatedTags, inputTag);
       setTags(updatedTags);
       inputTagRef.current?.focus();

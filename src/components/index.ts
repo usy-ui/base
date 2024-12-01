@@ -17,6 +17,7 @@ export { Separator, SeparatorProps } from "./_Layout/Separator";
  */
 
 export { Checkbox, CheckboxProps } from "./_Form/Checkbox";
+export { FieldLabel } from "./_Form/FieldLabel";
 export { Input, InputProps } from "./_Form/Input";
 export { Password, PasswordProps } from "./_Form/Password";
 export { RadioGroup, RadioGroupProps, RadioType } from "./_Form/RadioGroup";

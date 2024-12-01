@@ -98,7 +98,7 @@ export const Modal: FC<ModalProps> = ({
         <div
           ref={elementRef}
           className={clsx("usy-modal-container", className)}
-          style={{ ...(widthProps || { maxWidth: "500px" }) }}
+          style={{ ...(widthProps || { minWidth: "500px" }) }}
           data-testid={testId}
         >
           {renderCloseIcon()}

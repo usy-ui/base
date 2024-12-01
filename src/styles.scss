@@ -9,6 +9,17 @@
   }
 }
 
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeLeft {
   0% {
     opacity: 0;
@@ -537,7 +548,7 @@ a {
 
   &.size-tiny {
     height: var(--usy-element-height-tiny);
-    padding: 1px var(--usy-spacing-10px);
+    padding: 1px var(--usy-spacing-6px);
     font-size: calc(var(--usy-fontsize-tiny) + 0.1rem);
 
     svg {
@@ -550,7 +561,7 @@ a {
 
   &.size-small {
     height: var(--usy-element-height-small);
-    padding: 1px var(--usy-spacing-10px);
+    padding: 1px var(--usy-spacing-8px);
     font-size: calc(var(--usy-fontsize-tiny) + 0.1rem);
 
     svg {
@@ -699,12 +710,12 @@ a {
 
   &.pos-left {
     justify-content: flex-start;
-    animation: fadeRight 0.5s ease-out forwards;
+    animation: fadeRight 0.3s ease-out forwards;
   }
 
   &.pos-right {
     justify-content: flex-end;
-    animation: fadeLeft 0.5s ease-out forwards;
+    animation: fadeLeft 0.3s ease-out forwards;
   }
 }
 
@@ -898,16 +909,15 @@ a {
 }
 
 .usy-modal-container {
-  width: 100%;
   min-height: 100px;
   margin: -8vh var(--usy-spacing-14px) 0;
   border-radius: var(--usy-spacing-16px);
   border: 1px solid var(--usy-color-light-1);
   background-color: var(--usy-color-white);
-  padding: var(--usy-spacing-20px) var(--usy-spacing-20px)
+  padding: var(--usy-spacing-20px) var(--usy-spacing-24px)
     var(--usy-spacing-32px);
   position: relative;
-  animation: fadeUp 0.5s ease-out forwards;
+  animation: fadeUp 0.3s ease-out forwards;
 
   .header-close {
     width: var(--usy-spacing-24px);
@@ -960,9 +970,9 @@ a {
     position: absolute;
     background-color: var(--usy-color-white);
     padding: var(--usy-spacing-10px) var(--usy-spacing-14px);
-    border: 1px solid var(--usy-element-border-color);
     border-radius: var(--usy-spacing-10px);
-    filter: drop-shadow(0px 0px 6px var(--usy-color-light-2));
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: var(--usy-popover-bg-color);
     transition: all 0.5s ease;
     z-index: var(--usy-zIndex-high);
 
@@ -1948,6 +1958,8 @@ a {
     }
 
     .tag-input {
+      width: 100%;
+      height: var(--usy-spacing-28px);
       border: none;
       outline: none;
       font-size: var(--usy-fontsize-small);

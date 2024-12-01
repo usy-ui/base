@@ -6,9 +6,9 @@
     position: absolute;
     background-color: var(--usy-color-white);
     padding: var(--usy-spacing-10px) var(--usy-spacing-14px);
-    border: 1px solid var(--usy-element-border-color);
     border-radius: var(--usy-spacing-10px);
-    filter: drop-shadow(0px 0px 6px var(--usy-color-light-2));
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: var(--usy-popover-bg-color);
     transition: all 0.5s ease;
     z-index: var(--usy-zIndex-high);
 

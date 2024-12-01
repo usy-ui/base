@@ -42,6 +42,8 @@
     }
 
     .tag-input {
+      width: 100%;
+      height: var(--usy-spacing-28px);
       border: none;
       outline: none;
       font-size: var(--usy-fontsize-small);
