@@ -20,11 +20,19 @@ export const Types: Story = {
   render: () => (
     <>
       <Tooltip content="This is this the first line" position="top">
-        <Button>Hover me</Button>
+        <Button>Top</Button>
+      </Tooltip>
+
+      <Tooltip content="This is this the first line" position="right">
+        <Button>Right</Button>
       </Tooltip>
 
       <Tooltip content="This is this the first line" position="bottom">
-        <Button>Hover me</Button>
+        <Button>Button</Button>
+      </Tooltip>
+
+      <Tooltip content="This is this the first line" position="left">
+        <Button>Left</Button>
       </Tooltip>
     </>
   ),

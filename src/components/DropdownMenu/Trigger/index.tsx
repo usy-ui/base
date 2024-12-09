@@ -9,7 +9,7 @@ type PureTriggerProps = {
   children: ReactNode;
 };
 
-type TriggerProps = PureTriggerProps & CommonCompProps;
+export type TriggerProps = PureTriggerProps & CommonCompProps;
 
 export const Trigger: FC<TriggerProps> = ({
   name = "dropdown-menu-trigger",

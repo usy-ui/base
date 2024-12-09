@@ -7,12 +7,15 @@ import { CommonCompProps, MarginProps, WidthProps } from "../../@types";
 import { AngleDownIcon } from "../Icon";
 import { Typography } from "../Typography";
 
-export type TogglePanelProps = {
-  title: ReactNode;
-  expand?: boolean;
+type PureTogglePanel = {
   children: ReactNode;
+  title: string | ReactNode;
+  isExpand?: boolean;
   onToggle?: (isExpand: boolean) => void;
-} & WidthProps &
+};
+
+export type TogglePanelProps = PureTogglePanel &
+  WidthProps &
   MarginProps &
   CommonCompProps;
 
@@ -20,7 +23,7 @@ export const TogglePanel = forwardRef<HTMLDivElement, TogglePanelProps>(
   function TogglePanel(
     {
       title,
-      expand: isDefExpand = false,
+      isExpand: isDefExpand = false,
       children,
       widthProps,
       marginProps,

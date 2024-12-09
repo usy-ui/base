@@ -1,4 +1,6 @@
+import { ReactNode } from "react";
+
 export type FieldLabelProps = {
-  label?: string;
+  label?: string | ReactNode;
   hasAsterisk?: boolean;
 };

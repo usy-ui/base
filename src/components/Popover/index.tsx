@@ -1,31 +1,48 @@
 "use client";
-import { FC, ReactNode, useCallback, useState } from "react";
+import { CSSProperties, FC, ReactNode, useCallback, useState } from "react";
 
 import clsx from "clsx";
 
-import { useOutsideClick } from "@src/hooks";
+import { useOutsideClick, useUsyColor } from "@src/hooks";
 
 import {
   BasePositionUnion,
   BasePositionExtraUnion,
   CommonCompProps,
+  BaseColorUnion,
 } from "../../@types";
 import { Typography } from "../Typography";
 
-type PopoverProps = {
-  content: string | ReactNode;
-  position?: BasePositionUnion | BasePositionExtraUnion;
+export type PopoverContentFnParams = {
+  openPopover: () => void;
+  closePopover: () => void;
+};
+
+export type PopoverContentFnType = (props: PopoverContentFnParams) => ReactNode;
+
+type PurePopoverProps = {
   children: ReactNode;
-} & CommonCompProps;
+  content: string | ReactNode | PopoverContentFnType;
+  position?: BasePositionUnion | BasePositionExtraUnion;
+  color?: BaseColorUnion;
+};
+
+export type PopoverProps = PurePopoverProps & CommonCompProps;
 
 export const Popover: FC<PopoverProps> = ({
+  children,
   content,
   position = "bottom",
-  children,
+  color = "white",
   className,
   name = "popover",
   testId = name,
 }) => {
+  const colorInHex = useUsyColor(color);
+  const cssVariables = {
+    "--usy-popover-bg-color": colorInHex,
+  } as CSSProperties;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOutsideClick = useCallback(() => {
@@ -38,6 +55,25 @@ export const Popover: FC<PopoverProps> = ({
     setIsOpen(!isOpen);
   };
 
+  /**
+   * Render
+   */
+
+  const renderContent = () => {
+    if (typeof content === "function") {
+      return content({
+        openPopover: () => setIsOpen(true),
+        closePopover: () => setIsOpen(false),
+      });
+    }
+
+    if (typeof content === "string") {
+      return <Typography wrap="nowrap">{content}</Typography>;
+    }
+
+    return content;
+  };
+
   return (
     <div className={clsx("usy-popover-container", className)}>
       {isOpen && (
@@ -46,13 +82,10 @@ export const Popover: FC<PopoverProps> = ({
           className={clsx("popover-overlay", {
             [`position-${position}`]: Boolean(position),
           })}
+          style={{ ...cssVariables }}
           data-testid={`${testId}-content`}
         >
-          {typeof content === "string" ? (
-            <Typography wrap="nowrap">{content}</Typography>
-          ) : (
-            content
-          )}
+          {renderContent()}
         </div>
       )}
       <div

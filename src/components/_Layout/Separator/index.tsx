@@ -2,6 +2,7 @@ import { CSSProperties, FC } from "react";
 
 import clsx from "clsx";
 
+import { Typography } from "@src/components/Typography";
 import { useUsyColor } from "@src/hooks";
 import { usySpacing } from "@src/styles";
 
@@ -12,18 +13,24 @@ import {
   MarginProps,
   WidthProps,
 } from "../../../@types";
+import { PureTypographyProps } from "../../Typography";
 
-type SeparatorProps = {
+type PureSeparatorProps = {
   title?: string;
+  titleProps?: Omit<PureTypographyProps, "children">;
   direction?: "horizontal" | "vertical";
   color?: BaseColorUnion | "random";
-} & WidthProps &
+};
+
+export type SeparatorProps = PureSeparatorProps &
+  WidthProps &
   HeightProps &
   MarginProps &
   CommonCompProps;
 
 export const Separator: FC<SeparatorProps> = ({
   title,
+  titleProps,
   direction = "horizontal",
   color,
   widthProps,
@@ -37,6 +44,10 @@ export const Separator: FC<SeparatorProps> = ({
   const cssVariables = {
     "--usy-separator-color": colorInHex,
   } as CSSProperties;
+  const defaultMarginProps =
+    direction === "vertical"
+      ? { margin: `0 ${usySpacing.px20}` }
+      : { margin: `${usySpacing.px20} 0` };
 
   return (
     <div
@@ -48,14 +59,16 @@ export const Separator: FC<SeparatorProps> = ({
       style={{
         ...widthProps,
         ...heightProps,
-        ...(marginProps || direction === "vertical"
-          ? { margin: `0 ${usySpacing.px20}` }
-          : { margin: `${usySpacing.px20} 0` }),
+        ...(marginProps || defaultMarginProps),
         ...cssVariables,
       }}
       data-testid={testId}
     >
-      {title && <span className="title">{title}</span>}
+      {title && (
+        <Typography {...titleProps} className="title">
+          {title}
+        </Typography>
+      )}
     </div>
   );
 };

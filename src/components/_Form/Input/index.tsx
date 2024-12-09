@@ -16,6 +16,7 @@ import {
   BaseSizeUnion,
   CommonCompProps,
   FieldLabelProps,
+  FormFieldProps,
   WidthProps,
 } from "../../../@types";
 import { FieldLabel } from "../FieldLabel";
@@ -25,41 +26,39 @@ import { InputIconLeft } from "./components/InputIconLeft";
 import { InputIconRight } from "./components/InputIconRight";
 
 export type PureInputProps = {
-  value?: string;
-  type?: "text" | "number";
+  type?: "text" | "number" | "date" | "datetime";
   size?: BaseSizeUnion;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   placeholder?: string;
   description?: ReactNode;
-  hasError?: boolean;
-  disabled?: boolean;
-  onChange?: (value: string, e: ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (value: string, e: FocusEvent<HTMLInputElement>) => void;
   transformOnChange?: (value: string) => string;
   transformOnBlur?: (value: string) => string;
-} & FieldLabelProps &
-  WidthProps;
+};
 
-export type InputProps = PureInputProps & CommonCompProps;
+export type InputProps = PureInputProps &
+  FieldLabelProps &
+  FormFieldProps<string, HTMLInputElement> &
+  WidthProps &
+  CommonCompProps;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
-    value = "",
     type = "text",
     size = "medium",
     iconLeft,
     iconRight,
     placeholder,
     description,
-    hasError = false,
-    disabled = false,
-    onChange,
-    onBlur,
     transformOnChange = (value) => value,
     transformOnBlur = (value) => value,
     label,
     hasAsterisk = false,
+    value = "",
+    hasError = false,
+    disabled = false,
+    onChange,
+    onBlur,
     widthProps,
     className,
     name = "input",
@@ -72,7 +71,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 
   useEffect(() => {
     setInputValue(value);
-  }, [value]);
+  }, [value, inputValue]);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
@@ -124,6 +123,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         },
         className
       )}
+      style={{ ...(widthProps || { width: "100%" }) }}
     >
       {label && (
         <FieldLabel
@@ -137,7 +137,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         className={clsx("input-container", `size-${size}`, {
           "has-error": hasError,
         })}
-        style={{ ...(widthProps || { width: "100%" }) }}
         data-testid={testId}
       >
         <InputIconLeft size={size} iconLeft={iconLeft} testId={testId} />

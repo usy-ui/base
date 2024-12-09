@@ -6,7 +6,7 @@ import { ThemeProviderDecorator } from "../../../.storybook/decorators";
 import { Button } from "../Button";
 import { LockTimeIcon } from "../Icon";
 
-import { Toast, rootToast } from "./index";
+import { Toast, globalToast } from "./index";
 
 const meta: Meta<typeof Toast> = {
   component: Toast,
@@ -23,7 +23,7 @@ export const Types: Story = {
       <Toast />
       <Button
         onClick={() => {
-          rootToast.basic({
+          globalToast.basic({
             statusIcon: LockTimeIcon,
             content: <span>Do not forget to checkout on time</span>,
             timeout: 10000,
@@ -39,7 +39,7 @@ export const Types: Story = {
       </Button>
       <Button
         onClick={() => {
-          rootToast.success({
+          globalToast.success({
             title: "Success",
             content: "Your register has been approval",
           });
@@ -49,7 +49,7 @@ export const Types: Story = {
       </Button>
       <Button
         onClick={() => {
-          rootToast.info({
+          globalToast.info({
             title: "Step 2",
             content: "Wait a second to loading next step",
           });
@@ -59,7 +59,7 @@ export const Types: Story = {
       </Button>
       <Button
         onClick={() => {
-          rootToast.warning({
+          globalToast.warning({
             title: "Invalid Info",
             content: "Your info has some invalid fields",
           });
@@ -69,7 +69,7 @@ export const Types: Story = {
       </Button>
       <Button
         onClick={() => {
-          rootToast.error({
+          globalToast.error({
             title: "Not Found",
             content: "The page can not be found",
           });

@@ -9,7 +9,7 @@ export type MenuItem = {
   onClick?: () => void;
 };
 
-type MenuItemProps = MenuItem & CommonCompProps;
+export type MenuItemProps = MenuItem & CommonCompProps;
 
 export const MenuItem: FC<MenuItemProps> = ({
   className,

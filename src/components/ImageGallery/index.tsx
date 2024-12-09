@@ -5,22 +5,24 @@ import clsx from "clsx";
 
 import { BaseSemanticTagUnion, CommonCompProps } from "../../@types";
 
-type Image = {
+export type ImageGalleryType = {
   url: string;
   shape: "big" | "wide" | "tall" | "normal";
   alt?: string;
 };
 
-type ImageGalleryProps = {
+type PureImageGalleryProps = {
+  images: ImageGalleryType[];
   tag?: BaseSemanticTagUnion;
-  images: Image[];
-} & CommonCompProps;
+};
+
+export type ImageGalleryProps = PureImageGalleryProps & CommonCompProps;
 
 export const ImageGallery: FC<ImageGalleryProps> = ({
-  tag: Tag = "div",
-  name = "image-gallery",
   images,
+  tag: Tag = "div",
   className,
+  name = "image-gallery",
   testId = name,
 }) => {
   return (

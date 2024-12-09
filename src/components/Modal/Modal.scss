@@ -12,15 +12,15 @@
 }
 
 .usy-modal-container {
-  width: 100%;
   min-height: 100px;
   margin: -8vh var(--usy-spacing-14px) 0;
   border-radius: var(--usy-spacing-16px);
   border: 1px solid var(--usy-color-light-1);
   background-color: var(--usy-color-white);
-  padding: var(--usy-spacing-20px) var(--usy-spacing-20px)
+  padding: var(--usy-spacing-20px) var(--usy-spacing-24px)
     var(--usy-spacing-32px);
   position: relative;
+  animation: fadeUp 0.3s ease-out forwards;
 
   .header-close {
     width: var(--usy-spacing-24px);

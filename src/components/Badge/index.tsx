@@ -13,7 +13,7 @@ import {
   CommonCompProps,
 } from "../../@types";
 
-type BadgeProps = {
+export type BadgeProps = {
   variant?: BaseVariantUnion;
   size?: BaseSizeUnion;
   color?: BaseColorUnion | "random";

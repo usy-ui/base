@@ -1,5 +1,5 @@
 "use client";
-import { FC } from "react";
+import { forwardRef } from "react";
 
 import clsx from "clsx";
 
@@ -17,16 +17,27 @@ type PureFlexProps = {
   tag?: BaseSemanticTagUnion;
   display?: "flex" | "inline-flex";
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
-  justifyContent?: "flex-start" | "center" | "flex-end" | "space-between";
+  justifyContent?:
+    | "flex-start"
+    | "center"
+    | "flex-end"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
   alignItems?: "flex-start" | "center" | "flex-end" | "baseline" | "stretch";
-  grow?: number;
-  shrink?: number;
+  alignContent?:
+    | "flex-start"
+    | "center"
+    | "flex-end"
+    | "stretch"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
   wrap?: "nowrap" | "wrap" | "wrap-reverse";
   gap?: string;
-  id?: string;
 };
 
-type FlexProps = CommonBoxFlexProps &
+export type FlexProps = CommonBoxFlexProps &
   PureFlexProps &
   WidthProps &
   HeightProps &
@@ -34,35 +45,37 @@ type FlexProps = CommonBoxFlexProps &
   PaddingProps &
   CommonCompProps;
 
-export const Flex: FC<FlexProps> = ({
-  tag: Tag = "div",
-  display = "flex",
-  direction = "row",
-  justifyContent = "flex-start",
-  alignItems = "flex-start",
-  grow,
-  shrink,
-  wrap,
-  gap,
-  widthProps,
-  heightProps,
-  paddingProps,
-  marginProps,
-  children,
-  id,
-  className,
-  name = "flex",
-  testId = name,
-}) => {
+export const Flex = forwardRef<HTMLDivElement, FlexProps>(function Flex(
+  {
+    tag: Tag = "div",
+    display = "flex",
+    direction,
+    justifyContent,
+    alignItems,
+    alignContent,
+    wrap,
+    gap,
+    widthProps,
+    heightProps,
+    paddingProps,
+    marginProps,
+    children,
+    id,
+    className,
+    name = "flex",
+    testId = name,
+  },
+  ref
+) {
   return (
     <Tag
+      ref={ref as any}
       style={{
         display,
         flexDirection: direction,
-        flexGrow: grow,
-        flexShrink: shrink,
         justifyContent,
         alignItems,
+        alignContent,
         flexWrap: wrap,
         gap,
         ...widthProps,
@@ -77,4 +90,4 @@ export const Flex: FC<FlexProps> = ({
       {children}
     </Tag>
   );
-};
+});

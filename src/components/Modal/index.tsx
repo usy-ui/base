@@ -11,24 +11,25 @@ import { CommonCompProps, WidthProps } from "../../@types";
 import { CloseIcon } from "../Icon";
 import { ParagraphHeading } from "../ParagraphHeading";
 
-type ModalProps = {
+type PureModalProps = {
+  children: ReactNode;
   title?: string | ReactNode;
   preventOutsideClose?: boolean;
   containerElement?: HTMLElement;
-  children: ReactNode;
-  onClose?: () => void;
   zIndex?: number;
-} & WidthProps &
-  CommonCompProps;
+  onClose?: () => void;
+};
+
+export type ModalProps = PureModalProps & WidthProps & CommonCompProps;
 
 export const Modal: FC<ModalProps> = ({
+  children,
   title,
   widthProps,
   preventOutsideClose = false,
   containerElement,
-  children,
-  onClose,
   zIndex = usyZIndex.medium,
+  onClose,
   className,
   name = "modal",
   testId = name,
@@ -97,7 +98,7 @@ export const Modal: FC<ModalProps> = ({
         <div
           ref={elementRef}
           className={clsx("usy-modal-container", className)}
-          style={{ ...(widthProps || { maxWidth: "500px" }) }}
+          style={{ ...(widthProps || { minWidth: "500px" }) }}
           data-testid={testId}
         >
           {renderCloseIcon()}

@@ -19,28 +19,30 @@ export type TypographySize =
   | BaseSizeUnion
   | BaseSizeExtraUnion
   | BaseSizeGigantUnion;
-type TypographyAlign = "left" | "center" | "right" | "justify";
+export type TypographyAlign = "left" | "center" | "right" | "justify";
 
-type TypographyProps = {
+export type PureTypographyProps = {
+  children: ReactNode;
   tag?: BaseTypoTagUnion;
   weight?: BaseTypoWeightUnion;
   color?: BaseColorUnion | "random";
   size?: TypographySize;
   align?: TypographyAlign;
   wrap?: "wrap" | "nowrap";
-  children: ReactNode;
-} & CommonCompProps;
+};
+
+export type TypographyProps = PureTypographyProps & CommonCompProps;
 
 export const Typography: FC<TypographyProps> = ({
-  name = "typography",
+  children,
   tag: Tag = "p",
   weight = "medium",
   color = "dark-9",
   size = "medium",
   align = "left",
-  wrap,
-  children,
+  wrap = "wrap",
   className,
+  name = "typography",
   testId = name,
 }) => {
   const colorInHex = useUsyColor(color);

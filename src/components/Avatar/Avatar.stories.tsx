@@ -23,11 +23,11 @@ const avatarUrl =
 export const Radius: Story = {
   render: () => (
     <Flex gap={usySpacing.px32}>
-      <Avatar url={avatarUrl} imgAlt="Avatar" radius="none" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" radius="small" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" radius="medium" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" radius="large" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" radius="full" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" radius="none" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" radius="small" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" radius="medium" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" radius="large" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" radius="full" />
     </Flex>
   ),
 };
@@ -35,11 +35,11 @@ export const Radius: Story = {
 export const Sizes: Story = {
   render: () => (
     <Flex gap={usySpacing.px32} alignItems="center">
-      <Avatar url={avatarUrl} imgAlt="Avatar" size="tiny" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" size="small" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" size="medium" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" size="large" />
-      <Avatar url={avatarUrl} imgAlt="Avatar" size="huge" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" size="tiny" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" size="small" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" size="medium" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" size="large" />
+      <Avatar src={avatarUrl} imgAlt="Avatar" size="huge" />
     </Flex>
   ),
 };
@@ -47,8 +47,8 @@ export const Sizes: Story = {
 export const Fallback: Story = {
   render: () => (
     <Flex gap={usySpacing.px32}>
-      <Avatar url="" fallback="R" color="random" />
-      <Avatar url="" fallback="P" color="primary" />
+      <Avatar src="" fallback="R" color="random" />
+      <Avatar src="" fallback="P" color="primary" />
     </Flex>
   ),
 };

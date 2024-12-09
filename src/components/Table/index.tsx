@@ -3,7 +3,12 @@ import { ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { CommonCompProps, PaddingProps, WidthProps } from "../../@types";
+import {
+  CommonCompProps,
+  MarginProps,
+  PaddingProps,
+  WidthProps,
+} from "../../@types";
 
 type FallbackRow = Record<string, any>;
 
@@ -20,18 +25,22 @@ type TableStyles = {
   hideOuterBorder?: boolean;
 };
 
-type TableProps<R extends FallbackRow> = {
+export type TableProps<R extends FallbackRow> = {
   rowKey: Extract<keyof R, string>;
   columns: TableColumnType<R>[];
   dataRows: R[];
   styles?: TableStyles;
-} & CommonCompProps;
+} & WidthProps &
+  MarginProps &
+  CommonCompProps;
 
 export const Table = <R extends FallbackRow>({
   rowKey,
   columns,
   dataRows,
   styles,
+  widthProps,
+  marginProps,
   className,
   name = "table",
   testId = name,
@@ -89,6 +98,7 @@ export const Table = <R extends FallbackRow>({
   return (
     <div
       className={clsx("usy-table-container", className)}
+      style={{ ...widthProps, ...marginProps }}
       data-testid={testId}
     >
       <div

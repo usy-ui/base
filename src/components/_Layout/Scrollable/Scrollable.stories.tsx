@@ -47,6 +47,15 @@ export const Types: Story = {
         {paragraph2}
       </Scrollable>
       <Scrollable
+        scrollType="vertical"
+        widthProps={{ maxWidth: "400px" }}
+        heightProps={{ maxHeight: "300px" }}
+        showScrollOnHover
+      >
+        {paragraph1}
+        {paragraph2}
+      </Scrollable>
+      <Scrollable
         scrollType="horizontal"
         widthProps={{ maxWidth: "400px" }}
         heightProps={{ maxHeight: "300px" }}

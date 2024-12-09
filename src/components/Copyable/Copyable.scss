@@ -4,14 +4,17 @@
   display: inline-flex;
   align-items: center;
   background-color: var(--usy-copyable-color);
-  padding-left: var(--usy-spacing-16px);
-  padding-right: var(--usy-spacing-48px);
+  padding: var(--usy-spacing-10px) var(--usy-spacing-48px)
+    var(--usy-spacing-10px) var(--usy-spacing-16px);
   border-radius: var(--usy-spacing-4px);
 
   .text {
     font-family: inherit;
     font-size: 0.8rem;
+    word-wrap: break-word;
+    white-space: pre-wrap;
     color: var(--usy-color-white);
+    line-height: 1.3rem;
     margin: 0;
   }
 

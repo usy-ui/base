@@ -4,12 +4,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { ThemeProviderDecorator } from "../../../.storybook/decorators";
 
-import { MenuSeparator } from "./MenuOverlay/MenuSeparator";
-
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuOverlay,
+  DropdownMenuSeparator,
   DropdownMenuItem,
 } from "./index";
 
@@ -32,7 +31,7 @@ const dropdownOverlayItems = (
       Change Password
     </DropdownMenuItem>
     <DropdownMenuItem>Settings</DropdownMenuItem>
-    <MenuSeparator />
+    <DropdownMenuSeparator />
     <DropdownMenuItem>Logout</DropdownMenuItem>
   </>
 );

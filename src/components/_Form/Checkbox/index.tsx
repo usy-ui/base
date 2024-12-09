@@ -1,22 +1,29 @@
 "use client";
-import { ChangeEvent, forwardRef, ReactNode, useEffect, useState } from "react";
+import { ChangeEvent, forwardRef, useEffect, useState } from "react";
 
 import clsx from "clsx";
 
-import { CommonCompProps, FormFieldProps } from "../../../@types";
+import {
+  CommonCompProps,
+  FieldLabelProps,
+  FormFieldProps,
+} from "../../../@types";
 import { Typography } from "../../Typography";
 
-type CheckboxProps = {
-  label?: string | ReactNode;
+type PureCheckboxProps = {
   checked?: boolean;
-} & Pick<FormFieldProps<boolean, HTMLInputElement>, "disabled" | "onChange"> &
+};
+
+export type CheckboxProps = PureCheckboxProps &
+  Pick<FieldLabelProps, "label"> &
+  Pick<FormFieldProps<boolean, HTMLInputElement>, "disabled" | "onChange"> &
   CommonCompProps;
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
+      checked,
       label,
-      checked = false,
       disabled = false,
       onChange,
       className,
@@ -28,8 +35,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const [innerChecked, setInnerChecked] = useState(Boolean(checked));
 
     useEffect(() => {
-      setInnerChecked(checked);
-    }, [checked]);
+      setInnerChecked(Boolean(checked));
+    }, [checked, innerChecked]);
 
     const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
       if (disabled) {

@@ -11,10 +11,12 @@
 
   &.pos-left {
     justify-content: flex-start;
+    animation: fadeRight 0.3s ease-out forwards;
   }
 
   &.pos-right {
     justify-content: flex-end;
+    animation: fadeLeft 0.3s ease-out forwards;
   }
 }
 
@@ -28,4 +30,25 @@
   border-right: 1px solid var(--usy-color-light-4);
   position: relative;
   overflow: hidden;
+
+  .header-close {
+    width: var(--usy-spacing-24px);
+    height: var(--usy-spacing-24px);
+    padding: var(--usy-spacing-2px);
+    position: absolute;
+    top: var(--usy-spacing-12px);
+    right: var(--usy-spacing-12px);
+    border-radius: var(--usy-spacing-2px);
+    cursor: pointer;
+
+    &:hover {
+      path {
+        stroke: var(--usy-color-dark-1);
+      }
+    }
+
+    path {
+      stroke: var(--usy-color-light-9);
+    }
+  }
 }

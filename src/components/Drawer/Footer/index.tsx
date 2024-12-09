@@ -5,16 +5,16 @@ import clsx from "clsx";
 import { CommonCompProps } from "../../../@types";
 import { Button, ButtonProps } from "../../../components/Button";
 
-type DrawerFooterProps = {
-  alignContent?: "left" | "center" | "right";
+export type DrawerFooterProps = {
   buttons: ButtonProps[];
+  alignContent?: "left" | "center" | "right";
 } & CommonCompProps;
 
 export const DrawerFooter: FC<DrawerFooterProps> = ({
-  name = "drawer-footer",
-  alignContent = "center",
   buttons,
+  alignContent = "center",
   className,
+  name = "drawer-footer",
   testId = name,
 }) => {
   return (

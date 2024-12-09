@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, FC, useEffect, useState } from "react";
+import { ChangeEvent, forwardRef, useEffect, useState } from "react";
 
 import clsx from "clsx";
 
@@ -21,7 +21,7 @@ type PureRadioGroupProps = {
   direction?: "vertical" | "horizontal";
 };
 
-type RadioGroupProps = PureRadioGroupProps &
+export type RadioGroupProps = PureRadioGroupProps &
   Pick<FieldLabelProps, "label"> &
   Pick<
     FormFieldProps<RadioType, HTMLInputElement>,
@@ -29,73 +29,82 @@ type RadioGroupProps = PureRadioGroupProps &
   > &
   CommonCompProps;
 
-export const RadioGroup: FC<RadioGroupProps> = ({
-  value,
-  items,
-  direction = "horizontal",
-  label,
-  disabled,
-  onChange,
-  className,
-  name = "radio-group",
-  testId = name,
-}) => {
-  const [selectedItem, setSelectedItem] = useState<RadioType>(
-    value || items[0]
-  );
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
+  function RadioGroup(
+    {
+      items,
+      direction = "horizontal",
+      label,
+      disabled,
+      value,
+      onChange,
+      className,
+      name = "radio-group",
+      testId = name,
+    },
+    ref
+  ) {
+    const [selectedItem, setSelectedItem] = useState<RadioType>(
+      value || items[0]
+    );
 
-  useEffect(() => {
-    if (value) {
-      setSelectedItem(value);
-    }
-  }, [value]);
+    useEffect(() => {
+      if (value) {
+        setSelectedItem(value);
+      }
+    }, [value]);
 
-  const handleChange = (item: RadioType, e: ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return;
-    }
+    const handleChange = (
+      item: RadioType,
+      e: ChangeEvent<HTMLInputElement>
+    ) => {
+      if (disabled) {
+        return;
+      }
 
-    setSelectedItem(item);
-    onChange?.(item, e);
-  };
+      setSelectedItem(item);
+      onChange?.(item, e);
+    };
 
-  return (
-    <div
-      className={clsx(
-        "usy-radio-group-container",
-        {
-          disabled: Boolean(disabled),
-        },
-        className
-      )}
-      data-testid={testId}
-    >
-      {label && (
-        <FieldLabel name={name} label={label} testId={`${testId}-title`} />
-      )}
+    return (
       <div
-        className={clsx("radio-group-container", {
-          [`direction-${direction}`]: Boolean(direction),
-        })}
+        ref={ref}
+        className={clsx(
+          "usy-radio-group-container",
+          {
+            disabled: Boolean(disabled),
+          },
+          className
+        )}
+        data-testid={testId}
       >
-        {items.map((item) => {
-          const itemId = `${name}-${item.id}`;
+        {label && (
+          <FieldLabel name={name} label={label} testId={`${testId}-title`} />
+        )}
+        <div
+          className={clsx("radio-group-container", {
+            [`direction-${direction}`]: Boolean(direction),
+          })}
+        >
+          {items.map((item) => {
+            const itemId = `${name}-${item.id}`;
 
-          return (
-            <label key={itemId} htmlFor={itemId} className="radio-item">
-              <input
-                type="radio"
-                id={itemId}
-                name={name}
-                checked={item.value === selectedItem.value}
-                onChange={(e) => handleChange(item, e)}
-                className="input"
-              />
-              <span className="label">{item.label}</span>
-            </label>
-          );
-        })}
+            return (
+              <label key={itemId} htmlFor={itemId} className="radio-item">
+                <input
+                  type="radio"
+                  id={itemId}
+                  name={name}
+                  checked={item.value === selectedItem.value}
+                  onChange={(e) => handleChange(item, e)}
+                  className="input"
+                />
+                <span className="label">{item.label}</span>
+              </label>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);

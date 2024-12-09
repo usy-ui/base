@@ -1,6 +1,6 @@
 {
   "name": "@usy-ui/base",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lightweight UI components for ReactJS and NextJS",
   "module": "dist",
   "main": "index.js",

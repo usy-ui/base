@@ -35,22 +35,22 @@ type PickedInputProps = Pick<
   | "widthProps"
 >;
 
-type PasswordProps = PickedInputProps & CommonCompProps;
+export type PasswordProps = PickedInputProps & CommonCompProps;
 
 export const Password = forwardRef<HTMLInputElement, PasswordProps>(
   function Password(
     {
-      value = "",
       size = "medium",
       iconLeft,
       placeholder,
       description,
+      label,
+      hasAsterisk = false,
+      value = "",
       hasError = false,
       disabled = false,
       onChange,
       onBlur,
-      label,
-      hasAsterisk = false,
       widthProps,
       className,
       name = "password",

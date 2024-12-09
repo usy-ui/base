@@ -42,7 +42,7 @@ type ToastParams = Omit<PushToastParams, "type">;
  * Toast Instance
  */
 
-interface ToastInstance {
+export interface ToastInstance {
   basic: (params: ToastParams) => void;
   success: (params: ToastParams) => void;
   info: (params: ToastParams) => void;
@@ -50,32 +50,35 @@ interface ToastInstance {
   error: (params: ToastParams) => void;
 }
 
-export let rootToast: ToastInstance;
+export let globalToast: ToastInstance;
 
 /**
  * Toast Component
  */
 
-type ToastProps = {
+type PureToastProps = {
   position?: BasePositionExtraUnion;
   containerElement?: HTMLElement;
   children?: (props: { selfToast: ToastInstance }) => ReactNode;
-} & CommonCompProps;
+};
+
+export type ToastProps = PureToastProps & CommonCompProps;
 
 export const Toast: FC<ToastProps> = ({
   position = "top-end",
   containerElement,
   children,
   className,
-  testId,
+  name = "toast",
+  testId = name,
 }) => {
   const toastList: Record<string, number | undefined> = {};
   const toastListContainerRef = createRef<HTMLDivElement>();
   const { isMounted } = useMounted();
 
   useEffect(() => {
-    if (!rootToast && !children && isMounted) {
-      rootToast = {
+    if (!globalToast && !children && isMounted) {
+      globalToast = {
         basic,
         success,
         info,

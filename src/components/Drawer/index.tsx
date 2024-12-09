@@ -1,46 +1,57 @@
 "use client";
-import { forwardRef, ReactNode, useEffect } from "react";
+import { FC, ReactNode, useEffect } from "react";
 
 import clsx from "clsx";
 import { createPortal } from "react-dom";
 
-import { useMounted } from "@src/hooks";
+import { useMounted, useOutsideClick } from "@src/hooks";
 import { usyZIndex } from "@src/styles";
 
 import { CommonCompProps, WidthProps } from "../../@types";
+import { CloseIcon } from "../Icon";
 
+import { DrawerContent } from "./Content";
 import { disableScroll } from "./Drawer.utils";
 
-export { DrawerHeader } from "./Header";
-export { DrawerContent } from "./Content";
-export { DrawerFooter } from "./Footer";
+export { DrawerHeader, DrawerHeaderProps } from "./Header";
+export { DrawerFooter, DrawerFooterProps } from "./Footer";
 
-type DrawerProps = {
+type PureDrawerProps = {
+  children: ReactNode;
   side?: "left" | "right";
   header?: ReactNode;
-  children: ReactNode;
   footer?: ReactNode;
+  preventOutsideClose?: boolean;
   containerElement?: HTMLElement;
   zIndex?: number;
-} & WidthProps &
-  CommonCompProps;
+  onClose?: () => void;
+};
 
-export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
-  {
-    name = "drawer",
-    side = "right",
-    widthProps,
-    header,
-    children,
-    footer,
-    containerElement,
-    zIndex = usyZIndex.medium,
-    className,
-    testId = name,
-  },
-  ref
-) {
+export type DrawerProps = PureDrawerProps & WidthProps & CommonCompProps;
+
+export const Drawer: FC<DrawerProps> = ({
+  children,
+  side = "right",
+  header,
+  footer,
+  preventOutsideClose = false,
+  containerElement,
+  zIndex = usyZIndex.medium,
+  onClose,
+  widthProps,
+  className,
+  name = "drawer",
+  testId = name,
+}) => {
   const { isMounted } = useMounted();
+  const handleOutsideClick = () => {
+    onClose?.();
+  };
+
+  const { elementRef } = useOutsideClick(
+    handleOutsideClick,
+    preventOutsideClose
+  );
 
   useEffect(() => {
     disableScroll(true);
@@ -50,6 +61,24 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
     };
   }, []);
 
+  /**
+   * Render
+   */
+
+  const renderCloseIcon = () => {
+    if (typeof onClose !== "function" || header) {
+      return null;
+    }
+
+    return (
+      <CloseIcon
+        className="header-close"
+        onClick={onClose}
+        data-testid={`${testId}-header-close`}
+      />
+    );
+  };
+
   const renderDrawer = () => {
     return (
       <div
@@ -58,13 +87,14 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
         data-testid={`${testId}-overlay`}
       >
         <div
-          ref={ref}
+          ref={elementRef}
           className={clsx("usy-drawer-container", className)}
           style={{ ...(widthProps || { maxWidth: "480px" }) }}
           data-testid={testId}
         >
+          {renderCloseIcon()}
           {header}
-          {children}
+          <DrawerContent>{children}</DrawerContent>
           {footer}
         </div>
       </div>
@@ -74,4 +104,4 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
   return isMounted
     ? createPortal(renderDrawer(), containerElement || document.body)
     : null;
-});
+};

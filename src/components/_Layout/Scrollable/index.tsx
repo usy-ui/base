@@ -19,7 +19,7 @@ type PureScrollableProps = {
   children?: ReactNode;
 };
 
-type ScrollableProps = PureScrollableProps &
+export type ScrollableProps = PureScrollableProps &
   WidthProps &
   HeightProps &
   MarginProps &
@@ -29,6 +29,7 @@ type ScrollableProps = PureScrollableProps &
 export const Scrollable: FC<ScrollableProps> = ({
   tag: Tag = "div",
   scrollType = "vertical",
+  showScrollOnHover = false,
   widthProps,
   heightProps,
   paddingProps,
@@ -43,6 +44,9 @@ export const Scrollable: FC<ScrollableProps> = ({
       className={clsx(
         "usy-scrollable-container",
         `scroll-${scrollType}`,
+        {
+          "show-scroll-on-hover": showScrollOnHover,
+        },
         className
       )}
       style={{
