@@ -34,6 +34,7 @@ export { Accordion, AccordionProps, AccordionItemType } from "./Accordion";
 export { Avatar, AvatarProps } from "./Avatar";
 export { Badge, BadgeProps } from "./Badge";
 export { Button, ButtonProps } from "./Button";
+export { ConfirmContent, ConfirmContentProps } from "./ConfirmContent";
 export { Copyable, CopyableProps } from "./Copyable";
 export {
   Drawer,
