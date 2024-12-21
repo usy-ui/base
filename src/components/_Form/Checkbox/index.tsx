@@ -36,7 +36,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     useEffect(() => {
       setInnerChecked(Boolean(checked));
-    }, [checked, innerChecked]);
+    }, [checked]);
 
     const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
       if (disabled) {
