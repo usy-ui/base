@@ -3,7 +3,7 @@ import { ChangeEvent, forwardRef, ReactNode, useRef, useState } from "react";
 
 import clsx from "clsx";
 
-import { useNameMemo } from "@src/hooks";
+import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 
 import {
   CommonCompProps,
@@ -31,7 +31,7 @@ export type TagsProps = PureTagsProps &
 
 export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
   {
-    tags: initTags,
+    tags,
     placeholder = "New tag...",
     description,
     onAdd,
@@ -47,10 +47,11 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
   },
   ref
 ) {
-  const [tags, setTags] = useState(initTags || []);
+  const [innerTags, setInnerTags] = useState(tags || []);
   const [inputTag, setInputTag] = useState("");
-  const inputTagRef = useRef<HTMLInputElement>(null);
+  useSyncOuterValue<string[]>(setInnerTags, tags || []);
   const { nameMemo } = useNameMemo(name, "tags");
+  const inputTagRef = useRef<HTMLInputElement>(null);
 
   const handleInputTagChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setInputTag(target.value);
@@ -62,9 +63,9 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
     }
 
     if (inputTag) {
-      const updatedTags = [...new Set([...tags, ...inputTag.split(",")])];
+      const updatedTags = [...new Set([...innerTags, ...inputTag.split(",")])];
       onAdd?.(updatedTags, inputTag);
-      setTags(updatedTags);
+      setInnerTags(updatedTags);
       inputTagRef.current?.focus();
     }
 
@@ -76,9 +77,44 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
       return;
     }
 
-    const updatedTags = [...tags].filter((tagItem) => tagItem !== selectedTag);
+    const updatedTags = [...innerTags].filter(
+      (tagItem) => tagItem !== selectedTag
+    );
     onRemove?.(updatedTags, selectedTag);
-    setTags(updatedTags);
+    setInnerTags(updatedTags);
+  };
+
+  /**
+   * Render
+   */
+
+  const renderTags = () => {
+    return innerTags.map((tagItem) => {
+      return (
+        <span
+          key={tagItem}
+          className="tag-item"
+          data-testid={`${testId}-tag-item`}
+        >
+          {tagItem}
+          <CloseCircleSolidIcon onClick={() => removeTag(tagItem)} />
+        </span>
+      );
+    });
+  };
+
+  const renderTagInput = () => {
+    return (
+      <input
+        value={inputTag}
+        placeholder={placeholder}
+        onChange={handleInputTagChange}
+        onBlur={addTag}
+        ref={inputTagRef}
+        className="tag-input"
+        data-testid={`${testId}-tag-input`}
+      />
+    );
   };
 
   return (
@@ -111,27 +147,8 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
         )}
         style={{ ...(widthProps || { width: "100%" }) }}
       >
-        {tags.map((tagItem) => {
-          return (
-            <span
-              key={tagItem}
-              className="tag-item"
-              data-testid={`${testId}-tag-item`}
-            >
-              {tagItem}
-              <CloseCircleSolidIcon onClick={() => removeTag(tagItem)} />
-            </span>
-          );
-        })}
-        <input
-          value={inputTag}
-          placeholder={placeholder}
-          onChange={handleInputTagChange}
-          onBlur={addTag}
-          ref={inputTagRef}
-          className="tag-input"
-          data-testid={`${testId}-tag-input`}
-        />
+        {renderTags()}
+        {renderTagInput()}
       </div>
       <InputDescription description={description} testId={testId} />
     </div>

@@ -1,7 +1,9 @@
 "use client";
-import { ChangeEvent, forwardRef, useEffect, useState } from "react";
+import { ChangeEvent, forwardRef, useState } from "react";
 
 import clsx from "clsx";
+
+import { useSyncOuterValue } from "@src/hooks";
 
 import {
   CommonCompProps,
@@ -33,10 +35,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref
   ) {
     const [innerChecked, setInnerChecked] = useState(Boolean(checked));
-
-    useEffect(() => {
-      setInnerChecked(Boolean(checked));
-    }, [checked]);
+    useSyncOuterValue<boolean>(setInnerChecked, Boolean(checked));
 
     const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
       if (disabled) {

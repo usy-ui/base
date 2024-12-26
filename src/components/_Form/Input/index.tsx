@@ -4,13 +4,12 @@ import {
   FocusEvent,
   ReactNode,
   forwardRef,
-  useEffect,
   useState,
 } from "react";
 
 import clsx from "clsx";
 
-import { useNameMemo } from "@src/hooks";
+import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 
 import {
   BaseSizeUnion,
@@ -66,12 +65,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   },
   ref
 ) {
-  const [inputValue, setInputValue] = useState(value);
+  const [innerValue, setInnerValue] = useState(value);
   const { nameMemo } = useNameMemo(name, "input");
-
-  useEffect(() => {
-    setInputValue(value);
-  }, [value, inputValue]);
+  useSyncOuterValue<string>(setInnerValue, value);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
@@ -79,7 +75,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     }
 
     const formattedValue = transformOnChange(e.target.value);
-    setInputValue(formattedValue);
+    setInnerValue(formattedValue);
     onChange?.(formattedValue, e);
   };
 
@@ -89,7 +85,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     }
 
     const formattedValue = transformOnBlur(e.target.value);
-    setInputValue(formattedValue);
+    setInnerValue(formattedValue);
     onBlur?.(formattedValue, e);
   };
 
@@ -103,7 +99,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         ref={ref}
         id={nameMemo}
         name={nameMemo}
-        value={inputValue}
+        value={innerValue}
         type={type}
         placeholder={placeholder}
         onChange={handleOnChange}
