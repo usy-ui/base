@@ -1,35 +1,29 @@
 "use client";
-import {
-  ChangeEvent,
-  FocusEvent,
-  forwardRef,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, FocusEvent, forwardRef, useState } from "react";
 
 import clsx from "clsx";
 
 import { EyeSlashIcon, EyeIcon } from "@src/components/Icon";
-import { useNameMemo } from "@src/hooks";
+import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 
 import { CommonCompProps } from "../../../@types";
 import { FieldLabel } from "../FieldLabel";
-import { PureInputProps } from "../Input";
+import { InputProps } from "../Input";
 import { InputDescription } from "../Input/components/InputDescription";
 import { InputIconLeft } from "../Input/components/InputIconLeft";
 import { InputIconRight } from "../Input/components/InputIconRight";
 
 type PickedInputProps = Pick<
-  PureInputProps,
-  | "value"
+  InputProps,
   | "size"
-  | "label"
   | "iconLeft"
   | "placeholder"
   | "description"
+  | "label"
   | "hasAsterisk"
-  | "hasError"
+  | "value"
   | "disabled"
+  | "hasError"
   | "onChange"
   | "onBlur"
   | "widthProps"
@@ -59,19 +53,16 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
     ref
   ) {
     const [hidePassword, setHidePassword] = useState(true);
-    const [inputValue, setInputValue] = useState(value);
+    const [innerValue, setInnerValue] = useState(value);
     const { nameMemo } = useNameMemo(name, "password");
-
-    useEffect(() => {
-      setInputValue(value);
-    }, [value]);
+    useSyncOuterValue<string>(setInnerValue, value);
 
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
       if (disabled) {
         return;
       }
 
-      setInputValue(e.target.value);
+      setInnerValue(e.target.value);
       onChange?.(e.target.value, e);
     };
 
@@ -80,7 +71,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
         return;
       }
 
-      setInputValue(e.target.value);
+      setInnerValue(e.target.value);
       onBlur?.(e.target.value, e);
     };
 
@@ -95,12 +86,34 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
           id={nameMemo}
           name={nameMemo}
           type={hidePassword ? "password" : "text"}
-          value={inputValue}
+          value={innerValue}
           placeholder={placeholder}
           onChange={handleOnChange}
           onBlur={handleOnBlur}
           className="input"
           data-testid={`${testId}-input`}
+        />
+      );
+    };
+
+    const renderHideShowPassword = () => {
+      return (
+        <InputIconRight
+          size={size}
+          iconRight={
+            hidePassword ? (
+              <EyeIcon
+                onClick={() => setHidePassword(false)}
+                style={{ cursor: "pointer" }}
+              />
+            ) : (
+              <EyeSlashIcon
+                onClick={() => setHidePassword(true)}
+                style={{ cursor: "pointer" }}
+              />
+            )
+          }
+          testId={testId}
         />
       );
     };
@@ -132,23 +145,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
         >
           <InputIconLeft size={size} iconLeft={iconLeft} testId={testId} />
           {renderInput()}
-          <InputIconRight
-            size={size}
-            iconRight={
-              hidePassword ? (
-                <EyeIcon
-                  onClick={() => setHidePassword(false)}
-                  style={{ cursor: "pointer" }}
-                />
-              ) : (
-                <EyeSlashIcon
-                  onClick={() => setHidePassword(true)}
-                  style={{ cursor: "pointer" }}
-                />
-              )
-            }
-            testId={testId}
-          />
+          {renderHideShowPassword()}
         </div>
         <InputDescription description={description} testId={testId} />
       </div>

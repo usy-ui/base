@@ -4,6 +4,8 @@ import { ChangeEvent, FC, useState } from "react";
 
 import clsx from "clsx";
 
+import { useSyncOuterValue } from "@src/hooks";
+
 import {
   BaseSizeUnion,
   CommonCompProps,
@@ -33,6 +35,7 @@ export const Switch: FC<SwitchProps> = ({
   testId = name,
 }) => {
   const [checked, setChecked] = useState(value);
+  useSyncOuterValue<boolean | undefined>(setChecked, Boolean(checked));
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) {

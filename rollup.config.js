@@ -13,7 +13,7 @@ import filesize from "rollup-plugin-filesize";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { preserveDirectives } from "rollup-plugin-preserve-directives";
 
-const packageJson = require("./package.json");
+import packageJson from "./package.json";
 
 /** @type {import('rollup').RollupOptions} */
 export default [

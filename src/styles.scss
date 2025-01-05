@@ -145,9 +145,9 @@
   --usy-color-sky: #7ce2fe;
 }
 :root {
-  --usy-color-primary: #16a085;
-  --usy-color-primary-light: #1ccdaa;
-  --usy-color-primary-dark: #107360;
+  --usy-color-primary-light: #40916c;
+  --usy-color-primary: #377e5e;
+  --usy-color-primary-dark: #2d6a4f;
 }
 :root {
   --usy-element-height-tiny: 24px;
@@ -1945,7 +1945,7 @@ a {
       align-items: center;
       font-size: var(--usy-fontsize-small);
       border: 1px solid var(--usy-color-primary);
-      border-radius: var(--usy-spacing-14px);
+      border-radius: var(--usy-spacing-6px);
       margin-right: var(--usy-spacing-4px);
       padding: 0 var(--usy-spacing-6px) 0 var(--usy-spacing-10px);
 

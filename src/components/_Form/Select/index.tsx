@@ -4,7 +4,7 @@ import { forwardRef, ReactNode, useCallback, useState } from "react";
 
 import clsx from "clsx";
 
-import { useOutsideClick } from "@src/hooks";
+import { useOutsideClick, useSyncOuterValue } from "@src/hooks";
 
 import {
   CommonCompProps,
@@ -53,6 +53,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   const [selectedItem, setSelectedItem] = useState<SelectItemType>(
     value || items[0]
   );
+  useSyncOuterValue<SelectItemType>(setSelectedItem, value || items[0]);
 
   const handleOutsideClick = useCallback(() => {
     setIsOpen(false);

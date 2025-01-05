@@ -1,15 +1,9 @@
 "use client";
-import {
-  ChangeEvent,
-  FocusEvent,
-  forwardRef,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, FocusEvent, forwardRef, useState } from "react";
 
 import clsx from "clsx";
 
-import { useNameMemo } from "@src/hooks";
+import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 import { usyElement } from "@src/styles";
 
 import {
@@ -60,19 +54,16 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     },
     ref
   ) {
-    const [inputValue, setInputValue] = useState(value);
+    const [innerValue, setInnerValue] = useState(value);
+    useSyncOuterValue<string>(setInnerValue, value);
     const { nameMemo } = useNameMemo(name, "textarea");
-
-    useEffect(() => {
-      setInputValue(value);
-    }, [value]);
 
     const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
       if (disabled) {
         return;
       }
 
-      setInputValue(e.target.value);
+      setInnerValue(e.target.value);
       onChange?.(e.target.value, e);
     };
 
@@ -81,7 +72,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         return;
       }
 
-      setInputValue(e.target.value);
+      setInnerValue(e.target.value);
       onBlur?.(e.target.value, e);
     };
 
@@ -95,7 +86,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           ref={ref}
           id={nameMemo}
           name={nameMemo}
-          value={inputValue}
+          value={innerValue}
           data-testid={testId}
           placeholder={placeholder}
           onChange={handleOnChange}

@@ -1,7 +1,9 @@
 "use client";
-import { ChangeEvent, forwardRef, useEffect, useState } from "react";
+import { ChangeEvent, forwardRef, useState } from "react";
 
 import clsx from "clsx";
+
+import { useSyncOuterValue } from "@src/hooks";
 
 import {
   CommonCompProps,
@@ -47,12 +49,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     const [selectedItem, setSelectedItem] = useState<RadioType>(
       value || items[0]
     );
-
-    useEffect(() => {
-      if (value) {
-        setSelectedItem(value);
-      }
-    }, [value]);
+    useSyncOuterValue<RadioType>(setSelectedItem, value || items[0]);
 
     const handleChange = (
       item: RadioType,
