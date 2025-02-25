@@ -20,7 +20,7 @@ export const Types: Story = {
     <Tags
       label="Animals"
       tags={["cats", "dogs", "ducks"]}
-      widthProps={{ maxWidth: "300px", width: "300px" }}
+      widthProps={{ maxWidth: "500px", width: "500px" }}
     />
   ),
 };

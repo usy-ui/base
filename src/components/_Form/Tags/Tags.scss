@@ -13,9 +13,11 @@
     flex-wrap: wrap;
     gap: var(--usy-spacing-6px);
     min-height: var(--usy-element-height-medium);
-    padding: var(--usy-spacing-8px) var(--usy-spacing-10px);
+    padding: var(--usy-spacing-8px) var(--usy-spacing-32px)
+      var(--usy-spacing-10px) var(--usy-spacing-8px);
     border: 1px solid var(--usy-element-border-color);
     border-radius: var(--usy-element-border-radius);
+    position: relative;
 
     &.has-error,
     &.has-error:hover {
@@ -33,7 +35,7 @@
       margin-right: var(--usy-spacing-4px);
       padding: 0 var(--usy-spacing-6px) 0 var(--usy-spacing-10px);
 
-      svg {
+      .remove-tag {
         fill: var(--usy-color-primary);
         margin-left: var(--usy-spacing-4px);
         margin-right: calc(var(--usy-spacing-2px) * -1);
@@ -47,6 +49,14 @@
       border: none;
       outline: none;
       font-size: var(--usy-fontsize-small);
+    }
+
+    .remove-all-tags {
+      position: absolute;
+      top: var(--usy-spacing-10px);
+      right: var(--usy-spacing-8px);
+      color: var(--usy-color-red-7);
+      cursor: pointer;
     }
   }
 }

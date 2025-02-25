@@ -11,7 +11,7 @@ import {
   FormFieldProps,
   WidthProps,
 } from "../../../@types";
-import { CloseCircleSolidIcon } from "../../Icon";
+import { CloseCircleSolidIcon, TrashBinIcon } from "../../Icon";
 import { FieldLabel } from "../FieldLabel";
 import { InputDescription } from "../Input/components/InputDescription";
 
@@ -19,8 +19,8 @@ type PureTagsProps = {
   tags?: string[];
   placeholder?: string;
   description?: ReactNode;
-  onAdd?: (tags: string[], addedTag: string) => void;
-  onRemove?: (tags: string[], removedTag: string) => void;
+  onAdd?: (tags: string[], addedTag?: string) => void;
+  onRemove?: (tags: string[], removedTag?: string) => void;
 };
 
 export type TagsProps = PureTagsProps &
@@ -84,6 +84,15 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
     setInnerTags(updatedTags);
   };
 
+  const removeAllTags = () => {
+    if (disabled) {
+      return;
+    }
+
+    onRemove?.([]);
+    setInnerTags([]);
+  };
+
   /**
    * Render
    */
@@ -97,7 +106,10 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
           data-testid={`${testId}-tag-item`}
         >
           {tagItem}
-          <CloseCircleSolidIcon onClick={() => removeTag(tagItem)} />
+          <CloseCircleSolidIcon
+            onClick={() => removeTag(tagItem)}
+            className="remove-tag"
+          />
         </span>
       );
     });
@@ -114,6 +126,14 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
         className="tag-input"
         data-testid={`${testId}-tag-input`}
       />
+    );
+  };
+
+  const renderRemoveAllTags = () => {
+    return (
+      <div className="remove-all-tags">
+        <TrashBinIcon onClick={removeAllTags} />
+      </div>
     );
   };
 
@@ -149,6 +169,7 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
       >
         {renderTags()}
         {renderTagInput()}
+        {renderRemoveAllTags()}
       </div>
       <InputDescription description={description} testId={testId} />
     </div>
