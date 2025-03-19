@@ -46,7 +46,7 @@ export const Colors: Story = {
 export const Radius: Story = {
   render: () => (
     <Flex direction="column">
-      <Flex gap={usySpacing.px24} alignItems="center">
+      <Flex gap={usySpacing.px24}>
         <Badge radius="none">none</Badge>
         <Badge radius="small">small</Badge>
         <Badge radius="medium">medium</Badge>
@@ -54,7 +54,7 @@ export const Radius: Story = {
         <Badge radius="full">full</Badge>
       </Flex>
       <br />
-      <Flex gap={usySpacing.px24} alignItems="center">
+      <Flex gap={usySpacing.px24}>
         <Badge radius="none" size="large">
           none none
         </Badge>

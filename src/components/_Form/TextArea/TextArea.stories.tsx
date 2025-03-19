@@ -2,6 +2,8 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { usySpacing } from "@src/styles";
+
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 import { Flex } from "../../_Layout/Flex";
 
@@ -14,7 +16,11 @@ const meta: Meta<typeof TextArea> = {
 
 export const Types: Story = {
   render: () => (
-    <Flex direction="column" gap="30px">
+    <Flex
+      direction="column"
+      gap={usySpacing.px32}
+      widthProps={{ minWidth: "400px" }}
+    >
       <TextArea label="About me" placeholder="How is your day?" />
       <TextArea
         label="About me"

@@ -24,11 +24,7 @@ export const Types: Story = {
             {
               id: "tab-1",
               label: "Tab 1",
-              content: (
-                <div>
-                  <input />
-                </div>
-              ),
+              content: <div>This is tab 1</div>,
             },
             { id: "tab-2", label: "Tab 2", content: <div>This is tab 2</div> },
             { id: "tab-3", label: "Tab 3", content: <div>This is tab 3</div> },

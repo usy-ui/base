@@ -7,13 +7,7 @@ import { usySpacing } from "../src/styles";
 export const ThemeProviderDecorator = (Story) => {
   return (
     <React.StrictMode>
-      <Flex
-        widthProps={{ minWidth: "500px" }}
-        heightProps={{ minHeight: "300px" }}
-        justifyContent="center"
-        alignItems="center"
-        gap={usySpacing.px20}
-      >
+      <Flex justifyContent="center" alignItems="center" gap={usySpacing.px32}>
         <Story />
       </Flex>
     </React.StrictMode>

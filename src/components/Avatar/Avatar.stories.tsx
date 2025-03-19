@@ -30,7 +30,7 @@ export const Radius: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <Flex gap={usySpacing.px32} alignItems="center">
+    <Flex gap={usySpacing.px32}>
       <Avatar src={avatarUrl} imgAlt="Avatar" size="tiny" />
       <Avatar src={avatarUrl} imgAlt="Avatar" size="small" />
       <Avatar src={avatarUrl} imgAlt="Avatar" size="medium" />
@@ -43,8 +43,8 @@ export const Sizes: Story = {
 export const Fallback: Story = {
   render: () => (
     <Flex gap={usySpacing.px32}>
-      <Avatar src="" fallback="R" color="random" />
-      <Avatar src="" fallback="P" color="primary" />
+      <Avatar src="" fallback="U" color="random" />
+      <Avatar src="" fallback="I" color="primary" />
     </Flex>
   ),
 };

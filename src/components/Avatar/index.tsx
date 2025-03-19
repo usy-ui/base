@@ -14,7 +14,7 @@ import {
   BaseSizeUnion,
 } from "../../@types";
 
-export type AvatarProps = {
+type PureAvatarProps = {
   src: string;
   size?: BaseSizeUnion | BaseSizeExtraUnion;
   color?: BaseColorUnion | "random";
@@ -22,7 +22,9 @@ export type AvatarProps = {
   fallback?: ReactNode;
   imgAlt?: string;
   onClick?: () => void;
-} & CommonCompProps;
+};
+
+export type AvatarProps = PureAvatarProps & CommonCompProps;
 
 export const Avatar: FC<AvatarProps> = ({
   src,
