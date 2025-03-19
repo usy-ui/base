@@ -10,7 +10,7 @@ import {
   BrandFacebookIcon,
   BrandLinkedinIcon,
   BrandTwitterIcon,
-} from "../../Icon";
+} from "../../atoms/Icon";
 
 import { Select, SelectItemType } from "./index";
 

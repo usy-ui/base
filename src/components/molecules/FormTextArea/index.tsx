@@ -3,8 +3,8 @@ import { ChangeEvent, FocusEvent, forwardRef, useState } from "react";
 
 import clsx from "clsx";
 
+import { usyElement } from "@src/design-tokens";
 import { useNameMemo, useSyncOuterValue } from "@src/hooks";
-import { usyElement } from "@src/styles";
 
 import {
   FormFieldProps,

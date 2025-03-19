@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 import { Button } from "../../atoms/Button";
-import { LockTimeIcon } from "../../Icon";
+import { LockTimeIcon } from "../../atoms/Icon";
 
 import { Toast, globalToast } from "./index";
 

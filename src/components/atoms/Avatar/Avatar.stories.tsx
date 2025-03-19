@@ -3,7 +3,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
-import { usySpacing } from "../../../styles";
+import { usySpacing } from "../../../design-tokens";
 import { Flex } from "../LayoutFlex";
 
 import { Avatar } from "./index";

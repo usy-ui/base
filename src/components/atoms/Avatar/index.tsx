@@ -3,8 +3,8 @@ import { FC, ReactNode } from "react";
 
 import clsx from "clsx";
 
+import { usyColor } from "@src/design-tokens";
 import { useUsyColor } from "@src/hooks";
-import { usyColor } from "@src/styles";
 
 import {
   CommonCompProps,

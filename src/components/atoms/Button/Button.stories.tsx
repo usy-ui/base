@@ -3,8 +3,8 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
-import { usySpacing } from "../../../styles";
-import { AngleDownIcon, CaretLeftIcon, CaretRightIcon } from "../../Icon";
+import { usySpacing } from "../../../design-tokens";
+import { AngleDownIcon, CaretLeftIcon, CaretRightIcon } from "../../atoms/Icon";
 import { Flex } from "../LayoutFlex";
 
 import { Button } from "./index";

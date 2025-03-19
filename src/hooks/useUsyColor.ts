@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { usyColor, usyHexColors } from "@src/styles";
+import { usyColor, usyHexColors } from "@src/design-tokens";
 import { camelCase } from "@src/utils";
 
 import { BaseColorUnion } from "../@types";

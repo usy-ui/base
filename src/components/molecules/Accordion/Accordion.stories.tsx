@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { usySpacing } from "@src/styles";
+import { usySpacing } from "@src/design-tokens";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 import { Flex } from "../../atoms/LayoutFlex";

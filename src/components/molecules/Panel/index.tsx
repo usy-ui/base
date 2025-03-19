@@ -3,7 +3,7 @@ import { forwardRef, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { usySpacing } from "@src/styles";
+import { usySpacing } from "@src/design-tokens";
 
 import {
   HeightProps,

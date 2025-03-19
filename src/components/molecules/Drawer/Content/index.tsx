@@ -3,7 +3,7 @@ import { FC, ReactNode } from "react";
 import clsx from "clsx";
 
 import { Scrollable } from "@src/components/molecules/Scrollable";
-import { usySpacing } from "@src/styles";
+import { usySpacing } from "@src/design-tokens";
 
 import { CommonCompProps } from "../../../../@types";
 

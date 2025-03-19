@@ -4,8 +4,8 @@ import { FC, ReactNode, useCallback, useEffect } from "react";
 import clsx from "clsx";
 import { createPortal } from "react-dom";
 
+import { usySpacing, usyZIndex } from "@src/design-tokens";
 import { useMounted, useOutsideClick } from "@src/hooks";
-import { usySpacing, usyZIndex } from "@src/styles";
 
 import { CommonCompProps, HeightProps, WidthProps } from "../../../@types";
 import { CloseIcon } from "../../atoms/Icon";

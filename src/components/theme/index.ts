@@ -1,5 +1,5 @@
 "use client";
-import { usyColor } from "@src/styles";
+import { usyColor } from "@src/design-tokens";
 import { camelCase, toCssVariable } from "@src/utils/format";
 
 import { BaseRadiusUnion } from "../../@types";

@@ -12,8 +12,8 @@ import clsx from "clsx";
 import { createPortal } from "react-dom";
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { usyColor } from "@src/design-tokens";
 import { useMounted } from "@src/hooks";
-import { usyColor } from "@src/styles";
 import { getUniqueTime } from "@src/utils";
 
 import { BasePositionExtraUnion, CommonCompProps } from "../../../@types";

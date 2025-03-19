@@ -3,9 +3,9 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
-import { usySpacing } from "../../../styles";
+import { usySpacing } from "../../../design-tokens";
+import { EnvelopeIcon, InfoCircleIcon } from "../../atoms/Icon";
 import { Flex } from "../../atoms/LayoutFlex";
-import { EnvelopeIcon, InfoCircleIcon } from "../../Icon";
 
 import { Input } from "./index";
 

@@ -13,8 +13,8 @@ import clsx from "clsx";
 
 import { Flex } from "@src/components/atoms/LayoutFlex";
 import { Typography } from "@src/components/atoms/Typography";
+import { usySpacing } from "@src/design-tokens";
 import { useOutsideClick, useSyncOuterValue } from "@src/hooks";
-import { usySpacing } from "@src/styles";
 
 import { CommonCompProps, FormFieldProps, WidthProps } from "../../../@types";
 import { FieldLabel, PureFieldLabelProps } from "../../atoms/FieldLabel";

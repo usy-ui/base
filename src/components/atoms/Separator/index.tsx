@@ -3,8 +3,8 @@ import { CSSProperties, FC } from "react";
 import clsx from "clsx";
 
 import { Typography } from "@src/components/atoms/Typography";
+import { usySpacing } from "@src/design-tokens";
 import { useUsyColor } from "@src/hooks";
-import { usySpacing } from "@src/styles";
 
 import {
   BaseColorUnion,

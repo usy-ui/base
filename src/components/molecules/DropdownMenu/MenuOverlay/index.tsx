@@ -2,7 +2,7 @@ import { Children, cloneElement, forwardRef, ReactElement } from "react";
 
 import clsx from "clsx";
 
-import { usyZIndex } from "@src/styles";
+import { usyZIndex } from "@src/design-tokens";
 
 import { CommonCompProps, WidthProps } from "../../../../@types";
 
