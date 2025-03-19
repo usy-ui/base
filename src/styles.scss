@@ -1624,7 +1624,8 @@ a {
     cursor: not-allowed;
   }
 
-  .display-field {
+  .selected-option,
+  .autocomplete-input {
     height: var(--usy-element-height-medium);
     display: flex;
     justify-content: flex-start;
@@ -1633,11 +1634,8 @@ a {
     border: 1px solid var(--usy-element-border-color);
     border-radius: var(--usy-element-border-radius);
     padding: 0 var(--usy-spacing-32px) 0 var(--usy-spacing-12px);
-    font-size: var(--usy-fontsize-medium);
-    user-select: none;
-    cursor: pointer;
 
-    .chevron-icon {
+    .describe-icon {
       position: absolute;
       top: 50%;
       right: var(--usy-spacing-10px);
@@ -1648,8 +1646,25 @@ a {
     }
   }
 
+  .selected-option {
+    font-size: var(--usy-fontsize-medium);
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .autocomplete-input {
+    .filter-input {
+      font-size: var(--usy-fontsize-medium);
+      height: calc(var(--usy-element-height-medium) - 4px);
+      border: none;
+      outline: none;
+      flex-grow: 1;
+    }
+  }
+
   .menu-overlay {
     min-width: 100%;
+    max-height: 260px;
     position: absolute;
     left: 50%;
     top: calc(100% + var(--usy-spacing-4px));
@@ -1659,6 +1674,7 @@ a {
     background-color: var(--usy-color-white);
     padding: var(--usy-spacing-10px) 0;
     filter: drop-shadow(0px 0px 6px var(--usy-color-light-2));
+    overflow-y: auto;
     z-index: var(--usy-zIndex-high);
 
     ul {

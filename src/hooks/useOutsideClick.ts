@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from "react";
 
-export const useOutsideClick = (callback: () => void, isDisabled?: boolean) => {
-  const elementRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
+export const useOutsideClick = <ElementType extends HTMLElement>(
+  callback: () => void,
+  isDisabled?: boolean
+) => {
+  const elementRef = useRef<ElementType>(null);
+  const triggerRef = useRef<ElementType>(null);
 
   useEffect(() => {
     if (isDisabled) {

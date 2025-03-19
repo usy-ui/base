@@ -2,7 +2,10 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
+import {
+  defaultSbCompMetaProps,
+  listOfAnimals,
+} from "../../../../.storybook/constants";
 import {
   BrandFacebookIcon,
   BrandLinkedinIcon,
@@ -18,24 +21,6 @@ const meta: Meta<typeof Select> = {
 
 export const Types: Story = {
   render: () => {
-    const animals: SelectItemType[] = [
-      {
-        id: "cats",
-        label: "Cats",
-        value: "cats",
-      },
-      {
-        id: "dogs",
-        label: "Dogs",
-        value: "dogs",
-      },
-      {
-        id: "fishes",
-        label: "Fishes",
-        value: "fishes",
-      },
-    ];
-
     const socials: SelectItemType[] = [
       {
         id: "facebook",
@@ -43,7 +28,7 @@ export const Types: Story = {
         labelElement: (
           <>
             <BrandFacebookIcon />
-            Cats
+            &nbsp;&nbsp;Cats
           </>
         ),
         value: "facebook",
@@ -54,7 +39,7 @@ export const Types: Story = {
         labelElement: (
           <>
             <BrandLinkedinIcon />
-            Instagram
+            &nbsp;&nbsp;Instagram
           </>
         ),
         value: "linkedin",
@@ -65,7 +50,7 @@ export const Types: Story = {
         labelElement: (
           <>
             <BrandTwitterIcon />
-            Twitter
+            &nbsp;&nbsp;Twitter
           </>
         ),
         value: "twitter",
@@ -75,19 +60,23 @@ export const Types: Story = {
     return (
       <>
         <Select
+          type="autocomplete"
           label="Select Animal"
-          items={animals}
+          items={listOfAnimals}
           onChange={(item) => alert(item.value)}
+          widthProps={{ minWidth: "140px" }}
         />
         <Select
           label="Select Social"
           items={socials}
           onChange={(item) => alert(item.value)}
+          widthProps={{ minWidth: "140px" }}
         />
         <Select
           label="Select Animal"
-          items={animals}
+          items={listOfAnimals}
           onChange={(item) => alert(item.value)}
+          widthProps={{ minWidth: "140px" }}
           disabled
         />
       </>
