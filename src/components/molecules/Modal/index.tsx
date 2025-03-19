@@ -47,7 +47,7 @@ export const Modal: FC<ModalProps> = ({
     onClose?.();
   };
 
-  const { elementRef } = useOutsideClick(
+  const { elementRef } = useOutsideClick<HTMLDivElement>(
     handleOutsideClick,
     preventOutsideClose
   );
@@ -81,9 +81,9 @@ export const Modal: FC<ModalProps> = ({
 
       return (
         <CloseIcon
-          className="header-close"
+          className="close-icon"
           onClick={onClose}
-          data-testid={`${testId}-header-close`}
+          data-testid={`${testId}-close-icon`}
         />
       );
     };
@@ -94,6 +94,7 @@ export const Modal: FC<ModalProps> = ({
           <ParagraphHeading
             title={title}
             marginProps={{ marginBottom: usySpacing.px20 }}
+            testId={`${testId}-title`}
           />
         );
       }

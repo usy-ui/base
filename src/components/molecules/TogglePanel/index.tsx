@@ -58,7 +58,7 @@ export const TogglePanel = forwardRef<HTMLDivElement, TogglePanelProps>(
             tag="label"
             size="medium"
             weight="semibold"
-            data-testid={`${testId}-header-title`}
+            testId={`${testId}-header-title`}
           >
             {title}
           </Typography>

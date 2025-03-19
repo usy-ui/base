@@ -2,15 +2,23 @@ import React from "react";
 
 import { render, screen } from "@testing-library/react";
 
+import { mockLoremIpsumParagraph } from "@src/mocks/testing";
+
 import { DrawerContent } from "../index";
 
-describe("DrawerContent component", () => {
+describe("DrawerContent", () => {
   describe("render", () => {
-    it("should render component", () => {
+    it("should render component and children", () => {
       render(
-        <DrawerContent testId="drawer-content">Usy UI components</DrawerContent>
+        <DrawerContent testId="lorem-drawer-content">
+          {mockLoremIpsumParagraph}
+        </DrawerContent>
       );
-      expect(screen.getByTestId("drawer-content").firstChild).toBeDefined();
+
+      expect(screen.getByTestId("lorem-drawer-content")).toBeInTheDocument();
+      expect(
+        screen.getByText(/Lorem Ipsum is simply dummy text/i)
+      ).toBeInTheDocument();
     });
   });
 });

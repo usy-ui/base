@@ -22,7 +22,7 @@ export const DrawerContent: FC<DrawerContentProps> = ({
       tag="section"
       className={clsx("usy-drawer-content-container", className)}
       paddingProps={{ paddingRight: usySpacing.px18 }}
-      data-testid={testId}
+      testId={testId}
     >
       {children}
     </Scrollable>

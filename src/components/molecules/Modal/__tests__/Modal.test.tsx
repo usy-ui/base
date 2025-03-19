@@ -9,64 +9,42 @@ const mockOnClose = jest.fn();
 
 describe("Modal component", () => {
   describe("render", () => {
-    it("should render component", () => {
+    it("should render component when mounted", () => {
       render(
-        <Modal testId="edit-profile" isOpen>
+        <Modal title="Lorem Modal" testId="lorem-modal">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </Modal>
       );
 
-      expect(screen.getByTestId("edit-profile").firstChild).toBeDefined();
-    });
-
-    it("should render title", () => {
-      render(
-        <Modal
-          title="Edit Profile"
-          onClose={mockOnClose}
-          testId="edit-profile"
-          isOpen
-        >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </Modal>
-      );
-
+      expect(screen.getByTestId("lorem-modal")).toBeInTheDocument();
       expect(
-        screen.getByTestId("edit-profile-header-title")
+        screen.getByText(/Lorem Ipsum is simply dummy text/i)
       ).toBeInTheDocument();
+      expect(screen.getByText("Lorem Modal")).toBeInTheDocument();
     });
 
     it("should render close icon", () => {
       render(
-        <Modal onClose={mockOnClose} testId="edit-profile" isOpen>
+        <Modal onClose={mockOnClose} testId="lorem-modal">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </Modal>
       );
 
-      expect(
-        screen.getByTestId("edit-profile-header-close")
-      ).toBeInTheDocument();
+      expect(screen.getByTestId("lorem-modal-close-icon")).toBeInTheDocument();
     });
   });
   describe("action", () => {
     it("should trigger onClose when clicking on close icon", async () => {
       render(
-        <Modal
-          title="Edit Profile"
-          onClose={mockOnClose}
-          testId="edit-profile"
-          isOpen
-        >
+        <Modal title="Edit Profile" onClose={mockOnClose} testId="lorem-modal">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </Modal>
       );
 
-      await userEvent.click(screen.getByTestId("edit-profile-header-close"));
-
+      await userEvent.click(screen.getByTestId("lorem-modal-close-icon"));
       expect(mockOnClose).toHaveBeenCalled();
     });
   });

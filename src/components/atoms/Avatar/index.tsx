@@ -68,7 +68,16 @@ export const Avatar: FC<AvatarProps> = ({
       }}
       data-testid={testId}
     >
-      {src ? <img src={src} alt={imgAlt} className="image" /> : fallback}
+      {src ? (
+        <img
+          src={src}
+          alt={imgAlt}
+          className="image"
+          data-testid={`${testId}-image`}
+        />
+      ) : (
+        fallback
+      )}
     </div>
   );
 };

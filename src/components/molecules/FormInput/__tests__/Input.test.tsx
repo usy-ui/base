@@ -2,7 +2,7 @@ import React from "react";
 
 import { render, screen } from "@testing-library/react";
 
-import { EnvelopeIcon, InfoCircleIcon } from "../../../Icon";
+import { EnvelopeIcon, InfoCircleIcon } from "../../../atoms/Icon";
 import { Input } from "../index";
 
 const mockOnChange = jest.fn();
