@@ -1,58 +1,36 @@
-export * from "./Icon";
-export { setUsyTheme } from "./_Theme";
+export * from "./atoms/Icon";
+export { setUsyTheme } from "./theme";
 
 /**
- * Layout
+ * Atom components
+ */
+
+export { Avatar, AvatarProps } from "./atoms/Avatar";
+export { Badge, BadgeProps } from "./atoms/Badge";
+export { Button, ButtonProps } from "./atoms/Button";
+export { Copyable, CopyableProps } from "./atoms/Copyable";
+export { FieldLabel } from "./atoms/FieldLabel";
+export { Box, BoxProps } from "./atoms/LayoutBox";
+export { Flex, FlexProps } from "./atoms/LayoutFlex";
+export { FlexChild, FlexChildProps } from "./atoms/LayoutFlexChild";
+export { Separator, SeparatorProps } from "./atoms/Separator";
+export { Skeleton, SkeletonProps } from "./atoms/Skeleton";
+export { Tooltip, TooltipProps } from "./atoms/Tooltip";
+export { Typography, TypographyProps } from "./atoms/Typography";
+
+/**
+ * Molecule components
  */
 
 export {
   Accordion,
   AccordionProps,
   AccordionItemType,
-} from "./_molecules/Accordion";
-export { Box, BoxProps } from "./_atoms/LayoutBox";
-export { Flex, FlexProps } from "./_atoms/LayoutFlex";
-export { FlexChild, FlexChildProps } from "./_atoms/LayoutFlexChild";
-export { Panel, PanelProps } from "./_molecules/Panel";
-export {
-  ParagraphHeading,
-  ParagraphHeadingProps,
-} from "./_molecules/ParagraphHeading";
-export { Scrollable, ScrollableProps } from "./_molecules/Scrollable";
-export { Separator, SeparatorProps } from "./_atoms/Separator";
-export { Skeleton, SkeletonProps } from "./_atoms/Skeleton";
-export { TogglePanel, TogglePanelProps } from "./_molecules/TogglePanel";
-
-/**
- * Form
- */
-
-export { Checkbox, CheckboxProps } from "./_molecules/FormCheckbox";
-export { FieldLabel } from "./_atoms/FieldLabel";
-export { Input, InputProps } from "./_molecules/FormInput";
-export { Password, PasswordProps } from "./_molecules/FormPassword";
-export {
-  RadioGroup,
-  RadioGroupProps,
-  RadioType,
-} from "./_molecules/FormRadioGroup";
-export { Select, SelectProps, SelectItemType } from "./_molecules/FormSelect";
-export { Switch, SwitchProps } from "./_molecules/FormSwitch";
-export { Tags, TagsProps } from "./_molecules/FormTags";
-export { TextArea, TextAreaProps } from "./_molecules/FormTextArea";
-
-/**
- * Components
- */
-
-export { Avatar, AvatarProps } from "./_atoms/Avatar";
-export { Badge, BadgeProps } from "./_atoms/Badge";
-export { Button, ButtonProps } from "./_atoms/Button";
+} from "./molecules/Accordion";
 export {
   ConfirmQuestion,
   ConfirmQuestionProps,
-} from "./_molecules/ConfirmQuestion";
-export { Copyable, CopyableProps } from "./_atoms/Copyable";
+} from "./molecules/ConfirmQuestion";
 export {
   Drawer,
   DrawerProps,
@@ -60,7 +38,7 @@ export {
   DrawerHeaderProps,
   DrawerFooter,
   DrawerFooterProps,
-} from "./_molecules/Drawer";
+} from "./molecules/Drawer";
 export {
   DropdownMenu,
   DropdownMenuProps,
@@ -70,26 +48,44 @@ export {
   DropdownMenuItem,
   DropdownMenuItemProps,
   DropdownMenuSeparator,
-} from "./_molecules/DropdownMenu";
+} from "./molecules/DropdownMenu";
+export { Checkbox, CheckboxProps } from "./molecules/FormCheckbox";
+export { Input, InputProps } from "./molecules/FormInput";
+export { Password, PasswordProps } from "./molecules/FormPassword";
+export {
+  RadioGroup,
+  RadioGroupProps,
+  RadioType,
+} from "./molecules/FormRadioGroup";
+export { Select, SelectProps, SelectItemType } from "./molecules/FormSelect";
+export { Switch, SwitchProps } from "./molecules/FormSwitch";
+export { Tags, TagsProps } from "./molecules/FormTags";
+export { TextArea, TextAreaProps } from "./molecules/FormTextArea";
 export {
   ImageGallery,
   ImageGalleryProps,
   ImageGalleryType,
-} from "./_molecules/ImageGallery";
-export { Modal, ModalProps } from "./_molecules/Modal";
+} from "./molecules/ImageGallery";
+export { Modal, ModalProps } from "./molecules/Modal";
+export { Panel, PanelProps } from "./molecules/Panel";
+export {
+  ParagraphHeading,
+  ParagraphHeadingProps,
+} from "./molecules/ParagraphHeading";
 export {
   Popover,
   PopoverProps,
   PopoverContentFnType,
   PopoverContentFnParams,
-} from "./_molecules/Popover";
-export { Table, TableProps, TableColumnType } from "./_molecules/Table";
-export { Tabs, TabsProps, TabItemType } from "./_molecules/Tabs";
+} from "./molecules/Popover";
+export { Scrollable, ScrollableProps } from "./molecules/Scrollable";
+export { Table, TableProps, TableColumnType } from "./molecules/Table";
+export { Tabs, TabsProps, TabItemType } from "./molecules/Tabs";
 export {
   Toast,
   globalToast,
   ToastProps,
   ToastInstance,
-} from "./_molecules/Toast";
-export { Tooltip, TooltipProps } from "./_atoms/Tooltip";
-export { Typography, TypographyProps } from "./_atoms/Typography";
+} from "./molecules/Toast";
+
+export { TogglePanel, TogglePanelProps } from "./molecules/TogglePanel";
