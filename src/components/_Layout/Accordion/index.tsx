@@ -8,7 +8,7 @@ import {
   MarginProps,
   PaddingProps,
   WidthProps,
-} from "../../@types";
+} from "../../../@types";
 
 import { AccordionItem, AccordionItemType } from "./AccordionItem";
 export { AccordionItemType } from "./AccordionItem";

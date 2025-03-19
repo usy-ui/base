@@ -7,9 +7,9 @@ import { createPortal } from "react-dom";
 import { useMounted, useOutsideClick } from "@src/hooks";
 import { usySpacing, usyZIndex } from "@src/styles";
 
-import { CommonCompProps, WidthProps } from "../../@types";
+import { CommonCompProps, HeightProps, WidthProps } from "../../@types";
+import { ParagraphHeading } from "../_Layout/ParagraphHeading";
 import { CloseIcon } from "../Icon";
-import { ParagraphHeading } from "../ParagraphHeading";
 
 type PureModalProps = {
   children: ReactNode;
@@ -20,12 +20,16 @@ type PureModalProps = {
   onClose?: () => void;
 };
 
-export type ModalProps = PureModalProps & WidthProps & CommonCompProps;
+export type ModalProps = PureModalProps &
+  WidthProps &
+  HeightProps &
+  CommonCompProps;
 
 export const Modal: FC<ModalProps> = ({
   children,
   title,
   widthProps,
+  heightProps,
   preventOutsideClose = false,
   containerElement,
   zIndex = usyZIndex.medium,
@@ -98,7 +102,10 @@ export const Modal: FC<ModalProps> = ({
         <div
           ref={elementRef}
           className={clsx("usy-modal-container", className)}
-          style={{ ...(widthProps || { minWidth: "500px" }) }}
+          style={{
+            ...(widthProps || { maxWidth: "600px" }),
+            ...(heightProps || { maxHeight: "90vh" }),
+          }}
           data-testid={testId}
         >
           {renderCloseIcon()}

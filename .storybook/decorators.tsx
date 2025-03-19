@@ -11,7 +11,7 @@ export const ThemeProviderDecorator = (Story) => {
         widthProps={{ minWidth: "500px" }}
         heightProps={{ minHeight: "300px" }}
         justifyContent="center"
-        alignItems="flex-start"
+        alignItems="center"
         gap={usySpacing.px20}
       >
         <Story />

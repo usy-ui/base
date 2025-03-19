@@ -3,8 +3,12 @@ import { FC, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { BaseTypoTagUnion, CommonCompProps, MarginProps } from "../../@types";
-import { Typography, TypographySize } from "../Typography";
+import {
+  BaseTypoTagUnion,
+  CommonCompProps,
+  MarginProps,
+} from "../../../@types";
+import { Typography, TypographySize } from "../../Typography";
 
 type PureParagraphHeadingProps = {
   title: string | ReactNode;

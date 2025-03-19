@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { AngleDownIcon } from "@src/components/Icon";
 import { Typography } from "@src/components/Typography";
 
-import { CommonCompProps } from "../../../@types";
+import { CommonCompProps } from "../../../../@types";
 
 export type AccordionItemType = {
   id: string;

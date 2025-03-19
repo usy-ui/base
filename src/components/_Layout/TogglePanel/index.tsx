@@ -3,9 +3,9 @@ import { forwardRef, ReactNode, useState } from "react";
 
 import clsx from "clsx";
 
-import { CommonCompProps, MarginProps, WidthProps } from "../../@types";
-import { AngleDownIcon } from "../Icon";
-import { Typography } from "../Typography";
+import { CommonCompProps, MarginProps, WidthProps } from "../../../@types";
+import { AngleDownIcon } from "../../Icon";
+import { Typography } from "../../Typography";
 
 type PureTogglePanel = {
   children: ReactNode;

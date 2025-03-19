@@ -8,7 +8,7 @@ import {
   MarginProps,
   PaddingProps,
   WidthProps,
-} from "../../@types";
+} from "../../../@types";
 
 type PureSkeletonProps = {
   type: "circle" | "bars";
