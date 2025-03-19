@@ -11,19 +11,14 @@ import {
 
 import clsx from "clsx";
 
-import { Flex } from "@src/components/_Layout/Flex";
-import { Typography } from "@src/components/Typography";
+import { Flex } from "@src/components/_atoms/LayoutFlex";
+import { Typography } from "@src/components/_atoms/Typography";
 import { useOutsideClick, useSyncOuterValue } from "@src/hooks";
 import { usySpacing } from "@src/styles";
 
-import {
-  CommonCompProps,
-  FieldLabelProps,
-  FormFieldProps,
-  WidthProps,
-} from "../../../@types";
+import { CommonCompProps, FormFieldProps, WidthProps } from "../../../@types";
+import { FieldLabel, PureFieldLabelProps } from "../../_atoms/FieldLabel";
 import { ChevronSortIcon, SearchIcon } from "../../Icon";
-import { FieldLabel } from "../FieldLabel";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type SelectItemType<T = any> = {
@@ -40,7 +35,7 @@ type PureSelectProps = {
 };
 
 export type SelectProps = PureSelectProps &
-  FieldLabelProps &
+  PureFieldLabelProps &
   Pick<FormFieldProps<SelectItemType>, "value" | "disabled" | "onChange"> &
   WidthProps &
   CommonCompProps;
@@ -134,6 +129,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
             value={filterInput}
             onFocus={toggleSelect}
             onChange={handleFilterInputChange}
+            placeholder="Type to search..."
             className="filter-input"
             ref={triggerRef as LegacyRef<HTMLInputElement>}
           />

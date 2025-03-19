@@ -2,8 +2,8 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { defaultSbCompMetaProps } from "../../../.storybook/constants";
-import { Button } from "../Button";
+import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
+import { Button } from "../../_atoms/Button";
 
 import { Tooltip } from "./index";
 

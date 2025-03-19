@@ -10,8 +10,12 @@ import {
   CommonCompProps,
   MarginProps,
   WidthProps,
-} from "../../@types";
-import { CheckIcon, CopyIcon } from "../Icon";
+} from "../../../@types";
+import { CheckIcon, CopyIcon } from "../../Icon";
+
+/**
+ * Types
+ */
 
 type PureCopyableProps = {
   text: string;
@@ -22,6 +26,10 @@ export type CopyableProps = PureCopyableProps &
   WidthProps &
   MarginProps &
   CommonCompProps;
+
+/**
+ * Component
+ */
 
 export const Copyable: FC<CopyableProps> = ({
   name = "copyable",

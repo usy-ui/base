@@ -4,9 +4,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 import { usySpacing } from "../../styles";
-import { Box } from "../_Layout/Box";
-import { Flex } from "../_Layout/Flex";
-import { Button } from "../Button";
+import { Button } from "../_atoms/Button";
+import { Box } from "../_atoms/LayoutBox";
+import { Flex } from "../_atoms/LayoutFlex";
 
 import { Table, TableColumnType } from "./index";
 

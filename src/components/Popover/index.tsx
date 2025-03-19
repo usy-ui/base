@@ -11,7 +11,7 @@ import {
   CommonCompProps,
   BaseColorUnion,
 } from "../../@types";
-import { Typography } from "../Typography";
+import { Typography } from "../_atoms/Typography";
 
 export type PopoverContentFnParams = {
   openPopover: () => void;

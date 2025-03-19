@@ -3,7 +3,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
-import { Flex } from "../../_Layout/Flex";
+import { Flex } from "../../_atoms/LayoutFlex";
 
 import { Password } from "./index";
 

@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { usySpacing } from "@src/styles";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
-import { Flex } from "../../_Layout/Flex";
+import { Flex } from "../../_atoms/LayoutFlex";
 
 import { TextArea } from "./index";
 

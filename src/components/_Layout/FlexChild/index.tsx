@@ -8,7 +8,7 @@ import {
   PaddingProps,
   WidthProps,
 } from "../../../@types";
-import { CommonBoxFlexProps } from "../Box";
+import { CommonBoxFlexProps } from "../../_atoms/LayoutBox";
 
 type PureFlexChild = {
   basic?: string;

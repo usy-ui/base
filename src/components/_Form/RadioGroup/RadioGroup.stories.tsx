@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 import { usySpacing } from "../../../styles";
-import { Flex } from "../../_Layout/Flex";
+import { Flex } from "../../_atoms/LayoutFlex";
 
 import { RadioGroup } from "./index";
 

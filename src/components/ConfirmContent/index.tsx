@@ -3,9 +3,9 @@ import { FC } from "react";
 import { usySpacing } from "@src/styles";
 
 import { CommonCompProps } from "../../@types";
-import { Flex } from "../_Layout/Flex";
-import { Button } from "../Button";
-import { Typography } from "../Typography";
+import { Button } from "../_atoms/Button";
+import { Flex } from "../_atoms/LayoutFlex";
+import { Typography } from "../_atoms/Typography";
 
 type PureConfirmContentProps = {
   description: string;

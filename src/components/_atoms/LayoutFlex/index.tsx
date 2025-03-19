@@ -11,31 +11,54 @@ import {
   BaseSemanticTagUnion,
   CommonCompProps,
 } from "../../../@types";
-import { CommonBoxFlexProps } from "../Box";
+import { CommonBoxFlexProps } from "../LayoutBox";
+
+/**
+ * Types
+ */
+
+type FlexDirection = "row" | "column" | "row-reverse" | "column-reverse";
+
+type FlexJustifyContent =
+  | "flex-start"
+  | "center"
+  | "flex-end"
+  | "space-between"
+  | "space-around"
+  | "space-evenly";
+
+type FlexAlignItems =
+  | "flex-start"
+  | "center"
+  | "flex-end"
+  | "baseline"
+  | "stretch";
+
+type FlexAlignContent =
+  | "flex-start"
+  | "center"
+  | "flex-end"
+  | "stretch"
+  | "space-between"
+  | "space-around"
+  | "space-evenly";
+
+type FlexWrap = "nowrap" | "wrap" | "wrap-reverse";
 
 type PureFlexProps = {
   tag?: BaseSemanticTagUnion;
   display?: "flex" | "inline-flex";
-  direction?: "row" | "column" | "row-reverse" | "column-reverse";
-  justifyContent?:
-    | "flex-start"
-    | "center"
-    | "flex-end"
-    | "space-between"
-    | "space-around"
-    | "space-evenly";
-  alignItems?: "flex-start" | "center" | "flex-end" | "baseline" | "stretch";
-  alignContent?:
-    | "flex-start"
-    | "center"
-    | "flex-end"
-    | "stretch"
-    | "space-between"
-    | "space-around"
-    | "space-evenly";
-  wrap?: "nowrap" | "wrap" | "wrap-reverse";
+  direction?: FlexDirection;
+  justifyContent?: FlexJustifyContent;
+  alignItems?: FlexAlignItems;
+  alignContent?: FlexAlignContent;
+  wrap?: FlexWrap;
   gap?: string;
 };
+
+/**
+ * Component
+ */
 
 export type FlexProps = CommonBoxFlexProps &
   PureFlexProps &
@@ -69,6 +92,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(function Flex(
 ) {
   return (
     <Tag
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       style={{
         display,

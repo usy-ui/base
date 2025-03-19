@@ -12,6 +12,10 @@ import {
   BaseSemanticTagUnion,
 } from "../../../@types";
 
+/**
+ * Types
+ */
+
 export type CommonBoxFlexProps = {
   children: ReactNode;
   tag?: BaseSemanticTagUnion;
@@ -21,6 +25,10 @@ export type CommonBoxFlexProps = {
 export type PureBoxProps = {
   display?: "block" | "inline-block";
 };
+
+/**
+ * Component
+ */
 
 export type BoxProps = PureBoxProps &
   CommonBoxFlexProps &

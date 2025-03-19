@@ -11,15 +11,25 @@ import {
   BaseSizeUnion,
   BaseVariantUnion,
   CommonCompProps,
-} from "../../@types";
+} from "../../../@types";
 
-export type BadgeProps = {
+/**
+ * Types
+ */
+
+type PureBadgeProps = {
   variant?: BaseVariantUnion;
   size?: BaseSizeUnion;
   color?: BaseColorUnion | "random";
   radius?: BaseRadiusUnion;
   children: ReactNode;
-} & CommonCompProps;
+};
+
+export type BadgeProps = PureBadgeProps & CommonCompProps;
+
+/**
+ * Component
+ */
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Badge(
   {

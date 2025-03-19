@@ -13,12 +13,17 @@ import {
   BaseTypoTagUnion,
   BaseTypoWeightUnion,
   CommonCompProps,
-} from "../../@types";
+} from "../../../@types";
+
+/**
+ * Types
+ */
 
 export type TypographySize =
   | BaseSizeUnion
   | BaseSizeExtraUnion
   | BaseSizeGigantUnion;
+
 export type TypographyAlign = "left" | "center" | "right" | "justify";
 
 export type PureTypographyProps = {
@@ -32,6 +37,11 @@ export type PureTypographyProps = {
 };
 
 export type TypographyProps = PureTypographyProps & CommonCompProps;
+
+/**
+ * Component
+ * Usage: Display text
+ */
 
 export const Typography: FC<TypographyProps> = ({
   children,

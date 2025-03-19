@@ -2,7 +2,7 @@ import { CSSProperties, FC } from "react";
 
 import clsx from "clsx";
 
-import { Typography } from "@src/components/Typography";
+import { Typography } from "@src/components/_atoms/Typography";
 import { useUsyColor } from "@src/hooks";
 import { usySpacing } from "@src/styles";
 
@@ -13,7 +13,11 @@ import {
   MarginProps,
   WidthProps,
 } from "../../../@types";
-import { PureTypographyProps } from "../../Typography";
+import { PureTypographyProps } from "../../_atoms/Typography";
+
+/**
+ * Types
+ */
 
 type PureSeparatorProps = {
   title?: string;
@@ -27,6 +31,10 @@ export type SeparatorProps = PureSeparatorProps &
   HeightProps &
   MarginProps &
   CommonCompProps;
+
+/**
+ * Component
+ */
 
 export const Separator: FC<SeparatorProps> = ({
   title,

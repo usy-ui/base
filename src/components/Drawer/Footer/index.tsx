@@ -3,7 +3,7 @@ import { FC } from "react";
 import clsx from "clsx";
 
 import { CommonCompProps } from "../../../@types";
-import { Button, ButtonProps } from "../../../components/Button";
+import { Button, ButtonProps } from "../../_atoms/Button";
 
 export type DrawerFooterProps = {
   buttons: ButtonProps[];

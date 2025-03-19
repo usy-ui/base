@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 import { usySpacing } from "../../styles";
-import { Flex } from "../_Layout/Flex";
-import { Button } from "../Button";
+import { Button } from "../_atoms/Button";
+import { Flex } from "../_atoms/LayoutFlex";
 
 import { Popover } from "./index";
 

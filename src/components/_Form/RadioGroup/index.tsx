@@ -5,12 +5,8 @@ import clsx from "clsx";
 
 import { useSyncOuterValue } from "@src/hooks";
 
-import {
-  CommonCompProps,
-  FieldLabelProps,
-  FormFieldProps,
-} from "../../../@types";
-import { FieldLabel } from "../FieldLabel";
+import { CommonCompProps, FormFieldProps } from "../../../@types";
+import { FieldLabel, PureFieldLabelProps } from "../../_atoms/FieldLabel";
 
 export type RadioType = {
   id: string;
@@ -24,7 +20,7 @@ type PureRadioGroupProps = {
 };
 
 export type RadioGroupProps = PureRadioGroupProps &
-  Pick<FieldLabelProps, "label"> &
+  Pick<PureFieldLabelProps, "label"> &
   Pick<
     FormFieldProps<RadioType, HTMLInputElement>,
     "value" | "disabled" | "onChange"

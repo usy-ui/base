@@ -10,6 +10,10 @@ import {
   WidthProps,
 } from "../../../@types";
 
+/**
+ * Types
+ */
+
 type PureSkeletonProps = {
   type: "circle" | "bars";
   numOfBars?: number;
@@ -21,6 +25,10 @@ export type SkeletonProps = PureSkeletonProps &
   MarginProps &
   PaddingProps &
   CommonCompProps;
+
+/**
+ * Component
+ */
 
 export const Skeleton: FC<SkeletonProps> = ({
   type,

@@ -7,7 +7,7 @@ import { EyeSlashIcon, EyeIcon } from "@src/components/Icon";
 import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 
 import { CommonCompProps } from "../../../@types";
-import { FieldLabel } from "../FieldLabel";
+import { FieldLabel } from "../../_atoms/FieldLabel";
 import { InputProps } from "../Input";
 import { InputDescription } from "../Input/components/InputDescription";
 import { InputIconLeft } from "../Input/components/InputIconLeft";

@@ -3,7 +3,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
-import { Box } from "../../_Layout/Box";
+import { Box } from "../../_atoms/LayoutBox";
 import { ParagraphHeading } from "../ParagraphHeading";
 
 import { Panel } from "./index";

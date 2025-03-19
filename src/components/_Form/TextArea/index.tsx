@@ -11,7 +11,7 @@ import {
   HeightProps,
   type CommonCompProps,
 } from "../../../@types";
-import { FieldLabel } from "../FieldLabel";
+import { FieldLabel } from "../../_atoms/FieldLabel";
 import { InputProps } from "../Input";
 import { InputDescription } from "../Input/components/InputDescription";
 

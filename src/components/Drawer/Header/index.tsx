@@ -2,8 +2,8 @@ import { FC, ReactNode } from "react";
 
 import clsx from "clsx";
 
+import { Typography } from "@src/components/_atoms/Typography";
 import { CloseIcon } from "@src/components/Icon";
-import { Typography } from "@src/components/Typography";
 
 import { CommonCompProps } from "../../../@types";
 

@@ -14,11 +14,10 @@ import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 import {
   BaseSizeUnion,
   CommonCompProps,
-  FieldLabelProps,
   FormFieldProps,
   WidthProps,
 } from "../../../@types";
-import { FieldLabel } from "../FieldLabel";
+import { FieldLabel, PureFieldLabelProps } from "../../_atoms/FieldLabel";
 
 import { InputDescription } from "./components/InputDescription";
 import { InputIconLeft } from "./components/InputIconLeft";
@@ -36,7 +35,7 @@ export type PureInputProps = {
 };
 
 export type InputProps = PureInputProps &
-  FieldLabelProps &
+  PureFieldLabelProps &
   FormFieldProps<string, HTMLInputElement> &
   WidthProps &
   CommonCompProps;

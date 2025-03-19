@@ -10,18 +10,24 @@ import {
   BaseSizeUnion,
   CommonCompProps,
   WidthProps,
-} from "../../@types";
-import SvgLoadingCircle from "../Icon/LoadingCircle";
+} from "../../../@types";
+import SvgLoadingCircle from "../../Icon/LoadingCircle";
 
 import { SoleSizeMappingConst } from "./Button.constants";
 
+/**
+ * Types
+ */
+
 export type ButtonType = "button" | "submit";
+
 export type ButtonVariant =
   | "primary"
   | "outline"
   | "normal"
   | "danger"
   | "invisible";
+
 export type ButtonSize = BaseSizeUnion | "tiny";
 
 type PureButtonProps = {
@@ -37,7 +43,12 @@ type PureButtonProps = {
   noSole?: boolean;
   onClick?: () => void;
 };
+
 export type ButtonProps = PureButtonProps & WidthProps & CommonCompProps;
+
+/**
+ * Component
+ */
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
@@ -76,22 +87,36 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
      * Render
      */
 
-    const renderIconLeft = () =>
-      iconLeft && (
+    const renderIconLeft = () => {
+      if (!iconLeft) {
+        return null;
+      }
+
+      return (
         <span className="left-icon" data-testid={`${testId}-icon-left`}>
           {iconLeft}
         </span>
       );
+    };
 
-    const renderIconRight = () =>
-      iconRight && (
+    const renderIconRight = () => {
+      if (!iconRight) {
+        return null;
+      }
+
+      return (
         <span className="right-icon" data-testid={`${testId}-icon-right`}>
           {iconRight}
         </span>
       );
+    };
 
-    const renderLoading = () =>
-      isLoading && (
+    const renderLoading = () => {
+      if (!isLoading) {
+        return null;
+      }
+
+      return (
         <SvgLoadingCircle
           width={usySpacing.px28}
           height={usySpacing.px28}
@@ -99,6 +124,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           data-testid={`${testId}-loading-icon`}
         />
       );
+    };
 
     return (
       <button

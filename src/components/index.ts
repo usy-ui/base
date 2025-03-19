@@ -10,8 +10,8 @@ export {
   AccordionProps,
   AccordionItemType,
 } from "./_Layout/Accordion";
-export { Box, BoxProps } from "./_Layout/Box";
-export { Flex, FlexProps } from "./_Layout/Flex";
+export { Box, BoxProps } from "./_atoms/LayoutBox";
+export { Flex, FlexProps } from "./_atoms/LayoutFlex";
 export { FlexChild, FlexChildProps } from "./_Layout/FlexChild";
 export { Panel, PanelProps } from "./_Layout/Panel";
 export {
@@ -28,7 +28,7 @@ export { TogglePanel, TogglePanelProps } from "./_Layout/TogglePanel";
  */
 
 export { Checkbox, CheckboxProps } from "./_Form/Checkbox";
-export { FieldLabel } from "./_Form/FieldLabel";
+export { FieldLabel } from "./_atoms/FieldLabel";
 export { Input, InputProps } from "./_Form/Input";
 export { Password, PasswordProps } from "./_Form/Password";
 export { RadioGroup, RadioGroupProps, RadioType } from "./_Form/RadioGroup";
@@ -41,11 +41,11 @@ export { TextArea, TextAreaProps } from "./_Form/TextArea";
  * Components
  */
 
-export { Avatar, AvatarProps } from "./Avatar";
-export { Badge, BadgeProps } from "./Badge";
-export { Button, ButtonProps } from "./Button";
+export { Avatar, AvatarProps } from "./_atoms/Avatar";
+export { Badge, BadgeProps } from "./_atoms/Badge";
+export { Button, ButtonProps } from "./_atoms/Button";
 export { ConfirmContent, ConfirmContentProps } from "./ConfirmContent";
-export { Copyable, CopyableProps } from "./Copyable";
+export { Copyable, CopyableProps } from "./_atoms/Copyable";
 export {
   Drawer,
   DrawerProps,
@@ -79,5 +79,5 @@ export {
 export { Table, TableProps, TableColumnType } from "./Table";
 export { Tabs, TabsProps, TabItemType } from "./Tabs";
 export { Toast, globalToast, ToastProps, ToastInstance } from "./Toast";
-export { Tooltip, TooltipProps } from "./Tooltip";
-export { Typography, TypographyProps } from "./Typography";
+export { Tooltip, TooltipProps } from "./_atoms/Tooltip";
+export { Typography, TypographyProps } from "./_atoms/Typography";

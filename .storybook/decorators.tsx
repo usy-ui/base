@@ -1,8 +1,8 @@
 import React from "react";
 import "../src/styles.scss";
 
-import { Flex } from "../src/components/_Layout/Flex";
 import { usySpacing } from "../src/styles";
+import { Flex } from "@src/components";
 
 export const ThemeProviderDecorator = (Story) => {
   return (

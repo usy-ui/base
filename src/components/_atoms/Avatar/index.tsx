@@ -12,7 +12,11 @@ import {
   BaseSizeExtraUnion,
   BaseRadiusUnion,
   BaseSizeUnion,
-} from "../../@types";
+} from "../../../@types";
+
+/**
+ * Types
+ */
 
 type PureAvatarProps = {
   src: string;
@@ -25,6 +29,10 @@ type PureAvatarProps = {
 };
 
 export type AvatarProps = PureAvatarProps & CommonCompProps;
+
+/**
+ * Component
+ */
 
 export const Avatar: FC<AvatarProps> = ({
   src,

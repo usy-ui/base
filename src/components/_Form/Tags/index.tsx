@@ -5,14 +5,9 @@ import clsx from "clsx";
 
 import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 
-import {
-  CommonCompProps,
-  FieldLabelProps,
-  FormFieldProps,
-  WidthProps,
-} from "../../../@types";
+import { CommonCompProps, FormFieldProps, WidthProps } from "../../../@types";
+import { FieldLabel, PureFieldLabelProps } from "../../_atoms/FieldLabel";
 import { CloseCircleSolidIcon, TrashBinIcon } from "../../Icon";
-import { FieldLabel } from "../FieldLabel";
 import { InputDescription } from "../Input/components/InputDescription";
 
 type PureTagsProps = {
@@ -24,7 +19,7 @@ type PureTagsProps = {
 };
 
 export type TagsProps = PureTagsProps &
-  FieldLabelProps &
+  PureFieldLabelProps &
   Pick<FormFieldProps<string[]>, "disabled" | "hasError"> &
   WidthProps &
   CommonCompProps;

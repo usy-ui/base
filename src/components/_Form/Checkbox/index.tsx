@@ -3,21 +3,18 @@ import { ChangeEvent, forwardRef, useState } from "react";
 
 import clsx from "clsx";
 
+import { PureFieldLabelProps } from "@src/components/_atoms/FieldLabel";
 import { useSyncOuterValue } from "@src/hooks";
 
-import {
-  CommonCompProps,
-  FieldLabelProps,
-  FormFieldProps,
-} from "../../../@types";
-import { Typography } from "../../Typography";
+import { CommonCompProps, FormFieldProps } from "../../../@types";
+import { Typography } from "../../_atoms/Typography";
 
 type PureCheckboxProps = {
   checked?: boolean;
 };
 
 export type CheckboxProps = PureCheckboxProps &
-  Pick<FieldLabelProps, "label"> &
+  Pick<PureFieldLabelProps, "label"> &
   Pick<FormFieldProps<boolean, HTMLInputElement>, "disabled" | "onChange"> &
   CommonCompProps;
 

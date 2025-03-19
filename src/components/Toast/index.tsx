@@ -17,6 +17,7 @@ import { usyColor } from "@src/styles";
 import { getUniqueTime } from "@src/utils";
 
 import { BasePositionExtraUnion, CommonCompProps } from "../../@types";
+import { Typography } from "../_atoms/Typography";
 import {
   CheckCircleIcon,
   CloseIcon,
@@ -24,7 +25,6 @@ import {
   ExclamationCircleIcon,
   BanIcon,
 } from "../Icon";
-import { Typography } from "../Typography";
 
 type ToastType = "success" | "info" | "warning" | "error" | "basic";
 type PushToastParams = {

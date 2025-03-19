@@ -2,9 +2,9 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { defaultSbCompMetaProps } from "../../../.storybook/constants";
-import { usySpacing } from "../../styles";
-import { Flex } from "../_Layout/Flex";
+import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
+import { usySpacing } from "../../../styles";
+import { Flex } from "../LayoutFlex";
 
 import { Badge } from "./index";
 

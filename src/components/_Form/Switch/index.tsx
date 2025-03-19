@@ -9,17 +9,16 @@ import { useSyncOuterValue } from "@src/hooks";
 import {
   BaseSizeUnion,
   CommonCompProps,
-  FieldLabelProps,
   FormFieldProps,
 } from "../../../@types";
-import { FieldLabel } from "../FieldLabel";
+import { FieldLabel, PureFieldLabelProps } from "../../_atoms/FieldLabel";
 
 type PureSwitchProps = {
   size?: BaseSizeUnion;
 };
 
 export type SwitchProps = PureSwitchProps &
-  FieldLabelProps &
+  PureFieldLabelProps &
   Omit<FormFieldProps<boolean, HTMLInputElement>, "hasError"> &
   CommonCompProps;
 

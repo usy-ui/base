@@ -2,8 +2,8 @@ import { FC, ReactNode, useState } from "react";
 
 import clsx from "clsx";
 
+import { Typography } from "@src/components/_atoms/Typography";
 import { AngleDownIcon } from "@src/components/Icon";
-import { Typography } from "@src/components/Typography";
 
 import { CommonCompProps } from "../../../../@types";
 

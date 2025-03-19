@@ -3,13 +3,23 @@ import { FC, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { BasePositionUnion, CommonCompProps } from "../../@types";
+import { BasePositionUnion, CommonCompProps } from "../../../@types";
 
-export type TooltipProps = {
+/**
+ * Types
+ */
+
+type PureTooltipProps = {
   children: ReactNode;
   content: string | ReactNode;
   position?: BasePositionUnion;
-} & CommonCompProps;
+};
+
+export type TooltipProps = PureTooltipProps & CommonCompProps;
+
+/**
+ * Component
+ */
 
 export const Tooltip: FC<TooltipProps> = ({
   children,

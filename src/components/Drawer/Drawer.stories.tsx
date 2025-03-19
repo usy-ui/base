@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { defaultSbCompMetaProps } from "../../../.storybook/constants";
-import { Flex } from "../_Layout/Flex";
-import { Button } from "../Button";
-import { Typography } from "../Typography";
+import { Button } from "../_atoms/Button";
+import { Flex } from "../_atoms/LayoutFlex";
+import { Typography } from "../_atoms/Typography";
 
 import { DrawerFooter } from "./Footer";
 import { DrawerHeader } from "./Header";

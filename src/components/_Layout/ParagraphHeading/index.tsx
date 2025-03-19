@@ -8,7 +8,7 @@ import {
   CommonCompProps,
   MarginProps,
 } from "../../../@types";
-import { Typography, TypographySize } from "../../Typography";
+import { Typography, TypographySize } from "../../_atoms/Typography";
 
 type PureParagraphHeadingProps = {
   title: string | ReactNode;
