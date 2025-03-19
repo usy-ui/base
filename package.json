@@ -69,6 +69,7 @@
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/addon-webpack5-compiler-swc": "1.0.5",
     "@storybook/blocks": "8.3.2",
+    "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "8.3.2",
     "@storybook/react-webpack5": "8.3.2",
     "@storybook/test": "8.3.2",
@@ -137,5 +138,8 @@
       "prettier --write",
       "eslint --fix"
     ]
+  },
+  "dependencies": {
+    "@testing-library/react": "^16.2.0"
   }
 }

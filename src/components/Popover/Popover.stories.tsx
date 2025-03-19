@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 import { usySpacing } from "../../styles";
 import { Flex } from "../_Layout/Flex";
 import { Button } from "../Button";
@@ -11,11 +11,7 @@ import { Popover } from "./index";
 
 const meta: Meta<typeof Popover> = {
   component: Popover,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 export const Top: Story = {

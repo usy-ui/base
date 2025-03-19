@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 
 import {
   DropdownMenu,
@@ -14,11 +14,7 @@ import {
 
 const meta: Meta<typeof DropdownMenu> = {
   component: DropdownMenu,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 const dropdownOverlayItems = (

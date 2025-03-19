@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 import { usySpacing } from "../../styles";
 import { Box } from "../_Layout/Box";
 import { Flex } from "../_Layout/Flex";
@@ -12,11 +12,7 @@ import { Table, TableColumnType } from "./index";
 
 const meta: Meta<typeof Table> = {
   component: Table,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 type RowType = {

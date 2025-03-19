@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 import { usySpacing } from "../../styles";
 import { Flex } from "../_Layout/Flex";
 import { AngleDownIcon, CaretLeftIcon, CaretRightIcon } from "../Icon";
@@ -11,11 +11,7 @@ import { Button } from "./index";
 
 const meta: Meta<typeof Button> = {
   component: Button,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 export const Types: Story = {

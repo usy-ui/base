@@ -2,18 +2,14 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 import { Flex } from "../_Layout/Flex";
 
 import { Tabs } from "./index";
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 export const Types: Story = {

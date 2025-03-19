@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../.storybook/constants";
 import { Flex } from "../_Layout/Flex";
 import { Button } from "../Button";
 import { Typography } from "../Typography";
@@ -14,11 +14,7 @@ import { Drawer } from "./index";
 
 const meta: Meta<typeof Drawer> = {
   component: Drawer,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 const TriggerDrawer = () => {

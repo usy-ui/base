@@ -2,18 +2,14 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 import { Flex } from "../../_Layout/Flex";
 
 import { TextArea } from "./index";
 
 const meta: Meta<typeof TextArea> = {
   component: TextArea,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 export const Types: Story = {

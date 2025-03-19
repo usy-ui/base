@@ -2,17 +2,13 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 
 import { Checkbox } from "./index";
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 export const Types: Story = {

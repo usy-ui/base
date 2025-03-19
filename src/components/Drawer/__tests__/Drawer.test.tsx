@@ -2,7 +2,7 @@ import React from "react";
 
 import { render, screen } from "@testing-library/react";
 
-import { Drawer, DrawerContent, DrawerFooter, DrawerHeader } from "../index";
+import { Drawer, DrawerFooter, DrawerHeader } from "../index";
 
 describe("Drawer Component", () => {
   describe("render", () => {
@@ -20,13 +20,13 @@ describe("Drawer Component", () => {
           testId="drawer-footer"
           buttons={[
             {
-              type: "primary",
-              label: "Confirm",
+              variant: "primary",
+              children: "Confirm",
               onClick: () => alert("Confirmed"),
             },
             {
-              type: "normal",
-              label: "Cancel",
+              variant: "normal",
+              children: "Cancel",
               onClick: () => alert("Canceled"),
             },
           ]}
@@ -34,25 +34,17 @@ describe("Drawer Component", () => {
       );
 
       render(
-        <Drawer
-          header={drawerHeader}
-          footer={drawerFooter}
-          testId="drawer"
-          isOpen
-        >
-          <DrawerContent testId="drawer-content">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry is standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book
-          </DrawerContent>
+        <Drawer header={drawerHeader} footer={drawerFooter} testId="drawer">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry is standard dummy text
+          ever since the 1500s, when an unknown printer took a galley of type
+          and scrambled it to make a type specimen book
         </Drawer>
       );
 
       expect(screen.getByTestId("drawer")).toBeInTheDocument();
       expect(screen.getByTestId("drawer-overlay")).toBeInTheDocument();
       expect(screen.getByTestId("drawer-header")).toBeInTheDocument();
-      expect(screen.getByTestId("drawer-content")).toBeInTheDocument();
       expect(screen.getByTestId("drawer-footer")).toBeInTheDocument();
     });
   });

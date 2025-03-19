@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 import { Box } from "../../_Layout/Box";
 import { ParagraphHeading } from "../ParagraphHeading";
 
@@ -10,11 +10,7 @@ import { Panel } from "./index";
 
 const meta: Meta<typeof Panel> = {
   component: Panel,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 export const Types: Story = {

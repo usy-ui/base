@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeProviderDecorator } from "../../../../.storybook/decorators";
+import { defaultSbCompMetaProps } from "../../../../.storybook/constants";
 import {
   BrandFacebookIcon,
   BrandLinkedinIcon,
@@ -13,11 +13,7 @@ import { Select, SelectItemType } from "./index";
 
 const meta: Meta<typeof Select> = {
   component: Select,
-  decorators: [ThemeProviderDecorator],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
+  ...defaultSbCompMetaProps,
 };
 
 export const Types: Story = {
