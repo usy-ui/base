@@ -7,9 +7,9 @@ import { EyeSlashIcon, EyeIcon } from "@src/components/atoms/Icon";
 import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 
 import { CommonCompProps } from "../../../@types";
+import { FieldDescription } from "../../atoms/FieldDescription";
 import { FieldLabel } from "../../atoms/FieldLabel";
 import { InputProps } from "../FormInput";
-import { InputDescription } from "../FormInput/components/InputDescription";
 import { InputIconLeft } from "../FormInput/components/InputIconLeft";
 import { InputIconRight } from "../FormInput/components/InputIconRight";
 
@@ -151,7 +151,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
           {renderInput()}
           {renderHideShowPassword()}
         </div>
-        <InputDescription description={description} testId={testId} />
+        <FieldDescription description={description} testId={testId} />
       </div>
     );
   }

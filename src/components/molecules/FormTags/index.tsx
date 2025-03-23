@@ -6,9 +6,9 @@ import clsx from "clsx";
 import { useNameMemo, useSyncOuterValue } from "@src/hooks";
 
 import { CommonCompProps, FormFieldProps, WidthProps } from "../../../@types";
+import { FieldDescription } from "../../atoms/FieldDescription";
 import { FieldLabel, PureFieldLabelProps } from "../../atoms/FieldLabel";
 import { CloseCircleSolidIcon, TrashBinIcon } from "../../atoms/Icon";
-import { InputDescription } from "../FormInput/components/InputDescription";
 
 /**
  * Types
@@ -170,7 +170,7 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
         {renderTagInput()}
         {renderRemoveAllTags()}
       </div>
-      <InputDescription description={description} testId={testId} />
+      <FieldDescription description={description} testId={testId} />
     </div>
   );
 });

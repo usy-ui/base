@@ -2,6 +2,9 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { Flex } from "@src/components/atoms/LayoutFlex";
+import { usySpacing } from "@src/design-tokens";
+
 import {
   defaultSbCompMetaProps,
   listOfAnimals,
@@ -58,7 +61,7 @@ export const Types: Story = {
     ];
 
     return (
-      <>
+      <Flex alignItems="flex-start" gap={usySpacing.px32}>
         <Select
           type="autocomplete"
           label="Select Animal"
@@ -73,13 +76,30 @@ export const Types: Story = {
           widthProps={{ minWidth: "140px" }}
         />
         <Select
+          type="autocomplete"
+          label="Select Animal"
+          items={listOfAnimals}
+          onChange={(item) => alert(item.value)}
+          widthProps={{ minWidth: "140px" }}
+          hasError
+          description="This field is required"
+        />
+        <Select
+          label="Select Social"
+          items={socials}
+          onChange={(item) => alert(item.value)}
+          widthProps={{ minWidth: "140px" }}
+          hasError
+          description="This field is required"
+        />
+        <Select
           label="Select Animal"
           items={listOfAnimals}
           onChange={(item) => alert(item.value)}
           widthProps={{ minWidth: "140px" }}
           disabled
         />
-      </>
+      </Flex>
     );
   },
 };

@@ -17,9 +17,9 @@ import {
   FormFieldProps,
   WidthProps,
 } from "../../../@types";
+import { FieldDescription } from "../../atoms/FieldDescription";
 import { FieldLabel, PureFieldLabelProps } from "../../atoms/FieldLabel";
 
-import { InputDescription } from "./components/InputDescription";
 import { InputIconLeft } from "./components/InputIconLeft";
 import { InputIconRight } from "./components/InputIconRight";
 
@@ -142,7 +142,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         {renderInput()}
         <InputIconRight size={size} iconRight={iconRight} testId={testId} />
       </div>
-      <InputDescription description={description} testId={testId} />
+      <FieldDescription description={description} testId={testId} />
     </div>
   );
 });

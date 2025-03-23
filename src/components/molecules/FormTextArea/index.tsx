@@ -11,9 +11,9 @@ import {
   HeightProps,
   type CommonCompProps,
 } from "../../../@types";
+import { FieldDescription } from "../../atoms/FieldDescription";
 import { FieldLabel } from "../../atoms/FieldLabel";
 import { InputProps } from "../FormInput";
-import { InputDescription } from "../FormInput/components/InputDescription";
 
 /**
  * Types
@@ -128,7 +128,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           />
         )}
         {renderTextArea()}
-        <InputDescription description={description} testId={testId} />
+        <FieldDescription description={description} testId={testId} />
       </div>
     );
   }

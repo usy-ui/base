@@ -11,6 +11,7 @@ import {
 
 import clsx from "clsx";
 
+import { FieldDescription } from "@src/components/atoms/FieldDescription";
 import { Flex } from "@src/components/atoms/LayoutFlex";
 import { Typography } from "@src/components/atoms/Typography";
 import { usySpacing } from "@src/design-tokens";
@@ -35,23 +36,29 @@ export type SelectItemType<T = any> = {
 type PureSelectProps = {
   items: SelectItemType[];
   type?: "select" | "autocomplete";
+  description?: ReactNode;
   isOpen?: boolean;
 };
 
 export type SelectProps = PureSelectProps &
   PureFieldLabelProps &
-  Pick<FormFieldProps<SelectItemType>, "value" | "disabled" | "onChange"> &
+  Pick<
+    FormFieldProps<SelectItemType>,
+    "value" | "hasError" | "disabled" | "onChange"
+  > &
   WidthProps &
   CommonCompProps;
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   {
-    type = "select",
     items = [],
+    type = "select",
+    description,
     isOpen: initOpen,
     label,
     hasAsterisk,
     value,
+    hasError,
     disabled,
     onChange,
     widthProps,
@@ -117,10 +124,12 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
           role="button"
           aria-hidden="true"
           onClick={toggleSelect}
-          className="selected-option"
+          className={clsx("selected-option", {
+            "has-error": Boolean(hasError),
+          })}
           ref={triggerRef as LegacyRef<HTMLDivElement>}
         >
-          {selectedItem.label}
+          {selectedItem?.label || "Choose"}
           <ChevronSortIcon className="describe-icon" />
         </div>
       );
@@ -128,7 +137,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
 
     if (type === "autocomplete") {
       return (
-        <div className="autocomplete-input">
+        <div
+          className={clsx("autocomplete-input", {
+            "has-error": Boolean(hasError),
+          })}
+        >
           <input
             value={filterInput}
             onFocus={toggleSelect}
@@ -181,7 +194,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
         <Typography size="small" color="dark-3">
           {type === "autocomplete"
             ? `No result matching '${filterInput}'`
-            : `No result found`}
+            : `No options available`}
         </Typography>
       </Flex>
     );
@@ -224,6 +237,12 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
       )}
       {renderSelectedOption()}
       {renderMenuOverlay()}
+      {description && (
+        <FieldDescription
+          description={description}
+          testId={`${testId}-description`}
+        />
+      )}
     </div>
   );
 });
