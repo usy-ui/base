@@ -54,7 +54,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
     items = [],
     type = "select",
     description,
-    isOpen: initOpen,
+    isOpen: initOpen = false,
     label,
     hasAsterisk,
     value,
@@ -68,34 +68,40 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   },
   ref
 ) {
-  const [isOpen, setIsOpen] = useState(initOpen || false);
+  const [isOpen, setIsOpen] = useState(initOpen);
   const [filterInput, setFilterInput] = useState("");
+  const [preventFilter, setPreventFilter] = useState(false);
   const [selectedItem, setSelectedItem] = useState<SelectItemType | undefined>(
     value
   );
   useSyncOuterValue<SelectItemType | undefined>(setSelectedItem, value);
 
   const proceedItemsMemo = useMemo<SelectItemType[]>(() => {
-    if (type === "autocomplete" || filterInput) {
+    if (type === "autocomplete" && filterInput && !preventFilter) {
       return items.filter((item) =>
         item.label.toLowerCase().includes(filterInput.toLowerCase())
       );
     }
 
     return items;
-  }, [type, items, filterInput]);
+  }, [type, items, filterInput, preventFilter]);
+
+  const openMenuOverlay = () => {
+    setIsOpen(true);
+    setPreventFilter(true);
+  };
+  const closeMenuOverlay = () => setIsOpen(false);
 
   const handleOutsideClick = useCallback(() => {
-    setIsOpen(false);
+    closeMenuOverlay();
   }, []);
 
   const { triggerRef, elementRef } = useOutsideClick<
     HTMLDivElement | HTMLInputElement
   >(handleOutsideClick);
 
-  const openMenuOverlay = () => setIsOpen(!isOpen);
-
   const handleFilterInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPreventFilter(false);
     setFilterInput(e.target.value);
   };
 
@@ -146,16 +152,17 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
         openMenuOverlay={openMenuOverlay}
         onFilterInputChange={handleFilterInputChange}
         ref={triggerRef}
+        testId={`${testId}-menu-trigger`}
       />
-      {isOpen && (
-        <SelectMenuOverlay
-          items={proceedItemsMemo}
-          selectType={type}
-          filterInput={filterInput}
-          onSelect={handleSelectItem}
-          ref={elementRef}
-        />
-      )}
+      <SelectMenuOverlay
+        isOpen={isOpen}
+        items={proceedItemsMemo}
+        selectType={type}
+        filterInput={filterInput}
+        onSelect={handleSelectItem}
+        ref={elementRef}
+        testId={`${testId}-menu-overlay`}
+      />
       {description && (
         <FieldDescription
           description={description}

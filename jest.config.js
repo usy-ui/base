@@ -7,7 +7,8 @@ module.exports = {
   collectCoverageFrom: [
     "src/**/*.{ts,tsx}",
     "!src/**/index.ts",
-    "!**/src/components/Icon/*",
+    "!**/src/components/atoms/Icon/*",
+    "!**/src/design-tokens/**/*",
     "!src/**/*.stories.{ts,tsx}",
   ],
   transform: {

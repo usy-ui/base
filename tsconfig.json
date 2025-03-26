@@ -17,6 +17,7 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["ESNext", "DOM"],
     "noImplicitAny": true,
+    "types": ["@testing-library/jest-dom"],
     "paths": {
       "@src/*": ["src/*"]
     }
