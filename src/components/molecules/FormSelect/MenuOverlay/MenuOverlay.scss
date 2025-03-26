@@ -1,0 +1,39 @@
+.usy-select-menu-overlay {
+  min-width: 100%;
+  max-height: 260px;
+  position: absolute;
+  left: 50%;
+  top: calc(100% + var(--usy-spacing-4px));
+  transform: translateX(-50%);
+  border-radius: var(--usy-spacing-6px);
+  border: 1px solid var(--usy-color-light-5);
+  background-color: var(--usy-color-white);
+  padding: var(--usy-spacing-10px) 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  overflow-y: auto;
+  z-index: var(--usy-zIndex-high);
+
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    .item-container {
+      padding: var(--usy-spacing-10px) var(--usy-spacing-16px);
+      border-radius: var(--usy-spacing-4px);
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--usy-color-light-0);
+      }
+
+      .item-label {
+        display: flex;
+        align-items: center;
+        font-size: var(--usy-fontsize-medium);
+        text-wrap: nowrap;
+        margin: 0;
+      }
+    }
+  }
+}

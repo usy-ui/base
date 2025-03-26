@@ -5,7 +5,7 @@ export const useOutsideClick = <ElementType extends HTMLElement>(
   callback: () => void,
   isDisabled?: boolean
 ) => {
-  const elementRef = useRef<ElementType>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<ElementType>(null);
 
   useEffect(() => {

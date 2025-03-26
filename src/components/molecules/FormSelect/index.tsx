@@ -2,7 +2,6 @@
 import {
   ChangeEvent,
   forwardRef,
-  LegacyRef,
   ReactNode,
   useCallback,
   useMemo,
@@ -12,18 +11,19 @@ import {
 import clsx from "clsx";
 
 import { FieldDescription } from "@src/components/atoms/FieldDescription";
-import { Flex } from "@src/components/atoms/LayoutFlex";
-import { Typography } from "@src/components/atoms/Typography";
-import { usySpacing } from "@src/design-tokens";
 import { useOutsideClick, useSyncOuterValue } from "@src/hooks";
 
 import { CommonCompProps, FormFieldProps, WidthProps } from "../../../@types";
 import { FieldLabel, PureFieldLabelProps } from "../../atoms/FieldLabel";
-import { ChevronSortIcon, SearchIcon } from "../../atoms/Icon";
+
+import { SelectMenuOverlay } from "./MenuOverlay";
+import { SelectMenuTrigger } from "./MenuTrigger";
 
 /**
  * Types
  */
+
+export type SelectType = "select" | "autocomplete";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type SelectItemType<T = any> = {
@@ -35,7 +35,7 @@ export type SelectItemType<T = any> = {
 
 type PureSelectProps = {
   items: SelectItemType[];
-  type?: "select" | "autocomplete";
+  type?: SelectType;
   description?: ReactNode;
   isOpen?: boolean;
 };
@@ -70,10 +70,10 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
 ) {
   const [isOpen, setIsOpen] = useState(initOpen || false);
   const [filterInput, setFilterInput] = useState("");
-  const [selectedItem, setSelectedItem] = useState<SelectItemType>(
-    value || items[0]
+  const [selectedItem, setSelectedItem] = useState<SelectItemType | undefined>(
+    value
   );
-  useSyncOuterValue<SelectItemType>(setSelectedItem, value || items[0]);
+  useSyncOuterValue<SelectItemType | undefined>(setSelectedItem, value);
 
   const proceedItemsMemo = useMemo<SelectItemType[]>(() => {
     if (type === "autocomplete" || filterInput) {
@@ -93,7 +93,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
     HTMLDivElement | HTMLInputElement
   >(handleOutsideClick);
 
-  const toggleSelect = () => setIsOpen(!isOpen);
+  const openMenuOverlay = () => setIsOpen(!isOpen);
 
   const handleFilterInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFilterInput(e.target.value);
@@ -117,103 +117,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
    * Render
    */
 
-  const renderSelectedOption = () => {
-    if (type === "select") {
-      return (
-        <div
-          role="button"
-          aria-hidden="true"
-          onClick={toggleSelect}
-          className={clsx("selected-option", {
-            "has-error": Boolean(hasError),
-          })}
-          ref={triggerRef as LegacyRef<HTMLDivElement>}
-        >
-          {selectedItem?.label || "Choose"}
-          <ChevronSortIcon className="describe-icon" />
-        </div>
-      );
-    }
-
-    if (type === "autocomplete") {
-      return (
-        <div
-          className={clsx("autocomplete-input", {
-            "has-error": Boolean(hasError),
-          })}
-        >
-          <input
-            value={filterInput}
-            onFocus={toggleSelect}
-            onChange={handleFilterInputChange}
-            placeholder="Type to search..."
-            className="filter-input"
-            ref={triggerRef as LegacyRef<HTMLInputElement>}
-          />
-          <SearchIcon className="describe-icon" />
-        </div>
-      );
-    }
-  };
-
-  const renderMenuItems = () => {
-    const renderDisplayItem = (item: SelectItemType) => {
-      if (item.labelElement) {
-        return <div className="item-label">{item.labelElement}</div>;
-      }
-
-      return <Typography className="item-label">{item.label}</Typography>;
-    };
-
-    return (
-      <ul>
-        {proceedItemsMemo.map((item) => {
-          return (
-            <li
-              key={item.id}
-              onClick={() => handleSelectItem(item)}
-              aria-hidden="true"
-              className="item-container"
-            >
-              {renderDisplayItem(item)}
-            </li>
-          );
-        })}
-      </ul>
-    );
-  };
-
-  const renderMenuEmptyResult = () => {
-    return (
-      <Flex
-        justifyContent="center"
-        alignItems="center"
-        heightProps={{ minHeight: "50px" }}
-        paddingProps={{ padding: usySpacing.px16 }}
-      >
-        <Typography size="small" color="dark-3">
-          {type === "autocomplete"
-            ? `No result matching '${filterInput}'`
-            : `No options available`}
-        </Typography>
-      </Flex>
-    );
-  };
-
-  const renderMenuOverlay = () => {
-    if (!isOpen) {
-      return;
-    }
-
-    return (
-      <div className="menu-overlay" ref={elementRef}>
-        {proceedItemsMemo.length === 0
-          ? renderMenuEmptyResult()
-          : renderMenuItems()}
-      </div>
-    );
-  };
-
   return (
     <div
       className={clsx(
@@ -235,8 +138,24 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
           testId={`${testId}-title`}
         />
       )}
-      {renderSelectedOption()}
-      {renderMenuOverlay()}
+      <SelectMenuTrigger
+        selectType={type}
+        selectedItem={selectedItem}
+        filterInput={filterInput}
+        hasError={hasError}
+        openMenuOverlay={openMenuOverlay}
+        onFilterInputChange={handleFilterInputChange}
+        ref={triggerRef}
+      />
+      {isOpen && (
+        <SelectMenuOverlay
+          items={proceedItemsMemo}
+          selectType={type}
+          filterInput={filterInput}
+          onSelect={handleSelectItem}
+          ref={elementRef}
+        />
+      )}
       {description && (
         <FieldDescription
           description={description}
