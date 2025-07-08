@@ -103,6 +103,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   const handleFilterInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPreventFilter(false);
     setFilterInput(e.target.value);
+
+    if (filterInput !== e.target.value) {
+      setSelectedItem(undefined);
+      onChange?.(undefined);
+    }
   };
 
   const handleSelectItem = (item: SelectItemType) => {
